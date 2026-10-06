@@ -156,10 +156,10 @@
           Portal Review DPA
         </a>
 
-        <!-- Prodi Only Tab (Hidden from Mahasiswa) -->
+        <!-- Prodi Only Tab (Hidden from Mahasiswa & DPA) -->
         <a href="#prodi" data-tab="prodi" id="tabLinkProdi" class="nav-tab hidden px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-emerald-700/60 bg-emerald-900/40">
           <span class="material-symbols-outlined text-base">corporate_fare</span>
-          Manajemen Kelas &amp; Kuota Prodi
+          Manajemen Kelas &amp; Kuota
         </a>
       </nav>
 
@@ -633,7 +633,7 @@
             </p>
           </div>
           <div>
-            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-900 border border-emerald-300 font-mono text-xs font-bold">
+            <span class="px-3 py-1.5 bg-emerald-50 text-emerald-900 border border-emerald-300 font-mono text-xs font-bold" id="dpaCountBadge">
               1 Pengajuan Masuk
             </span>
           </div>
@@ -643,9 +643,9 @@
           <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
             <div>
               <strong class="text-sm text-slate-900 block">Danuardi Saputro (NIM 1251420128)</strong>
-              <span class="text-xs text-slate-500">Teknik Informatika &bull; Total 6 SKS Diajukan</span>
+              <span class="text-xs text-slate-500" id="dpaStudentSummary">Teknik Informatika &bull; Total 6 SKS Diajukan</span>
             </div>
-            <span class="px-2 py-0.5 text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300">
+            <span class="px-2 py-0.5 text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300" id="dpaReviewStatusBadge">
               Menunggu Review
             </span>
           </div>
@@ -660,7 +660,7 @@
                   <th class="py-2.5 px-3">Status Kelayakan</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100">
+              <tbody class="divide-y divide-slate-100" id="dpaStudentCoursesBody">
                 <tr>
                   <td class="py-2.5 px-3 font-semibold text-slate-900">TIF204 &bull; Rekayasa Perangkat Lunak</td>
                   <td class="py-2.5 px-3 text-center font-mono">3</td>
@@ -1157,23 +1157,35 @@
       showToast('Data Direset', 'Semua status dikembalikan ke kondisi default.');
     }
 
-    // Role-based Nav Tabs Filter
+    // Role-based Nav Tabs Filter & Route Guard
+    const ROLE_TABS = {
+      mahasiswa: ['katalog', 'pengajuan', 'tracking', 'tagihan'],
+      dpa: ['dpa'],
+      prodi: ['prodi']
+    };
+
     function renderNavbarTabs(currentRole = state.role) {
       const isMhs = currentRole === 'mahasiswa';
       const isDpa = currentRole === 'dpa';
       const isProdi = currentRole === 'prodi';
 
+      const elKatalog = document.getElementById('tabLinkKatalog');
       const elPengajuan = document.getElementById('tabLinkPengajuan');
       const elTracking = document.getElementById('tabLinkTracking');
       const elTagihan = document.getElementById('tabLinkTagihan');
       const elDpa = document.getElementById('tabLinkDpa');
       const elProdi = document.getElementById('tabLinkProdi');
 
-      // Mahasiswa can NEVER see DPA or Prodi tabs
+      // Mahasiswa: Cuma 4 tab (Katalog Matkul, Pengajuan KRS, Status Tracking, Tagihan & VA)
+      if (elKatalog) elKatalog.classList.toggle('hidden', !isMhs);
       if (elPengajuan) elPengajuan.classList.toggle('hidden', !isMhs);
       if (elTracking) elTracking.classList.toggle('hidden', !isMhs);
       if (elTagihan) elTagihan.classList.toggle('hidden', !isMhs);
+
+      // DPA: Cuma Portal Review DPA
       if (elDpa) elDpa.classList.toggle('hidden', !isDpa);
+
+      // Prodi: Cuma Manajemen Kelas & Kuota
       if (elProdi) elProdi.classList.toggle('hidden', !isProdi);
 
       // Update Topbar Profile Label based on role
@@ -1186,8 +1198,8 @@
         subEl.innerText = 'Dosen Pembimbing Akademik';
         avatarEl.innerText = 'DK';
       } else if (isProdi) {
-        nameEl.innerText = 'Admin Program Studi';
-        subEl.innerText = 'Pengelola Akademik TI FST';
+        nameEl.innerText = 'Program Studi TI';
+        subEl.innerText = 'Pengelola Akademik FST';
         avatarEl.innerText = 'TI';
       } else {
         nameEl.innerText = 'Danuardi Saputro';
@@ -1196,22 +1208,18 @@
       }
     }
 
-    // Hash Navigation with Strict Route Guard
+    // Hash Navigation with Strict Route Guard per Role
     function getActiveTab() {
       const hash = window.location.hash.replace('#', '').trim();
-      const validTabs = ['katalog', 'pengajuan', 'tracking', 'tagihan', 'dpa', 'prodi'];
-      return validTabs.includes(hash) ? hash : 'katalog';
+      const allowed = ROLE_TABS[state.role] || ROLE_TABS.mahasiswa;
+      return allowed.includes(hash) ? hash : allowed[0];
     }
 
     function navigateToTab(tabName) {
-      // Access Guard: Mahasiswa cannot access dpa or prodi
-      if (state.role === 'mahasiswa' && (tabName === 'dpa' || tabName === 'prodi')) {
-        showToast('Akses Dibatasi', 'Tab portal DPA dan Prodi tidak dapat diakses oleh mahasiswa.', true);
-        tabName = 'katalog';
-      } else if (state.role === 'dpa' && (tabName === 'pengajuan' || tabName === 'tagihan' || tabName === 'prodi')) {
-        tabName = 'dpa';
-      } else if (state.role === 'prodi' && (tabName === 'pengajuan' || tabName === 'tagihan' || tabName === 'dpa')) {
-        tabName = 'prodi';
+      const allowed = ROLE_TABS[state.role] || ROLE_TABS.mahasiswa;
+      if (!allowed.includes(tabName)) {
+        showToast('Akses Dibatasi', `Peran ${state.role.toUpperCase()} tidak memiliki izin akses ke tab tersebut.`, true);
+        tabName = allowed[0];
       }
 
       window.location.hash = '#' + tabName;
@@ -1219,11 +1227,10 @@
     }
 
     function updateActiveTabUI(tabName) {
-      // Route guard enforcement
-      if (state.role === 'mahasiswa' && (tabName === 'dpa' || tabName === 'prodi')) {
-        showToast('Akses Ditolak', 'Halaman ini khusus DPA atau Admin Program Studi.', true);
-        tabName = 'katalog';
-        window.location.hash = '#katalog';
+      const allowed = ROLE_TABS[state.role] || ROLE_TABS.mahasiswa;
+      if (!allowed.includes(tabName)) {
+        tabName = allowed[0];
+        window.location.hash = '#' + tabName;
       }
 
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -1666,9 +1673,66 @@
     }
 
     // Render Tab 5: DPA
+    function renderDpa() {
+      const selected = getSelectedCourses();
+      const totalSks = getTotalSks();
+      const badge = document.getElementById('dpaReviewStatusBadge');
+      const countBadge = document.getElementById('dpaCountBadge');
+      const studentSummary = document.getElementById('dpaStudentSummary');
+      const tbody = document.getElementById('dpaStudentCoursesBody');
+      const notesInput = document.getElementById('dpaFeedbackNotes');
+
+      if (studentSummary) {
+        studentSummary.innerText = `Teknik Informatika • Total ${totalSks} SKS Diajukan`;
+      }
+
+      if (notesInput && state.dpaNotes && !notesInput.value) {
+        notesInput.value = state.dpaNotes.replace(/^“|”$/g, '');
+      }
+
+      const isApproved = ['kuota_prodi', 'menunggu_bayar', 'terdaftar'].includes(state.stage);
+      const isRejected = state.stage === 'draft';
+
+      if (badge) {
+        if (isApproved) {
+          badge.innerText = 'Disetujui DPA';
+          badge.className = 'px-2 py-0.5 text-xs font-mono font-bold bg-emerald-100 text-emerald-900 border border-emerald-300';
+        } else if (isRejected) {
+          badge.innerText = 'Dikembalikan / Revisi';
+          badge.className = 'px-2 py-0.5 text-xs font-mono font-bold bg-rose-100 text-rose-900 border border-rose-300';
+        } else {
+          badge.innerText = 'Menunggu Review';
+          badge.className = 'px-2 py-0.5 text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300';
+        }
+      }
+
+      if (countBadge) {
+        countBadge.innerText = isApproved ? 'Sudah Ditinjau (Disetujui)' : (isRejected ? 'Perlu Revisi Mahasiswa' : '1 Pengajuan Masuk');
+      }
+
+      if (tbody) {
+        if (selected.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="4" class="py-4 text-center text-slate-500 italic">Belum ada mata kuliah yang diajukan.</td>
+            </tr>
+          `;
+        } else {
+          tbody.innerHTML = selected.map(c => `
+            <tr class="hover:bg-slate-50">
+              <td class="py-2.5 px-3 font-semibold text-slate-900">${c.code} &bull; ${c.name}</td>
+              <td class="py-2.5 px-3 text-center font-mono">${c.sks}</td>
+              <td class="py-2.5 px-3 text-center font-bold text-amber-700 font-mono">${c.oldGrade}</td>
+              <td class="py-2.5 px-3 text-emerald-700 font-semibold">Layak Diulang (Nilai ${c.oldGrade})</td>
+            </tr>
+          `).join('');
+        }
+      }
+    }
+
     function dpaApproveAction() {
       const note = document.getElementById('dpaFeedbackNotes').value.trim();
-      state.dpaNotes = note || '“Disetujui. Fokus pada mata kuliah yang diajukan untuk perbaikan IPK.”';
+      state.dpaNotes = note ? `“${note}”` : '“Disetujui. Fokus pada mata kuliah yang diajukan untuk perbaikan IPK.”';
       state.stage = 'kuota_prodi';
       saveState();
 
@@ -1677,12 +1741,12 @@
       }
 
       showToast('KRS Disetujui', 'Pengajuan disetujui DPA dan diteruskan ke prodi.');
-      navigateToTab('tracking');
+      renderDpa();
     }
 
     function dpaRejectAction() {
       const note = document.getElementById('dpaFeedbackNotes').value.trim();
-      state.dpaNotes = note || '“Mohon perbaiki pilihan mata kuliah sesuai arahan.”';
+      state.dpaNotes = note ? `“${note}”` : '“Mohon perbaiki pilihan mata kuliah sesuai arahan.”';
       state.stage = 'draft';
       saveState();
 
@@ -1691,7 +1755,7 @@
       }
 
       showToast('Dikembalikan', 'Catatan revisi dikirim ke mahasiswa.', true);
-      navigateToTab('tracking');
+      renderDpa();
     }
 
     // Render Tab 6: Prodi (Management of Courses & Quotas)
@@ -1866,7 +1930,7 @@
       }
 
       showToast('Penetapan Selesai', 'Semua kelas yang memenuhi kuota telah dibuka.');
-      navigateToTab('tracking');
+      renderProdi();
     }
 
     // Role switcher
@@ -1900,8 +1964,10 @@
       saveState();
       document.getElementById('demoMenuPopover').classList.add('hidden');
       showToast('Tahap Disimulasikan', `Alur beralih ke: ${st}`);
-      if (st === 'draft') navigateToTab('pengajuan');
-      else if (st === 'menunggu_dpa') {
+      if (st === 'draft') {
+        setRole('mahasiswa');
+        navigateToTab('pengajuan');
+      } else if (st === 'menunggu_dpa') {
         setRole('dpa');
       } else if (st === 'kuota_prodi') {
         setRole('prodi');
@@ -1975,6 +2041,7 @@
       renderPengajuan();
       renderTracking();
       renderTagihan();
+      renderDpa();
       renderProdi();
     }
 
