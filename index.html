@@ -1,0 +1,3297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>SIA-SA FST UIN Syarif Hidayatullah Jakarta | Sistem Request Semester Antara</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#003820",
+            "primary-container": "#0f5132",
+            "primary-fixed": "#b0f1c7",
+            "primary-fixed-dim": "#95d4ac",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#84c39b",
+            "on-primary-fixed-variant": "#0f5132",
+            "surface-tint": "#2d6a48",
+            "accent-teal": "#10B981",
+            "text-primary": "#0F172A",
+            "text-secondary": "#475569",
+            "text-muted": "#64748B",
+            "surface": "#f8faf5",
+            "surface-page": "#F8FAFC",
+            "surface-card": "#FFFFFF",
+            "surface-subtle": "#F1F5F9",
+            "surface-container": "#ecefe9",
+            "border-subtle": "#E2E8F0",
+            "border-strong": "#CBD5E1",
+            "status-terdaftar-resmi": "#059669",
+            "status-terdaftar-resmi-bg": "#ECFDF5",
+            "status-menunggu-dpa": "#D97706",
+            "status-menunggu-dpa-bg": "#FEF3C7",
+            "status-verifikasi-kuota": "#2563EB",
+            "status-verifikasi-kuota-bg": "#EFF6FF",
+            "status-tagihan-va": "#7C3AED",
+            "status-tagihan-va-bg": "#F5F3FF",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .font-tabular {
+      font-variant-numeric: tabular-nums;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printArea, #printArea * {
+        visibility: visible;
+      }
+      #printArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        background: white !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-surface-page text-text-primary antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-primary">
+
+  <!-- ================= TOP HEADER / NAVBAR ================= -->
+  <header class="sticky top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-xs no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Bar: Logo, Active Period, Role Switcher, Profile -->
+      <div class="h-16 flex items-center justify-between border-b border-border-subtle/60 gap-3">
+        <!-- Logo & Univ Badge -->
+        <div class="flex items-center gap-3">
+          <a href="#katalog" class="flex items-center gap-2.5 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-800 to-[#003820] flex items-center justify-center text-white shadow-sm ring-1 ring-emerald-600/30 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[22px] text-emerald-300">school</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-display font-extrabold text-base text-primary tracking-tight leading-tight flex items-center gap-1">
+                SIA-SA FST
+                <span class="text-[10px] font-bold px-1.5 py-0.2 bg-emerald-100 text-emerald-800 rounded font-mono">v2.0</span>
+              </span>
+              <span class="text-[11px] text-text-muted font-medium">UIN Syarif Hidayatullah Jakarta</span>
+            </div>
+          </a>
+          <div class="hidden lg:flex items-center gap-2 ml-2 pl-3 border-l border-border-subtle">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-status-terdaftar-resmi border border-emerald-200">
+              <span class="w-2 h-2 rounded-full bg-status-terdaftar-resmi animate-pulse"></span>
+              Semester Antara 2025/2026 • Periode Terbuka
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Controls: Role Simulator & User Profile -->
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          
+          <!-- Role Selector Switcher (Bonus Stakeholder View from Tugas 2) -->
+          <div class="relative">
+            <button id="roleDropdownBtn" onclick="toggleRoleDropdown()" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border-subtle bg-surface-subtle hover:bg-slate-200/70 text-xs font-medium text-slate-700 transition-colors shadow-2xs">
+              <span class="material-symbols-outlined text-sm text-emerald-700" id="currentRoleIcon">person</span>
+              <span class="hidden sm:inline font-semibold" id="currentRoleLabel">Peran: Mahasiswa</span>
+              <span class="material-symbols-outlined text-xs text-slate-400">arrow_drop_down</span>
+            </button>
+            <div id="roleDropdownMenu" class="hidden absolute right-0 mt-1.5 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-1.5 z-50 text-xs">
+              <div class="px-3 py-1.5 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                Simulasi Stakeholder (Tugas 2)
+              </div>
+              <button onclick="setRole('mahasiswa')" class="w-full text-left px-3 py-2 hover:bg-emerald-50 flex items-center justify-between text-slate-800 group">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-base text-emerald-700">school</span>
+                  <div>
+                    <strong class="block text-slate-900">Mahasiswa</strong>
+                    <span class="text-[11px] text-slate-500">Danuardi Saputro (1251420128)</span>
+                  </div>
+                </div>
+                <span id="check-role-mahasiswa" class="material-symbols-outlined text-emerald-600 text-sm">check</span>
+              </button>
+              <button onclick="setRole('dpa')" class="w-full text-left px-3 py-2 hover:bg-emerald-50 flex items-center justify-between text-slate-800 group">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-base text-emerald-700">verified_user</span>
+                  <div>
+                    <strong class="block text-slate-900">Dosen PA (DPA)</strong>
+                    <span class="text-[11px] text-slate-500">Dr. Dewi Khairani, M.Sc.</span>
+                  </div>
+                </div>
+                <span id="check-role-dpa" class="material-symbols-outlined text-emerald-600 text-sm hidden">check</span>
+              </button>
+              <button onclick="setRole('prodi')" class="w-full text-left px-3 py-2 hover:bg-emerald-50 flex items-center justify-between text-slate-800 group">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-base text-emerald-700">corporate_fare</span>
+                  <div>
+                    <strong class="block text-slate-900">Program Studi TI</strong>
+                    <span class="text-[11px] text-slate-500">Admin Akademik FST</span>
+                  </div>
+                </div>
+                <span id="check-role-prodi" class="material-symbols-outlined text-emerald-600 text-sm hidden">check</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Notification Bell -->
+          <div class="relative">
+            <button id="notifBtn" onclick="toggleNotifPopover()" aria-label="Notifikasi" class="relative p-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-colors" type="button">
+              <span class="material-symbols-outlined text-[22px]">notifications</span>
+              <span id="notifBadge" class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+            </button>
+            <div id="notifPopover" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 z-50 text-xs">
+              <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+                <span class="font-display font-bold text-slate-900">Notifikasi Akademik</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">2 Baru</span>
+              </div>
+              <div class="space-y-2.5 py-3 divide-y divide-slate-100 max-h-72 overflow-y-auto">
+                <div class="pt-2 flex items-start gap-2.5">
+                  <span class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                  </span>
+                  <div>
+                    <p class="font-semibold text-slate-800">Pendaftaran Semester Antara Dibuka</p>
+                    <p class="text-slate-500 text-[11px]">Batas pengajuan KRS s.d. 20 Juli 2026 pukul 23:59 WIB.</p>
+                    <span class="text-[10px] text-slate-400 font-mono">Hari ini • 08:00 WIB</span>
+                  </div>
+                </div>
+                <div class="pt-2 flex items-start gap-2.5">
+                  <span class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <span class="material-symbols-outlined text-sm">info</span>
+                  </span>
+                  <div>
+                    <p class="font-semibold text-slate-800">Regulasi Beban SKS &amp; Nilai</p>
+                    <p class="text-slate-500 text-[11px]">Maksimal pengambilan 9 SKS dan khusus perbaikan nilai C, D, atau E.</p>
+                    <span class="text-[10px] text-slate-400 font-mono">Kemarin • 14:15 WIB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 border-t border-slate-100 text-center">
+                <button onclick="toggleNotifPopover()" class="text-emerald-700 font-semibold hover:underline text-[11px]">Tutup Notifikasi</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-7 w-px bg-border-subtle hidden sm:block"></div>
+
+          <!-- Student Profile Avatar -->
+          <div class="flex items-center gap-2 pl-1 py-1 pr-1.5 rounded-lg hover:bg-surface-subtle transition-colors cursor-pointer" onclick="showProfileModal()">
+            <div class="w-8 h-8 rounded-full bg-emerald-800 text-white font-display font-bold text-xs flex items-center justify-center ring-2 ring-emerald-600/30">
+              DS
+            </div>
+            <div class="hidden md:flex flex-col text-left">
+              <span class="font-display font-semibold text-xs text-text-primary leading-tight" id="userDisplayName">Danuardi Saputro</span>
+              <span class="text-[11px] text-text-muted leading-tight font-mono" id="userDisplayNIM">1251420128 • TI FST</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Nav Tabs Bar -->
+      <nav class="flex items-center space-x-1 py-1.5 overflow-x-auto text-sm scrollbar-none" id="mainNavBar">
+        <a href="#katalog" data-tab="katalog" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-semibold whitespace-nowrap bg-primary text-white shadow-xs flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-base">apps</span>
+          Katalog &amp; Penawaran Matkul
+        </a>
+        <a href="#pengajuan" data-tab="pengajuan" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle whitespace-nowrap flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-base">edit_note</span>
+          Pengajuan KRS Semester Antara
+          <span id="navCartBadge" class="hidden px-1.5 py-0.2 text-[10px] bg-emerald-100 text-emerald-800 font-bold rounded-full">0</span>
+        </a>
+        <a href="#tracking" data-tab="tracking" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle whitespace-nowrap flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-base">track_changes</span>
+          Live Status Tracking
+          <span id="navStatusBadge" class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+        </a>
+        <a href="#tagihan" data-tab="tagihan" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle whitespace-nowrap flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-base">receipt_long</span>
+          Tagihan &amp; Virtual Account
+        </a>
+        <a href="#dpa" data-tab="dpa" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle whitespace-nowrap flex items-center gap-1.5 transition-all border border-emerald-300/60 bg-emerald-50/50">
+          <span class="material-symbols-outlined text-base text-emerald-700">verified_user</span>
+          Dasbor Review DPA
+        </a>
+        <a href="#prodi" data-tab="prodi" class="nav-tab px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-subtle whitespace-nowrap flex items-center gap-1.5 transition-all border border-blue-300/60 bg-blue-50/50">
+          <span class="material-symbols-outlined text-base text-blue-700">corporate_fare</span>
+          Monitoring Kuota Prodi
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN ROUTED CONTENT ================= -->
+  <main class="flex-1 w-full bg-surface-page py-6 md:py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- ========================================================================= -->
+      <!-- TAB 1: KATALOG & PENAWARAN MATA KULIAH -->
+      <!-- ========================================================================= -->
+      <section id="tab-katalog" class="tab-content active space-y-6">
+        
+        <!-- Hero Header Banner -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-[#0a482b] to-[#12633a] p-6 sm:p-8 text-white shadow-sm border border-emerald-900/40">
+          <div class="absolute -right-10 -bottom-10 w-64 h-64 rounded-full bg-emerald-400/10 blur-3xl pointer-events-none"></div>
+          <div class="absolute top-0 right-1/4 w-32 h-32 rounded-full bg-white/5 blur-xl pointer-events-none"></div>
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="max-w-2xl space-y-2">
+              <div class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-emerald-200 border border-white/10">
+                <span class="material-symbols-outlined text-sm">school</span>
+                PERIODE AKSELERASI KULIAH 2025/2026
+              </div>
+              <h1 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                Katalog Mata Kuliah Semester Antara
+              </h1>
+              <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed font-normal">
+                Fakultas Sains dan Teknologi • Penawaran kelas akselerasi &amp; perbaikan nilai terpadu semester gasal/genap.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+              <div class="bg-white/10 backdrop-blur-md rounded-xl p-3.5 px-4.5 flex items-center gap-3.5 border border-white/15 shadow-inner">
+                <div class="w-10 h-10 rounded-lg bg-emerald-400/20 flex items-center justify-center text-emerald-300">
+                  <span class="material-symbols-outlined text-2xl">menu_book</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-xs text-emerald-200 font-medium">Total Ditawarkan</span>
+                  <span class="font-display text-xl font-bold text-white leading-tight" id="totalCoursesBadge">5 Mata Kuliah</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information & Regulation Alert Banner -->
+        <div class="rounded-xl border border-emerald-200/80 bg-gradient-to-r from-emerald-50 via-[#f2faf5] to-emerald-50/50 p-4 sm:p-5 text-text-primary shadow-xs">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-lg bg-emerald-100 text-status-terdaftar-resmi flex items-center justify-center shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-xl">info</span>
+              </div>
+              <div class="space-y-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h2 class="font-display text-sm sm:text-base font-bold text-emerald-950">
+                    Regulasi Minimum Kuota Pembukaan Kelas
+                  </h2>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-200/60 text-emerald-900">
+                    Min. 10 Mahasiswa / Kelas
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  Sesuai ketentuan Senat Akademik FST UIN Jakarta, kelas yang tidak mencapai batas minimum hingga <strong>20 Juli 2026</strong> akan dibatalkan otomatis dan biaya UKT Antara dikembalikan penuh atau dialihkan ke mata kuliah lain.
+                </p>
+              </div>
+            </div>
+            <div class="shrink-0 self-start sm:self-center">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-emerald-200 rounded-lg font-mono text-xs font-semibold text-emerald-800 shadow-xs">
+                <span class="material-symbols-outlined text-sm text-emerald-600">verified</span>
+                SK Dekan No. 142/FST/2026
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Layout: Catalog Content (8 cols) + Sticky Sidebar (4 cols) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left: Course List & Search Filter Controls -->
+          <div class="lg:col-span-8 space-y-5">
+            <!-- Search & Filter Card -->
+            <div class="bg-surface-card rounded-xl p-4 sm:p-5 border border-border-subtle shadow-xs space-y-4">
+              <!-- Search bar -->
+              <div class="relative w-full">
+                <span class="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-text-muted">
+                  <span class="material-symbols-outlined text-xl">search</span>
+                </span>
+                <input class="w-full h-11 pl-11 pr-4 rounded-lg bg-surface-subtle border border-border-subtle text-sm text-text-primary placeholder:text-text-muted focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" id="courseSearchInput" placeholder="Cari kode matkul (e.g. TIF204), nama mata kuliah, atau nama dosen pengampu..." type="text"/>
+              </div>
+              
+              <!-- Filter Controls Row -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-border-subtle/60">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <!-- Dropdown Prodi -->
+                  <div class="flex items-center gap-1.5 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-xs">
+                    <span class="text-text-muted font-medium">Program Studi:</span>
+                    <select class="bg-transparent font-semibold text-text-primary focus:outline-none cursor-pointer border-none py-0 pl-1 pr-6 text-xs" id="filterProdi">
+                      <option selected="" value="all">Semua Program Studi</option>
+                      <option value="Teknik Informatika">Teknik Informatika (TI)</option>
+                      <option value="Sistem Informasi">Sistem Informasi (SI)</option>
+                      <option value="Matematika">Matematika</option>
+                      <option value="Fisika">Fisika</option>
+                    </select>
+                  </div>
+                  <!-- Dropdown Semester -->
+                  <div class="flex items-center gap-1.5 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-xs">
+                    <span class="text-text-muted font-medium">Tingkat:</span>
+                    <select class="bg-transparent font-semibold text-text-primary focus:outline-none cursor-pointer border-none py-0 pl-1 pr-6 text-xs" id="filterSemester">
+                      <option selected="" value="all">Semua Semester</option>
+                      <option value="1-2">Tingkat 1 (Smt 1 &amp; 2)</option>
+                      <option value="3-4">Tingkat 2 (Smt 3 &amp; 4)</option>
+                      <option value="5-6">Tingkat 3 (Smt 5 &amp; 6)</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Status Pills -->
+                <div class="inline-flex items-center p-1 bg-surface-subtle border border-border-subtle rounded-lg text-xs gap-1" id="statusFilterPills">
+                  <button class="filter-pill active-pill px-3 py-1 rounded-md font-semibold text-white bg-primary shadow-xs transition-all" data-filter="all" type="button">
+                    Semua
+                  </button>
+                  <button class="filter-pill px-3 py-1 rounded-md font-medium text-text-secondary hover:text-text-primary transition-all" data-filter="hampir" type="button">
+                    Hampir Penuh
+                  </button>
+                  <button class="filter-pill px-3 py-1 rounded-md font-medium text-text-secondary hover:text-text-primary transition-all" data-filter="terpenuhi" type="button">
+                    Kuota Terpenuhi
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Results counter & Curriculum info -->
+            <div class="flex items-center justify-between px-1">
+              <span class="font-display font-semibold text-xs sm:text-sm text-text-secondary" id="resultsCount">
+                Menampilkan 5 Mata Kuliah Terverifikasi
+              </span>
+              <div class="flex items-center gap-1.5 text-text-muted text-xs">
+                <span class="material-symbols-outlined text-base text-accent-teal">verified</span>
+                <span>Kurikulum OBE FST 2024/2028</span>
+              </div>
+            </div>
+
+            <!-- Courses Card Container -->
+            <div class="space-y-4" id="courseCardsContainer">
+              <!-- Cards rendered dynamically via JavaScript to ensure perfect state synchronization -->
+            </div>
+          </div>
+
+          <!-- Right: Sidebar Rules & Cart Draft -->
+          <div class="lg:col-span-4 space-y-5">
+            <!-- Regulation Rules Card -->
+            <div class="bg-surface-card rounded-xl p-5 border border-border-subtle shadow-xs space-y-4">
+              <div class="flex items-center gap-2 border-b border-border-subtle/80 pb-3">
+                <span class="material-symbols-outlined text-primary text-xl">policy</span>
+                <h3 class="font-display font-bold text-sm text-text-primary">Ketentuan Semester Antara FST</h3>
+              </div>
+              <div class="space-y-2.5 text-xs text-text-secondary">
+                <div class="flex items-start gap-2.5 bg-surface-subtle p-3 rounded-lg border border-border-subtle/60">
+                  <span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span>
+                  <div>
+                    <strong class="text-text-primary font-semibold">Beban Maksimal:</strong> 9 SKS (setara 3 matkul) untuk menjaga kualitas belajar akselerasi.
+                  </div>
+                </div>
+                <div class="flex items-start gap-2.5 bg-surface-subtle p-3 rounded-lg border border-border-subtle/60">
+                  <span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span>
+                  <div>
+                    <strong class="text-text-primary font-semibold">Kriteria Nilai:</strong> Khusus perbaikan nilai <strong class="text-primary font-semibold">C, D, atau E</strong>, atau mata kuliah yang belum lulus.
+                  </div>
+                </div>
+                <div class="flex items-start gap-2.5 bg-surface-subtle p-3 rounded-lg border border-border-subtle/60">
+                  <span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">check_circle</span>
+                  <div>
+                    <strong class="text-text-primary font-semibold">Tarif SKS Resmi:</strong> Rp 150.000 / SKS sesuai SK Rektor UIN Syarif Hidayatullah Jakarta.
+                  </div>
+                </div>
+              </div>
+              <!-- Periode Countdown bar -->
+              <div class="pt-2 border-t border-border-subtle/70 space-y-1.5">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-text-muted font-medium">Batas Waktu Pendaftaran</span>
+                  <span class="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60">Tersisa 4 Hari 6 Jam</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-amber-500 h-full rounded-full" style="width: 65%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Draft Pengajuan KRS Card -->
+            <div class="bg-surface-card rounded-xl p-5 border border-border-subtle shadow-xs space-y-4">
+              <div class="flex items-center justify-between border-b border-border-subtle/80 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary text-xl">shopping_basket</span>
+                  <h3 class="font-display font-bold text-sm text-text-primary">Draft Pengajuan KRS</h3>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-mono text-xs font-semibold" id="draftBadge">0 Matkul</span>
+              </div>
+              
+              <!-- Empty State -->
+              <div class="text-center py-6 px-4 bg-surface-subtle rounded-xl border border-dashed border-border-subtle flex flex-col items-center" id="krsDraftEmpty">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-text-muted shadow-2xs mb-2">
+                  <span class="material-symbols-outlined text-2xl">post_add</span>
+                </div>
+                <p class="text-xs font-semibold text-text-primary">Belum ada mata kuliah yang dipilih</p>
+                <p class="text-[11px] text-text-muted mt-1 leading-normal">
+                  Klik tombol <strong>'+ Ajukan ke KRS'</strong> pada kartu mata kuliah di katalog.
+                </p>
+              </div>
+
+              <!-- Draft List -->
+              <div class="hidden space-y-2" id="krsDraftList"></div>
+
+              <!-- Draft Summary & CTA -->
+              <div class="hidden pt-3 border-t border-border-subtle/80 space-y-2.5" id="krsDraftSummary">
+                <div class="flex justify-between items-center text-xs text-text-secondary">
+                  <span>Total Beban SKS:</span>
+                  <span class="font-display font-bold text-sm text-text-primary" id="draftTotalSks">0 / 9 SKS</span>
+                </div>
+                <div class="flex justify-between items-center text-xs text-text-secondary">
+                  <span>Estimasi Biaya UKT Antara:</span>
+                  <span class="font-display font-bold text-sm text-primary" id="draftTotalCost">Rp 0</span>
+                </div>
+                <button onclick="navigateToTab('pengajuan')" class="w-full py-2.5 px-4 bg-primary hover:bg-primary-container text-white font-display font-semibold text-xs rounded-lg text-center flex items-center justify-center gap-2 shadow-sm transition-all mt-2">
+                  Lanjut ke Form Pengajuan
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- DPA Academic Help Card -->
+            <div class="bg-surface-card rounded-xl p-5 border border-border-subtle shadow-xs space-y-3">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-text-secondary text-lg">support_agent</span>
+                <h4 class="font-display font-bold text-xs uppercase tracking-wider text-text-secondary">
+                  Dosen Pembimbing Akademik (DPA)
+                </h4>
+              </div>
+              <div class="flex items-start gap-3 pt-1">
+                <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 font-display font-bold text-sm flex items-center justify-center shrink-0">
+                  DK
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-text-primary">Dr. Dewi Khairani, M.Sc.</p>
+                  <p class="text-[11px] text-text-muted">NIP. 197804152005012002</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5 pt-2 text-[11px] text-text-secondary border-t border-border-subtle/60">
+                <div class="flex items-center gap-2 bg-surface-subtle p-2 rounded">
+                  <span class="material-symbols-outlined text-sm text-text-muted">location_on</span>
+                  <span>Ruang Dosen Gedung FST Lt. 3</span>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-subtle p-2 rounded">
+                  <span class="material-symbols-outlined text-sm text-text-muted">chat</span>
+                  <span>Konsultasi Terpadu via Sistem SIA-SA</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 2: PENGAJUAN KRS & VALIDASI AKADEMIK OTOMATIS -->
+      <!-- ========================================================================= -->
+      <section id="tab-pengajuan" class="tab-content space-y-6">
+        
+        <!-- Header & Stepper Summary -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 sm:p-7">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="space-y-1.5">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  Fase 1 / 4 Aktif
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tahun Akademik 2025/2026</span>
+              </div>
+              <h1 class="font-heading text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Formulir Pengajuan KRS Semester Antara</h1>
+              <p class="text-sm text-slate-500">Sistem validasi kelayakan otomatis kurikulum FST UIN Syarif Hidayatullah Jakarta</p>
+            </div>
+            
+            <!-- SKS Progress Pill -->
+            <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 p-3 rounded-xl min-w-[240px]">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+                SKS
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-slate-500 font-medium">Beban Terpilih:</span>
+                  <span class="font-bold text-slate-900 text-sm" id="formSksCountDisplay">6 / 9 SKS</span>
+                </div>
+                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden mt-1.5">
+                  <div class="h-full bg-emerald-600 transition-all duration-300 rounded-full" id="formSksProgressBar" style="width: 66.6%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Column Layout: Form List (8 cols) & Validation Checklist (4 cols) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left Column: Selected Courses & Available Courses -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <!-- Section 1: Mata Kuliah Terpilih -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]">checklist</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-base sm:text-lg text-slate-900">Mata Kuliah Terpilih untuk Semester Antara</h2>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Daftar mata kuliah perbaikan yang akan diajukan ke DPA</p>
+                </div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-full text-xs font-semibold shrink-0" id="formVerifiedCountBadge">
+                  <span class="material-symbols-outlined material-symbols-fill text-[16px]">verified</span>
+                  2 Matkul Terverifikasi Otomatis
+                </span>
+              </div>
+
+              <!-- Container for selected courses in form -->
+              <div class="space-y-3.5" id="formSelectedCoursesList">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Section 2: Pilihan Mata Kuliah Tambahan (Rekomendasi Perbaikan) -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]">add_chart</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-base sm:text-lg text-slate-900">Pilihan Mata Kuliah Tersedia untuk Perbaikan</h2>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Menampilkan matkul riwayat Anda yang memenuhi syarat akademik perbaikan (C, D, atau E)</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full shrink-0" id="formAvailableSksBadge">
+                  Sisa Kuota: 3 SKS
+                </span>
+              </div>
+
+              <div class="space-y-3.5" id="formAvailableRecommendations">
+                <!-- Course Item: Eligible Basis Data Lanjut -->
+                <div class="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all" id="option-bdl">
+                  <div class="space-y-2 flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-white text-slate-800 border border-emerald-200">TIF208</span>
+                      <h3 class="font-heading font-bold text-slate-900 text-base">Basis Data Lanjut</h3>
+                      <span class="px-2 py-0.5 rounded bg-[#003820] text-white text-xs font-semibold">3 SKS</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold">Nilai Sebelumnya: D</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600">
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">groups</span>
+                        Kelas: <strong class="text-slate-800">A</strong> (Sisa Kuota: 12 Mahasiswa)
+                      </span>
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">schedule</span>
+                        Rabu &amp; Jumat, 10:00 - 12:30 WIB
+                      </span>
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">person</span>
+                        Yuni Triana, M.T.
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-medium text-emerald-700 pt-0.5">
+                      <span class="material-symbols-outlined material-symbols-fill text-emerald-600 text-[16px]">check_circle</span>
+                      <span>Sesuai prasyarat &amp; Beban SKS mencukupi</span>
+                    </div>
+                  </div>
+                  <button class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-[#003820] hover:bg-[#0f5132] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center gap-2 shrink-0" onclick="addRecommendedCourse('TIF208')" type="button">
+                    <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                    <span>+ Tambah Mata Kuliah</span>
+                  </button>
+                </div>
+
+                <!-- Course Item: Eligible Jaringan Komputer -->
+                <div class="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all" id="option-jarkom">
+                  <div class="space-y-2 flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-white text-slate-800 border border-emerald-200">TIF210</span>
+                      <h3 class="font-heading font-bold text-slate-900 text-base">Jaringan Komputer</h3>
+                      <span class="px-2 py-0.5 rounded bg-[#003820] text-white text-xs font-semibold">3 SKS</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold">Nilai Sebelumnya: D</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600">
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">groups</span>
+                        Kelas: <strong class="text-slate-800">A</strong> (Sisa Kuota: 5 Mahasiswa)
+                      </span>
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">schedule</span>
+                        Senin &amp; Kamis, 14:00 - 16:30 WIB
+                      </span>
+                      <span class="inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-slate-400 text-[16px]">person</span>
+                        Ahmad Fauzi, M.Kom.
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs font-medium text-emerald-700 pt-0.5">
+                      <span class="material-symbols-outlined material-symbols-fill text-emerald-600 text-[16px]">check_circle</span>
+                      <span>Sesuai prasyarat &amp; Beban SKS mencukupi</span>
+                    </div>
+                  </div>
+                  <button class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-[#003820] hover:bg-[#0f5132] text-white font-semibold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center gap-2 shrink-0" onclick="addRecommendedCourse('TIF210')" type="button">
+                    <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                    <span>+ Tambah Mata Kuliah</span>
+                  </button>
+                </div>
+
+                <!-- Course Item: Ineligible Disabled Course (Pemrograman Web - Nilai B) -->
+                <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 opacity-80">
+                  <div class="space-y-2 flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-600">TIF209</span>
+                      <h3 class="font-heading font-semibold text-slate-600 text-base line-through">Pemrograman Web</h3>
+                      <span class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 text-xs font-semibold">3 SKS</span>
+                      <span class="px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700 text-xs font-semibold">
+                        Nilai Riwayat: B (Lulus Baik)
+                      </span>
+                    </div>
+                    <div class="flex items-start gap-1.5 text-xs text-rose-700 bg-rose-50 border border-rose-200/80 p-2.5 rounded-lg">
+                      <span class="material-symbols-outlined material-symbols-fill text-rose-600 text-[18px] shrink-0 mt-0.5">error</span>
+                      <span>
+                        <strong class="font-semibold">Tidak Memenuhi Syarat:</strong> Sesuai Pedoman Akademik FST UIN Jakarta Bab IV Pasal 14, Semester Antara hanya diperuntukkan bagi perbaikan nilai C, D, atau E.
+                      </span>
+                    </div>
+                  </div>
+                  <button class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-slate-200 text-slate-400 font-semibold text-xs sm:text-sm cursor-not-allowed flex items-center justify-center gap-1.5 shrink-0" disabled="" type="button">
+                    <span class="material-symbols-outlined text-[18px]">block</span>
+                    <span>Tidak Memenuhi Syarat</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pernyataan Mahasiswa Checkbox -->
+            <div class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 flex items-start gap-3">
+              <input type="checkbox" id="studentAgreement" checked class="mt-1 w-4 h-4 text-emerald-700 border-slate-300 rounded focus:ring-emerald-600"/>
+              <label for="studentAgreement" class="text-xs text-slate-600 leading-relaxed cursor-pointer">
+                Saya menyatakan dengan sadar bahwa seluruh data mata kuliah perbaikan yang saya ajukan telah saya konsultasikan secara garis besar dan sesuai dengan ketentuan beban maksimum 9 SKS serta regulasi akademik FST UIN Syarif Hidayatullah Jakarta.
+              </label>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Validation & Policy Checklist (4 cols) -->
+          <div class="lg:col-span-4 space-y-5">
+            <!-- Card 1: Checklist Kelayakan Otomatis -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 space-y-4">
+              <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">rule_folder</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-slate-900">Validasi Syarat KRS Otomatis</h3>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Pengecekan live berdasarkan data Pangkalan Data Akademik UIN Jakarta.
+              </p>
+              
+              <!-- Checklist Items -->
+              <ul class="space-y-3.5 pt-1">
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200">
+                    <span class="material-symbols-outlined material-symbols-fill text-[16px]">check_circle</span>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-900">Status Mahasiswa Aktif</h4>
+                    <p class="text-xs text-slate-500 leading-tight">Terdaftar di PD-Dikti &amp; FST Sem. Genap</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200">
+                    <span class="material-symbols-outlined material-symbols-fill text-[16px]">check_circle</span>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-900">Kualifikasi Nilai Perbaikan</h4>
+                    <p class="text-xs text-slate-500 leading-tight">Semua matkul terpilih bernilai lama C, D, atau E</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200" id="check-sks-icon-box">
+                    <span class="material-symbols-outlined material-symbols-fill text-[16px]" id="check-sks-icon">check_circle</span>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-900">Beban SKS Memenuhi Batas</h4>
+                    <p class="text-xs text-slate-500 leading-tight" id="validationSksText">Total 6 SKS ≤ batas maksimum 9 SKS</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200">
+                    <span class="material-symbols-outlined material-symbols-fill text-[16px]">check_circle</span>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-slate-900">Bebas Bentrok Jadwal Kuliah</h4>
+                    <p class="text-xs text-slate-500 leading-tight">Jadwal antar kelas tidak tumpang tindih</p>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Verified Summary Stamp -->
+              <div class="p-3 rounded-xl bg-emerald-50/90 border border-emerald-200 flex items-start gap-3 mt-4" id="validationSummaryBanner">
+                <span class="material-symbols-outlined material-symbols-fill text-emerald-700 text-2xl shrink-0 mt-0.5">verified</span>
+                <div>
+                  <span class="font-heading font-bold text-xs text-emerald-800 block">Sistem Siap Mengajukan</span>
+                  <span class="text-xs text-emerald-700 leading-snug">Semua parameter validasi terpenuhi secara otomatis tanpa catatan kendala.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: DPA Information & Routing -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 space-y-3">
+              <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[18px] text-slate-500">contact_page</span>
+                Tujuan Alur Persetujuan
+              </h4>
+              <div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                <div class="w-10 h-10 rounded-full bg-[#003820] text-white flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
+                  DK
+                </div>
+                <div class="min-w-0">
+                  <div class="font-heading font-bold text-sm text-slate-900 truncate">Dr. Dewi Khairani, M.Sc.</div>
+                  <div class="text-xs text-slate-500 truncate">Dosen Pembimbing Akademik (DPA)</div>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Setelah dikirim, permohonan diteruskan secara real-time ke portal DPA untuk persetujuan substansi akademik.
+              </p>
+            </div>
+
+            <!-- Card 3: Biaya & Regulasi VA -->
+            <div class="bg-blue-50/50 rounded-2xl border border-blue-200/80 p-5 space-y-2">
+              <div class="flex items-center gap-2 text-blue-900">
+                <span class="material-symbols-outlined material-symbols-fill text-blue-600 text-[20px]">payments</span>
+                <h4 class="font-heading font-bold text-xs uppercase tracking-wider">Ketentuan Biaya Semester Antara</h4>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Biaya per SKS adalah <strong class="text-slate-900 font-semibold">Rp 150.000,-</strong>. Tagihan Virtual Account (BSI / Mandiri / BNI) akan terbit otomatis setelah verifikasi DPA &amp; Jurusan selesai.
+              </p>
+            </div>
+
+            <!-- Action Buttons in Right Column -->
+            <div class="space-y-2.5 pt-2">
+              <button onclick="confirmSubmitKrs()" class="w-full py-3 px-4 rounded-xl bg-[#003820] hover:bg-[#0f5132] text-white font-heading font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:shadow-md">
+                <span class="material-symbols-outlined text-lg">send</span>
+                Kirim Pengajuan ke DPA
+              </button>
+              <button onclick="saveDraftNotification()" class="w-full py-2.5 px-4 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center justify-center gap-2 transition-colors">
+                <span class="material-symbols-outlined text-base">draft</span>
+                Simpan Draft Sementara
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 3: LIVE STATUS TRACKING PENGAJUAN -->
+      <!-- ========================================================================= -->
+      <section id="tab-tracking" class="tab-content space-y-6">
+        
+        <!-- Header & Ringkasan Berkas + Quick Action Buttons -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 transition-shadow hover:shadow-md">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div class="space-y-2">
+              <!-- Meta Tags Row -->
+              <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+                <span class="inline-flex items-center gap-1 font-mono font-bold px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 border border-slate-200">
+                  <span class="material-symbols-outlined text-[15px] text-slate-500">tag</span>
+                  REQ-SA-2026-0842
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-slate-500 font-medium">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">calendar_month</span>
+                  <span id="trackingSubmittedTime">12 Juli 2026, 10:15 WIB</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-semibold shadow-xs" id="trackingStatusBadge">
+                  <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                  </span>
+                  <span id="trackingStatusText">Menunggu Pembayaran VA</span>
+                </span>
+              </div>
+              <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                Pelacakan Status Pengajuan Semester Antara
+              </h1>
+              <p class="text-sm text-slate-600">
+                Pemantauan berkas real-time mahasiswa <strong class="text-slate-800">Danuardi Saputro</strong> (NIM 1251420128) — Program Studi Teknik Informatika FST.
+              </p>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0">
+              <button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-semibold text-xs transition-colors shadow-xs" onclick="openPrintKrsModal()" type="button">
+                <span class="material-symbols-outlined text-[18px] text-slate-500">print</span>
+                <span>Cetak / Unduh Bukti</span>
+              </button>
+              <div id="trackingPrimaryActionBtnContainer">
+                <button onclick="navigateToTab('tagihan')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-all shadow-sm shadow-emerald-700/20 hover:shadow-md">
+                  <span class="material-symbols-outlined text-[18px]">payments</span>
+                  <span>Bayar VA Sekarang</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Urgensi Countdown Banner (Shown when in payment stage) -->
+        <div id="trackingPaymentAlert" class="bg-gradient-to-r from-amber-500/10 via-amber-50/60 to-emerald-50/40 rounded-2xl border border-amber-300/80 p-4 sm:p-5 shadow-sm">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="flex items-start gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                <span class="material-symbols-outlined text-[24px]">timer</span>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h2 class="text-sm font-bold text-slate-900">Sisa Waktu Pembayaran Virtual Account</h2>
+                  <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200">
+                    BSI / Mandiri / BNI Virtual Account
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-1">
+                  Batas waktu akhir: <span class="font-bold text-slate-800">17 Juli 2026 pukul 23:59 WIB</span>. Tagihan akan otomatis dibatalkan jika melewati batas tempo.
+                </p>
+              </div>
+            </div>
+            <!-- Live Ticking Digital Clock -->
+            <div class="flex items-center gap-2 self-start lg:self-center bg-white/95 px-4 py-2.5 rounded-xl border border-amber-200/80 shadow-xs">
+              <span class="text-xs font-semibold text-slate-500 mr-1 hidden sm:inline">Kadaluarsa:</span>
+              <div class="flex items-center gap-1.5 font-mono">
+                <div class="flex flex-col items-center">
+                  <span class="text-base sm:text-lg font-bold bg-slate-900 text-white px-2.5 py-1 rounded-lg shadow-inner min-w-[36px] text-center" id="trackingTimerDays">03</span>
+                  <span class="text-[9px] font-semibold uppercase tracking-wider text-slate-500 mt-0.5">Hari</span>
+                </div>
+                <span class="text-slate-700 font-bold text-base -mt-4">:</span>
+                <div class="flex flex-col items-center">
+                  <span class="text-base sm:text-lg font-bold bg-slate-900 text-white px-2.5 py-1 rounded-lg shadow-inner min-w-[36px] text-center" id="trackingTimerHours">13</span>
+                  <span class="text-[9px] font-semibold uppercase tracking-wider text-slate-500 mt-0.5">Jam</span>
+                </div>
+                <span class="text-slate-700 font-bold text-base -mt-4">:</span>
+                <div class="flex flex-col items-center">
+                  <span class="text-base sm:text-lg font-bold bg-slate-900 text-white px-2.5 py-1 rounded-lg shadow-inner min-w-[36px] text-center" id="trackingTimerMins">44</span>
+                  <span class="text-[9px] font-semibold uppercase tracking-wider text-slate-500 mt-0.5">Menit</span>
+                </div>
+                <span class="text-slate-700 font-bold text-base -mt-4">:</span>
+                <div class="flex flex-col items-center">
+                  <span class="text-base sm:text-lg font-bold bg-amber-600 text-white px-2.5 py-1 rounded-lg shadow-inner min-w-[36px] text-center animate-pulse" id="trackingTimerSecs">18</span>
+                  <span class="text-[9px] font-semibold uppercase tracking-wider text-amber-700 mt-0.5 font-bold">Detik</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stepper Linimasa Horizontal (5 Tahap Sesuai Laporan Tugas 2) -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900">Siklus Hidup Pengajuan (Lifecycle Tracker)</h2>
+              <p class="text-xs text-slate-500">Pantau progres verifikasi akademik dari pendaftaran hingga kelas aktif</p>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold self-start sm:self-auto border border-slate-200" id="stepProgressBadge">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Tahap 4 dari 5 Aktif (80% Selesai)
+            </div>
+          </div>
+
+          <!-- Horizontal Stepper Desktop -->
+          <div class="pt-6 pb-2">
+            <div class="relative">
+              <!-- Background Progress Line -->
+              <div class="absolute top-5 left-8 right-8 h-1 bg-slate-200 rounded-full -z-0"></div>
+              <!-- Filled Active Progress Line -->
+              <div class="absolute top-5 left-8 h-1 bg-emerald-600 rounded-full -z-0 transition-all duration-700" id="stepperProgressBar" style="width: 75%;"></div>
+              
+              <!-- Stepper Nodes Grid -->
+              <div class="relative z-10 grid grid-cols-5 gap-2">
+                <!-- Step 1: Draft & Submit -->
+                <div class="flex flex-col items-center text-center" id="step-node-1">
+                  <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm ring-4 ring-white" id="step-icon-1">
+                    <span class="material-symbols-outlined text-[20px]">check</span>
+                  </div>
+                  <span class="mt-2.5 text-xs font-bold text-slate-900">1. Draft &amp; Submit</span>
+                  <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-0.5" id="step-sub-1">Selesai</span>
+                </div>
+                <!-- Step 2: Verifikasi DPA -->
+                <div class="flex flex-col items-center text-center" id="step-node-2">
+                  <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm ring-4 ring-white" id="step-icon-2">
+                    <span class="material-symbols-outlined text-[20px]">check</span>
+                  </div>
+                  <span class="mt-2.5 text-xs font-bold text-slate-900">2. Verifikasi DPA</span>
+                  <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-0.5" id="step-sub-2">Disetujui</span>
+                </div>
+                <!-- Step 3: Kuota Prodi -->
+                <div class="flex flex-col items-center text-center" id="step-node-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm ring-4 ring-white" id="step-icon-3">
+                    <span class="material-symbols-outlined text-[20px]">check</span>
+                  </div>
+                  <span class="mt-2.5 text-xs font-bold text-slate-900">3. Kuota Prodi</span>
+                  <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-0.5" id="step-sub-3">Lolos Kuota</span>
+                </div>
+                <!-- Step 4: Pembayaran VA -->
+                <div class="flex flex-col items-center text-center" id="step-node-4">
+                  <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center shadow-lg ring-4 ring-amber-200 animate-bounce transition-transform" id="step-icon-4">
+                    <span class="material-symbols-outlined text-[20px]">credit_card</span>
+                  </div>
+                  <span class="mt-2.5 text-xs font-bold text-amber-700" id="step-title-4">4. Pembayaran VA</span>
+                  <span class="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full mt-0.5 ring-1 ring-amber-300" id="step-sub-4">Sedang Berjalan</span>
+                </div>
+                <!-- Step 5: Terdaftar Resmi -->
+                <div class="flex flex-col items-center text-center opacity-60" id="step-node-5">
+                  <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs ring-4 ring-white" id="step-icon-5">
+                    5
+                  </div>
+                  <span class="mt-2.5 text-xs font-medium text-slate-600" id="step-title-5">5. Terdaftar Resmi</span>
+                  <span class="text-[11px] text-slate-400 mt-0.5" id="step-sub-5">Tahap Akhir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Tahapan Aktif & Catatan Stakeholder -->
+        <div class="space-y-4" id="trackingActiveStageDetails">
+          <!-- Dynamic card rendered according to current status -->
+        </div>
+
+        <!-- Supporting Details: DPA Note & Kuota Indicator Side by Side -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <!-- Box Catatan DPA (Dr. Dewi Khairani) -->
+          <div class="md:col-span-7 bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-emerald-600 text-[18px]">verified_user</span>
+                  Catatan Persetujuan Dosen Penasihat Akademik (DPA)
+                </span>
+                <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200" id="trackingDpaStatusBadge">
+                  Disetujui
+                </span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border-l-4 border-emerald-600 text-slate-700 text-xs leading-relaxed italic relative" id="trackingDpaNoteContent">
+                <span class="material-symbols-outlined text-slate-300 text-2xl absolute right-2 bottom-1 select-none pointer-events-none">format_quote</span>
+                “Disetujui. Fokus pada mata kuliah Rekayasa Perangkat Lunak dan Struktur Data untuk perbaikan IPK. Maksimalkan praktikum dan pastikan kehadiran presensi di atas 75%.”
+              </div>
+            </div>
+            <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
+              <span class="font-bold text-slate-800">Dr. Dewi Khairani, M.Sc.</span>
+              <span>•</span>
+              <span class="font-mono">NIP. 197804152005012002</span>
+              <span>•</span>
+              <span id="trackingDpaNoteTimestamp">13 Juli 2026, 14:20 WIB</span>
+            </div>
+          </div>
+
+          <!-- Indikator Kuota Prodi -->
+          <div class="md:col-span-5 bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-[18px]">groups</span>
+                  Status Kuota Kelas Prodi (Min. 10 Mhs)
+                </span>
+                <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  Lolos Kuota
+                </span>
+              </div>
+              <div class="space-y-2.5" id="trackingQuotaClassSummary">
+                <!-- Dynamically populated based on registered courses -->
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-400 mt-2">
+              Diverifikasi otomatis oleh Bagian Akademik Program Studi TI FST
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Detail Matkul & Riwayat Audit (2 Kolom) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left: Table of registered courses -->
+          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Rincian Mata Kuliah Terdaftar</h3>
+                <p class="text-xs text-slate-500">Paket mata kuliah Semester Antara berkas #REQ-SA-2026-0842</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 self-start sm:self-auto" id="trackingCourseBebanBadge">
+                Beban: 6 dari Maks. 9 SKS
+              </span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="bg-slate-50 text-slate-600 font-bold uppercase tracking-wider border-y border-slate-200">
+                    <th class="py-2.5 px-3">Mata Kuliah &amp; Kelas</th>
+                    <th class="py-2.5 px-2 text-center">SKS</th>
+                    <th class="py-2.5 px-3">Dosen Pengampu</th>
+                    <th class="py-2.5 px-3 text-right">Biaya (Rp)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100" id="trackingCourseTableBody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right: Audit Log Timeline -->
+          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px] text-slate-600">history</span>
+                <h4 class="text-sm font-bold text-slate-900">Riwayat Log Audit Sistem</h4>
+              </div>
+              <span class="text-[10px] font-mono text-slate-400">IMMUTABLE LOG</span>
+            </div>
+            <div class="space-y-4 pl-4 border-l-2 border-slate-200 ml-2" id="trackingAuditLogList">
+              <!-- Dynamically populated audit events -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 4: TAGIHAN & VIRTUAL ACCOUNT -->
+      <!-- ========================================================================= -->
+      <section id="tab-tagihan" class="tab-content space-y-6">
+        
+        <!-- Header & Alert Status Tagihan -->
+        <div class="relative overflow-hidden rounded-2xl border p-6 lg:p-7 shadow-sm transition-all" id="tagihanHeaderBanner">
+          <!-- Banner filled dynamically based on payment status (Unpaid or Paid) -->
+        </div>
+
+        <!-- 2-Column Balanced Layout: Left Invoice, Right VA Panel -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Left Column: Invoice Details -->
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- Invoice Main Card -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+              <div class="p-6 sm:p-7 border-b border-slate-100 bg-gradient-to-b from-slate-50/70 to-white">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">Kop Faktur Resmi</span>
+                      <span class="text-xs text-slate-400">Semester Antara 2025/2026</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-bold text-[#003820] mt-1.5">Fakultas Sains dan Teknologi</h2>
+                    <p class="text-xs text-slate-500">UIN Syarif Hidayatullah Jakarta • Sistem Keuangan Terpadu</p>
+                  </div>
+                  <div class="sm:text-right bg-slate-50 sm:bg-transparent p-3 sm:p-0 rounded-lg border sm:border-0 border-slate-200">
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block">Nomor Invoice</span>
+                    <span class="text-sm font-bold text-slate-800 font-mono tracking-wide bg-slate-100 sm:px-2.5 sm:py-1 rounded border border-slate-200/80">INV-SA-2026-0842</span>
+                  </div>
+                </div>
+
+                <!-- Student Profile Key-Value Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
+                  <div class="space-y-1">
+                    <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold">Identitas Mahasiswa</span>
+                    <div class="text-sm font-bold text-slate-900">Danuardi Saputro</div>
+                    <div class="text-slate-600 font-mono">NIM: 1251420128</div>
+                  </div>
+                  <div class="space-y-1 sm:border-l sm:border-slate-200 sm:pl-4">
+                    <span class="text-slate-400 uppercase tracking-wider text-[10px] font-bold">Program Studi &amp; Jenjang</span>
+                    <div class="text-sm font-bold text-slate-900">Teknik Informatika (S1)</div>
+                    <div class="text-slate-600">Status Akademik: Mahasiswa Aktif</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table of Fees -->
+              <div class="p-6 sm:p-7">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-sm font-bold text-slate-800 tracking-tight flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px] text-emerald-700">receipt_long</span>
+                    Rincian Komponen Biaya Semester Antara
+                  </h3>
+                  <span class="text-xs font-semibold text-slate-500">Tarif Resmi SK Rektor</span>
+                </div>
+                
+                <div class="overflow-x-auto rounded-xl border border-slate-200/80">
+                  <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                      <tr class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200/80">
+                        <th class="py-3 px-4 w-12 text-center">No</th>
+                        <th class="py-3 px-4">Komponen Pembayaran</th>
+                        <th class="py-3 px-4 text-center">Beban / Tarif</th>
+                        <th class="py-3 px-4 text-right">Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700" id="tagihanItemsTableBody">
+                      <!-- Dynamically rendered -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Calculation Summary Block -->
+                <div class="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2.5">
+                  <div class="flex justify-between items-center text-xs text-slate-600">
+                    <span id="tagihanSubtotalLabel">Subtotal Tagihan Mata Kuliah (6 SKS)</span>
+                    <span class="font-semibold text-slate-800 font-mono" id="tagihanSubtotalAmount">Rp 900.000</span>
+                  </div>
+                  <div class="flex justify-between items-center text-xs text-slate-600">
+                    <span>Biaya Administrasi &amp; Layanan IT FST</span>
+                    <span class="font-semibold text-slate-800 font-mono">Rp 50.000</span>
+                  </div>
+                  <div class="flex justify-between items-center text-xs text-slate-600">
+                    <span>Potongan Beasiswa / Diskon Fakultas</span>
+                    <span class="font-semibold text-emerald-600 font-mono">- Rp 0</span>
+                  </div>
+                  <div class="pt-3 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <div>
+                      <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block">Total Kewajiban Pembayaran</span>
+                      <span class="text-[11px] text-slate-500">Sudah termasuk PPN &amp; seluruh komponen biaya</span>
+                    </div>
+                    <div class="px-4 py-2 bg-emerald-800 text-white rounded-xl shadow-sm text-right">
+                      <span class="text-xs font-medium text-emerald-200 block text-[11px]">Jumlah Tagihan</span>
+                      <span class="text-xl sm:text-2xl font-extrabold font-mono tracking-tight text-white" id="tagihanTotalAmount">Rp 950.000</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action button & notice -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 pt-4 border-t border-slate-100">
+                  <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <span class="material-symbols-outlined text-[18px] text-emerald-700">verified</span>
+                    <span>Sah sesuai SK Rektor Tarif Layanan Semester Antara UIN Jakarta</span>
+                  </div>
+                  <button onclick="openPrintInvoiceModal()" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all shadow-sm" type="button">
+                    <span class="material-symbols-outlined text-[18px] text-rose-600">picture_as_pdf</span>
+                    <span>Download Invoice PDF</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Komposisi Alokasi Biaya (Mini Bar Chart) -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 sm:p-7">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[20px] text-emerald-700">pie_chart</span>
+                  <h4 class="text-sm font-bold text-slate-900">Komposisi Alokasi Biaya</h4>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200" id="tagihanAlokasiSksBadge">Total 6 SKS Terdaftar</span>
+              </div>
+              <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden flex shadow-inner mb-4">
+                <div class="h-full bg-emerald-800 transition-all duration-500" style="width: 47.4%;" title="Kuliah 1: 47.4%"></div>
+                <div class="h-full bg-teal-500 transition-all duration-500" style="width: 47.4%;" title="Kuliah 2: 47.4%"></div>
+                <div class="h-full bg-amber-500 transition-all duration-500" style="width: 5.2%;" title="Administrasi: 5.2%"></div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs" id="tagihanAlokasiLegend">
+                <!-- Legend cards -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Virtual Account Panel & Guides -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Virtual Account Panel Card -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 sm:p-7 relative overflow-hidden">
+              <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-800"></div>
+              
+              <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Metode Pembayaran Resmi</span>
+                  <h3 class="text-base font-bold text-slate-900">Virtual Account Mahasiswa</h3>
+                </div>
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold" id="vaStatusBadge">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span id="vaStatusBadgeText">Aktif Otomatis</span>
+                </div>
+              </div>
+
+              <!-- Bank Mitra Options Selection -->
+              <div class="mt-5">
+                <label class="block text-xs font-semibold text-slate-600 mb-2">Pilihan Bank Mitra Terdaftar:</label>
+                <div class="grid grid-cols-2 gap-3" id="bankSelectorGroup">
+                  <button onclick="selectBank('bsi')" class="bank-choice border-2 border-emerald-700 bg-emerald-50/50 rounded-xl p-3 flex flex-col items-center text-center transition-all focus:outline-none" data-bank="bsi" type="button">
+                    <div class="text-xs font-bold text-emerald-950 flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[18px] text-emerald-700">account_balance</span>
+                      <span>Bank Syariah Indonesia</span>
+                    </div>
+                    <span class="text-[10px] text-emerald-800 mt-0.5 font-medium">BSI (Kode 451)</span>
+                  </button>
+                  <button onclick="selectBank('mandiri')" class="bank-choice border border-slate-200 hover:border-slate-300 bg-white rounded-xl p-3 flex flex-col items-center text-center transition-all focus:outline-none" data-bank="mandiri" type="button">
+                    <div class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[18px] text-blue-700">account_balance</span>
+                      <span>Bank Mandiri</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-0.5 font-medium">Mandiri (Kode 008)</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- VA Display Box -->
+              <div class="mt-5 p-4 rounded-xl bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Nomor Virtual Account</span>
+                  <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded">Berlaku Seluruh Channel</span>
+                </div>
+                <!-- Large Number Display with One-Click Copy -->
+                <div class="flex items-center justify-between bg-white px-3.5 py-3 rounded-lg border border-slate-200/90 shadow-sm gap-2">
+                  <span class="text-lg sm:text-xl font-extrabold text-slate-900 font-mono tracking-wider" id="vaNumberDisplay">9881 2514 2012 8042</span>
+                  <button onclick="copyVaText()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs transition-colors shadow-sm" id="btnCopyVa" type="button">
+                    <span class="material-symbols-outlined text-[15px]" id="copyBtnIcon">content_copy</span>
+                    <span id="copyBtnLabel">Salin</span>
+                  </button>
+                </div>
+                <!-- VA Detail Meta -->
+                <div class="space-y-1.5 pt-1 text-xs">
+                  <div class="flex justify-between items-center">
+                    <span class="text-slate-500">Nama Rekening VA:</span>
+                    <span class="font-bold text-slate-900 text-right" id="vaAccountName">BSI VA - SIA SA DANUARDI S</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-slate-500">Nominal Transfer Tepat:</span>
+                    <span class="font-extrabold text-emerald-800 font-mono text-sm" id="vaTotalTransferExact">Rp 950.000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons: Check mutation & Quick Simulation Button -->
+              <div class="mt-5 space-y-2.5">
+                <button onclick="simulateImmediatePayment()" id="btnBayarSekarang" class="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-heading font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-700/20 active:scale-98" type="button">
+                  <span class="material-symbols-outlined text-[18px]">bolt</span>
+                  <span>⚡ Simulasi Pembayaran Instan (Lunas)</span>
+                </button>
+                <button onclick="checkStatusRealtimeMock()" id="checkStatusBtn" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition-all" type="button">
+                  <span class="material-symbols-outlined text-[18px]" id="btnIconSync">sync</span>
+                  <span id="btnTextSync">Cek Status Pembayaran Otomatis</span>
+                </button>
+                <p class="text-center text-[11px] text-slate-400">
+                  Sinkronisasi perbankan mutasi dilakukan secara real-time setiap 60 detik.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Accordion Instruksi Pembayaran -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 sm:p-7 space-y-4">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px] text-emerald-700">account_balance_wallet</span>
+                <h4 class="text-sm font-bold text-slate-900">Panduan Tata Cara Pembayaran</h4>
+              </div>
+              <div class="space-y-2.5" id="accordionGuide">
+                <!-- Guide 1 -->
+                <div class="rounded-xl border border-slate-200/80 overflow-hidden bg-slate-50/50">
+                  <button class="w-full p-3.5 flex items-center justify-between text-left guide-toggle bg-white hover:bg-slate-50" onclick="toggleAccordion('guide-1')" type="button">
+                    <span class="text-xs font-bold text-slate-800 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-emerald-700 text-[18px]">phone_iphone</span>
+                      <span>1. Mobile Banking (BSI / Mandiri Livin')</span>
+                    </span>
+                    <span class="material-symbols-outlined text-slate-400 text-[20px] transition-transform" id="icon-guide-1">expand_more</span>
+                  </button>
+                  <div class="p-4 pt-2 text-xs text-slate-600 space-y-2 bg-slate-50/60 border-t border-slate-100 hidden" id="guide-1">
+                    <ol class="space-y-1.5 list-decimal pl-4">
+                      <li>Buka aplikasi <strong>BSI Mobile</strong> atau <strong>Livin' by Mandiri</strong>.</li>
+                      <li>Pilih menu <strong>Bayar / Akademik / Institusi Pendidikan</strong>.</li>
+                      <li>Pilih institusi <strong>UIN Syarif Hidayatullah Jakarta (988)</strong>.</li>
+                      <li>Masukkan Nomor VA: <strong class="font-mono text-slate-900" id="guideVa1">9881251420128042</strong>.</li>
+                      <li>Periksa nama rekening dan nominal pas <strong>Rp 950.000</strong>, lalu masukkan PIN.</li>
+                    </ol>
+                  </div>
+                </div>
+                <!-- Guide 2 -->
+                <div class="rounded-xl border border-slate-200/80 overflow-hidden bg-slate-50/50">
+                  <button class="w-full p-3.5 flex items-center justify-between text-left guide-toggle bg-white hover:bg-slate-50" onclick="toggleAccordion('guide-2')" type="button">
+                    <span class="text-xs font-bold text-slate-800 flex items-center gap-2">
+                      <span class="material-symbols-outlined text-emerald-700 text-[18px]">atm</span>
+                      <span>2. Mesin ATM (Bersama / Prima / Link)</span>
+                    </span>
+                    <span class="material-symbols-outlined text-slate-400 text-[20px] transition-transform" id="icon-guide-2">expand_more</span>
+                  </button>
+                  <div class="p-4 pt-2 text-xs text-slate-600 space-y-2 bg-slate-50/60 border-t border-slate-100 hidden" id="guide-2">
+                    <ol class="space-y-1.5 list-decimal pl-4">
+                      <li>Masukkan kartu ATM dan 6 digit PIN Anda.</li>
+                      <li>Pilih <strong>Transaksi Lainnya &gt; Transfer &gt; Ke Rekening Bank Lain</strong>.</li>
+                      <li>Masukkan kode bank tujuan (BSI: <strong>451</strong> / Mandiri: <strong>008</strong>) + Nomor VA.</li>
+                      <li>Ketikkan jumlah tepat sesuai tagihan, konfirmasi dan simpan struk fisik transaksi.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 5: DASBOR REVIEW & APPROVAL DPA (STAKEHOLDER 2 DARI LAPORAN TUGAS 2) -->
+      <!-- ========================================================================= -->
+      <section id="tab-dpa" class="tab-content space-y-6">
+        
+        <!-- DPA Header Banner -->
+        <div class="bg-gradient-to-r from-emerald-950 via-[#003820] to-emerald-900 rounded-2xl p-6 sm:p-7 text-white shadow-sm border border-emerald-800/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-1.5 bg-emerald-800/60 border border-emerald-600/40 px-2.5 py-0.5 rounded-full text-xs text-emerald-200 font-semibold">
+              <span class="material-symbols-outlined text-sm">verified_user</span>
+              PORTAL DOSEN PENASIHAT AKADEMIK (DPA)
+            </div>
+            <h1 class="text-xl sm:text-2xl font-bold font-display tracking-tight">Verifikasi &amp; Persetujuan KRS Semester Antara</h1>
+            <p class="text-xs sm:text-sm text-emerald-200/90 font-normal">
+              Dosen Pembimbing: <strong>Dr. Dewi Khairani, M.Sc.</strong> (NIP. 197804152005012002) • Program Studi Teknik Informatika
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 text-center shrink-0">
+            <span class="text-[11px] text-emerald-200 block">Mahasiswa Bimbingan Ajukan SA</span>
+            <span class="text-2xl font-extrabold text-white font-mono">1 Berkas Aktif</span>
+          </div>
+        </div>
+
+        <!-- Student Submission Review Sheet -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Berkas Mahasiswa Bimbingan</span>
+              <h2 class="text-lg font-bold text-slate-900 mt-0.5">Danuardi Saputro — NIM 1251420128</h2>
+              <p class="text-xs text-slate-500">Semester 4 • IPK Kumulatif: 3.12 • Status Keaktifan: Aktif</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-bold" id="dpaSheetStatusBadge">
+                Status: Menunggu Persetujuan DPA
+              </span>
+            </div>
+          </div>
+
+          <!-- Academic Transcript Comparison Table -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                <span class="material-symbols-outlined text-emerald-700 text-lg">history_edu</span>
+                Verifikasi Riwayat Nilai &amp; Mata Kuliah yang Diajukan
+              </h3>
+              <span class="text-xs text-slate-500">Validasi Basis Data Akademik</span>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                    <th class="py-3 px-3">Kode &amp; Mata Kuliah</th>
+                    <th class="py-3 px-2 text-center">SKS</th>
+                    <th class="py-3 px-3 text-center">Nilai Sebelumnya</th>
+                    <th class="py-3 px-3 text-center">Kelayakan Regulasi</th>
+                    <th class="py-3 px-3">Dosen Pengampu SA</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100" id="dpaCourseVerifyList">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Lecturer Decision & Note Input -->
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+            <div>
+              <label for="dpaFeedbackNotes" class="block text-xs font-bold text-slate-800 mb-1">
+                Catatan / Nasehat Akademik Dosen Pembimbing:
+              </label>
+              <textarea id="dpaFeedbackNotes" rows="3" class="w-full text-xs p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700" placeholder="Tuliskan catatan arahan belajar untuk mahasiswa bimbingan..."></textarea>
+            </div>
+            <div class="flex flex-wrap items-center justify-end gap-3 pt-2">
+              <button onclick="dpaRejectAction()" class="px-4 py-2.5 rounded-xl border border-rose-300 bg-white hover:bg-rose-50 text-rose-700 font-bold text-xs transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base">cancel</span>
+                Kembalikan / Minta Revisi
+              </button>
+              <button onclick="dpaApproveAction()" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs transition-all shadow-sm flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base">check_circle</span>
+                Setujui KRS Bimbingan (Approve)
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- TAB 6: DASBOR MONITORING KUOTA PRODI (STAKEHOLDER 3 DARI LAPORAN TUGAS 2) -->
+      <!-- ========================================================================= -->
+      <section id="tab-prodi" class="tab-content space-y-6">
+        
+        <!-- Prodi Header Banner -->
+        <div class="bg-gradient-to-r from-blue-950 via-[#102a45] to-blue-900 rounded-2xl p-6 sm:p-7 text-white shadow-sm border border-blue-800/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-1.5 bg-blue-800/60 border border-blue-600/40 px-2.5 py-0.5 rounded-full text-xs text-blue-200 font-semibold">
+              <span class="material-symbols-outlined text-sm">corporate_fare</span>
+              DASBOR PENGELOLA PROGRAM STUDI TEKNIK INFORMATIKA
+            </div>
+            <h1 class="text-xl sm:text-2xl font-bold font-display tracking-tight">Monitoring Kuota Pendaftar &amp; Penetapan Kelas</h1>
+            <p class="text-xs sm:text-sm text-blue-200/90 font-normal">
+              Pemantauan kepatuhan ambang batas kuota minimal 10 mahasiswa per kelas sesuai SK Dekan FST.
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 text-center shrink-0">
+            <span class="text-[11px] text-blue-200 block">Ambang Batas Minimum</span>
+            <span class="text-2xl font-extrabold text-white font-mono">10 Mahasiswa</span>
+          </div>
+        </div>
+
+        <!-- Course Quota Monitoring Table -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-6 space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <h2 class="text-base font-bold text-slate-900">Rekapitulasi Minat &amp; Kuota Kelas Semester Antara</h2>
+              <p class="text-xs text-slate-500">Pembaruan real-time dari data pendaftar yang telah disetujui DPA</p>
+            </div>
+            <button onclick="prodiBulkConfirmAll()" class="px-3.5 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs transition-colors flex items-center gap-1.5 shadow-xs">
+              <span class="material-symbols-outlined text-base">done_all</span>
+              Kunci &amp; Buka Kelas Definitif
+            </button>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                  <th class="py-3 px-3">Kode &amp; Mata Kuliah</th>
+                  <th class="py-3 px-3 text-center">Pendaftar / Kuota</th>
+                  <th class="py-3 px-3">Progress Kuota</th>
+                  <th class="py-3 px-3 text-center">Status Ambang</th>
+                  <th class="py-3 px-3 text-right">Aksi Kebijakan Prodi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100" id="prodiQuotaTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= FLOATING QUICK DEMO CONTROLLER ================= -->
+  <!-- Floating widget to seamlessly jump between states for live presentation -->
+  <div class="fixed bottom-5 left-5 z-40 no-print">
+    <div class="relative">
+      <button onclick="toggleDemoMenu()" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-xl border border-slate-700 transition-all hover:scale-105 active:scale-95">
+        <span class="material-symbols-outlined text-emerald-400 text-sm">settings_suggest</span>
+        <span class="hidden sm:inline">Simulasi Alur Sistem</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      </button>
+
+      <div id="demoMenuPopover" class="hidden absolute left-0 bottom-12 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 space-y-2.5 text-xs text-slate-800">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+          <span class="font-display font-bold text-slate-900">Alur Sistem (Tugas 2)</span>
+          <button onclick="toggleDemoMenu()" class="text-slate-400 hover:text-slate-600">
+            <span class="material-symbols-outlined text-sm">close</span>
+          </button>
+        </div>
+        <p class="text-[11px] text-slate-500">Pilih tahapan alur untuk simulasi langsung tanpa langkah manual:</p>
+        
+        <div class="space-y-1.5">
+          <button onclick="demoSetStage('draft')" class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-slate-100 flex items-center justify-between text-slate-700">
+            <span>1. Pengisian Form KRS (Draft)</span>
+            <span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+          </button>
+          <button onclick="demoSetStage('menunggu_dpa')" class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-amber-50 flex items-center justify-between text-amber-900">
+            <span>2. Menunggu Persetujuan DPA</span>
+            <span class="material-symbols-outlined text-xs text-amber-600">chevron_right</span>
+          </button>
+          <button onclick="demoSetStage('kuota_prodi')" class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-blue-50 flex items-center justify-between text-blue-900">
+            <span>3. Verifikasi Kuota Prodi</span>
+            <span class="material-symbols-outlined text-xs text-blue-600">chevron_right</span>
+          </button>
+          <button onclick="demoSetStage('menunggu_bayar')" class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-purple-50 flex items-center justify-between text-purple-900">
+            <span>4. Penerbitan VA &amp; Tagihan</span>
+            <span class="material-symbols-outlined text-xs text-purple-600">chevron_right</span>
+          </button>
+          <button onclick="demoSetStage('terdaftar')" class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-emerald-50 flex items-center justify-between text-emerald-900 font-semibold">
+            <span>5. Lunas &amp; Terdaftar Resmi</span>
+            <span class="material-symbols-outlined text-xs text-emerald-600">check_circle</span>
+          </button>
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+          <button onclick="resetDefaultData()" class="text-[11px] text-rose-600 hover:underline font-semibold flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">restart_alt</span>
+            Reset Data Default
+          </button>
+          <span class="text-[10px] text-slate-400">SIA-SA FST 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Modal Silabus Kuliah -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 no-print" id="syllabusModal">
+    <div class="bg-surface-card rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl relative border border-border-subtle">
+      <div class="flex items-start justify-between border-b border-border-subtle pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-2xl">menu_book</span>
+          </div>
+          <div>
+            <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded" id="modalCourseCode">TIF204</span>
+            <h3 class="font-display font-bold text-lg text-text-primary mt-1" id="modalCourseName">Rekayasa Perangkat Lunak</h3>
+          </div>
+        </div>
+        <button class="text-text-muted hover:text-text-primary p-1.5 rounded-lg hover:bg-surface-subtle transition-colors" onclick="closeSyllabusModal()" type="button">
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+      </div>
+      <div class="py-4 space-y-4 text-xs text-text-secondary">
+        <div class="grid grid-cols-3 gap-2 bg-surface-subtle p-3 rounded-xl border border-border-subtle">
+          <div>
+            <span class="text-text-muted block text-[11px]">Dosen Pengampu</span>
+            <strong class="text-text-primary font-semibold" id="modalLecturer">Dr. Dewi Khairani, M.Sc.</strong>
+          </div>
+          <div>
+            <span class="text-text-muted block text-[11px]">Beban Kredit</span>
+            <strong class="text-text-primary font-semibold" id="modalSks">3 SKS</strong>
+          </div>
+          <div>
+            <span class="text-text-muted block text-[11px]">Kapasitas Kuota</span>
+            <strong class="text-primary font-semibold font-mono" id="modalQuota">14/20 Mahasiswa</strong>
+          </div>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-display font-bold text-xs text-text-primary">Capaian Pembelajaran Mata Kuliah (CPMK)</h4>
+          <ul class="list-disc list-inside space-y-1 text-text-secondary pl-1 leading-relaxed" id="modalCpmkList">
+            <li>Menerapkan metodologi Agile, Scrum, dan Waterfall dalam perancangan aplikasi berskala enterprise.</li>
+            <li>Menguasai pemodelan UML formal dan diagram arsitektur sesuai standard IEEE.</li>
+            <li>Melakukan pengujian unit testing dan integrasi continuous deployment (CI/CD).</li>
+          </ul>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-display font-bold text-xs text-text-primary">Rencana 8 Pekan Pembelajaran Intensif</h4>
+          <p class="text-text-muted leading-relaxed">
+            Kuliah dilaksanakan secara padat selama 8 minggu (2 tatap muka per pekan, setara 16 pertemuan reguler) termasuk evaluasi UTS dan UAS Semester Antara.
+          </p>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-200/80 text-emerald-900 p-3 rounded-lg flex items-center gap-2.5">
+          <span class="material-symbols-outlined text-status-terdaftar-resmi text-lg shrink-0">verified</span>
+          <span class="text-[11px] leading-tight font-medium">Nilai semester antara diakui secara penuh pada Transkrip Akademik Resmi FST UIN Syarif Hidayatullah Jakarta.</span>
+        </div>
+      </div>
+      <div class="pt-3 border-t border-border-subtle flex justify-end gap-2.5">
+        <button class="px-4 py-2 rounded-lg text-xs font-semibold text-text-secondary bg-surface-subtle hover:bg-slate-200 transition-colors" onclick="closeSyllabusModal()" type="button">
+          Tutup
+        </button>
+        <button class="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-primary hover:bg-primary-container transition-colors flex items-center gap-1.5" id="modalAddBtn" type="button">
+          <span class="material-symbols-outlined text-sm">add_circle</span>
+          Tambahkan ke Draft KRS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Cetak / Bukti KRS Semester Antara Resmi -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4" id="printKrsModal">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative border border-slate-200" id="printArea">
+      
+      <!-- Kop Surat Resmi UIN Jakarta FST -->
+      <div class="border-b-2 border-slate-900 pb-4 mb-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-900 text-white flex items-center justify-center font-bold text-lg">
+            UIN
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Kementerian Agama Republik Indonesia</h3>
+            <h2 class="text-sm font-extrabold text-slate-900">UIN SYARIF HIDAYATULLAH JAKARTA</h2>
+            <p class="text-xs text-slate-600 font-semibold">FAKULTAS SAINS DAN TEKNOLOGI</p>
+            <p class="text-[10px] text-slate-500">Jl. Ir. H. Djuanda No. 95 Ciputat, Tangerang Selatan 15412</p>
+          </div>
+        </div>
+        <div class="text-right font-mono text-[11px] text-slate-500">
+          <span>KRS-SA/2026/FST</span>
+        </div>
+      </div>
+
+      <!-- Document Title -->
+      <div class="text-center mb-5">
+        <h1 class="text-base font-extrabold text-slate-900 uppercase tracking-wide">KARTU RENCANA STUDI (KRS) SEMESTER ANTARA</h1>
+        <p class="text-xs text-slate-600">Tahun Akademik 2025/2026</p>
+      </div>
+
+      <!-- Identity Grid -->
+      <div class="grid grid-cols-2 gap-2 text-xs mb-5 bg-slate-50 p-3 rounded-xl border border-slate-200">
+        <div>
+          <span class="text-slate-500 block text-[10px]">Nama Mahasiswa:</span>
+          <strong class="text-slate-900">Danuardi Saputro</strong>
+        </div>
+        <div>
+          <span class="text-slate-500 block text-[10px]">Nomor Induk Mahasiswa (NIM):</span>
+          <strong class="text-slate-900 font-mono">1251420128</strong>
+        </div>
+        <div>
+          <span class="text-slate-500 block text-[10px]">Program Studi:</span>
+          <strong class="text-slate-900">Teknik Informatika (S1)</strong>
+        </div>
+        <div>
+          <span class="text-slate-500 block text-[10px]">Dosen Pembimbing Akademik:</span>
+          <strong class="text-slate-900">Dr. Dewi Khairani, M.Sc.</strong>
+        </div>
+      </div>
+
+      <!-- Printable Course Table -->
+      <div class="mb-5">
+        <table class="w-full text-left text-xs border border-slate-300">
+          <thead>
+            <tr class="bg-slate-100 text-slate-800 font-bold border-b border-slate-300">
+              <th class="p-2 border-r border-slate-300 text-center w-8">No</th>
+              <th class="p-2 border-r border-slate-300">Kode &amp; Mata Kuliah</th>
+              <th class="p-2 border-r border-slate-300 text-center w-12">SKS</th>
+              <th class="p-2 border-r border-slate-300">Kelas &amp; Jadwal</th>
+              <th class="p-2">Dosen Pengampu</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200" id="printKrsTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Signatures -->
+      <div class="grid grid-cols-2 gap-4 text-xs text-center pt-4">
+        <div>
+          <p class="text-slate-500 text-[11px]">Mahasiswa Pemohon,</p>
+          <div class="h-16 flex items-center justify-center font-cursive text-emerald-800 italic">Danuardi Saputro</div>
+          <strong class="block text-slate-900">Danuardi Saputro</strong>
+          <span class="text-[10px] text-slate-500 font-mono">NIM. 1251420128</span>
+        </div>
+        <div>
+          <p class="text-slate-500 text-[11px]">Menyetujui, DPA</p>
+          <div class="h-16 flex items-center justify-center font-cursive text-emerald-800 italic">Dr. Dewi Khairani</div>
+          <strong class="block text-slate-900">Dr. Dewi Khairani, M.Sc.</strong>
+          <span class="text-[10px] text-slate-500 font-mono">NIP. 197804152005012002</span>
+        </div>
+      </div>
+
+      <!-- Modal Footer (No Print) -->
+      <div class="mt-6 pt-4 border-t border-slate-200 flex justify-end gap-2.5 no-print">
+        <button onclick="closePrintKrsModal()" class="px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors">
+          Tutup
+        </button>
+        <button onclick="window.print()" class="px-4 py-2 rounded-lg text-xs font-bold text-white bg-primary hover:bg-emerald-900 transition-colors flex items-center gap-1.5 shadow-sm">
+          <span class="material-symbols-outlined text-sm">print</span>
+          Cetak Dokumen
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Utility -->
+  <div class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5 transition-all transform translate-y-4 border border-slate-800" id="toastNotification">
+    <span class="material-symbols-outlined text-accent-teal text-xl" id="toastIcon">check_circle</span>
+    <div class="flex flex-col">
+      <span class="text-xs sm:text-sm font-semibold" id="toastMessage">Pemberitahuan Sistem</span>
+      <span class="text-[11px] text-slate-400" id="toastSubMessage"></span>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full bg-surface-card border-t border-border-subtle mt-auto no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col text-center md:text-left space-y-0.5">
+        <span class="font-display font-bold text-xs sm:text-sm text-primary">
+          Sistem Informasi Akademik Semester Antara (SIA-SA FST)
+        </span>
+        <span class="text-xs text-text-muted">
+          &copy; 2026 Program Studi Teknik Informatika • Fakultas Sains dan Teknologi • UIN Syarif Hidayatullah Jakarta.
+        </span>
+      </div>
+      <div class="flex items-center gap-4 sm:gap-6 text-xs text-text-secondary font-medium">
+        <a class="hover:text-primary transition-colors" href="javascript:showHelpModal()">Panduan Pengguna</a>
+        <a class="hover:text-primary transition-colors" href="javascript:demoSetStage('draft')">Reset Alur</a>
+        <a class="hover:text-primary transition-colors" href="https://github.com" target="_blank">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- API Client Integration -->
+  <script src="/js/api.js"></script>
+
+  <!-- ================= APPLICATION LOGIC & STATE ENGINE ================= -->
+  <script>
+    // ---------------------------------------------------------
+    // MASTER DATA (Matching Tugas 2 & Google Stitch Prototype)
+    // ---------------------------------------------------------
+    const COST_PER_SKS = 150000;
+    const ADMIN_FEE = 50000;
+
+    const ALL_COURSES = [
+      {
+        code: "TIF204",
+        name: "Rekayasa Perangkat Lunak",
+        sks: 3,
+        prodi: "Teknik Informatika",
+        semester: "3-4",
+        status: "terpenuhi",
+        lecturer: "Dr. Dewi Khairani, M.Sc.",
+        nip: "197804152005012002",
+        classGroup: "A",
+        schedule: "Senin & Rabu, 09.00 - 11.30 WIB",
+        room: "Lab Komputer 3 (FST 402)",
+        enrolled: 14,
+        capacity: 20,
+        oldGrade: "D",
+        termOldGrade: "Ganjil 2024/2025",
+        prereq: "Algoritma & Pemrograman (Min. Nilai D)",
+        icon: "code_blocks",
+        cpmk: [
+          "Menerapkan metodologi Agile, Scrum, dan Waterfall dalam perancangan aplikasi berskala enterprise.",
+          "Menguasai pemodelan UML formal dan diagram arsitektur sesuai standard IEEE.",
+          "Melakukan pengujian unit testing dan integrasi continuous deployment (CI/CD)."
+        ]
+      },
+      {
+        code: "TIF106",
+        name: "Struktur Data & Algoritma",
+        sks: 3,
+        prodi: "Teknik Informatika",
+        semester: "1-2",
+        status: "terpenuhi",
+        lecturer: "Fathur Rahman, M.Kom.",
+        nip: "198209142008121003",
+        classGroup: "B",
+        schedule: "Selasa & Kamis, 13.00 - 15.30 WIB",
+        room: "Lab Rekayasa Web (FST 305)",
+        enrolled: 12,
+        capacity: 25,
+        oldGrade: "C",
+        termOldGrade: "Genap 2023/2024",
+        prereq: "Dasar Pemrograman (TIF101)",
+        icon: "account_tree",
+        cpmk: [
+          "Memahami struktur pohon (tree), graf (graph), hashing, dan dynamic programming.",
+          "Mengimplementasikan algoritma traversal dan pencarian kompleks dalam bahasa C++/Java.",
+          "Menganalisis kompleksitas waktu Big-O dalam pemecahan masalah komputasi."
+        ]
+      },
+      {
+        code: "TIF208",
+        name: "Basis Data Lanjut",
+        sks: 3,
+        prodi: "Teknik Informatika",
+        semester: "3-4",
+        status: "hampir",
+        lecturer: "Yuni Triana, M.T.",
+        nip: "198503202010122004",
+        classGroup: "A",
+        schedule: "Rabu & Jumat, 10.00 - 12.30 WIB",
+        room: "Ruang Teori 3.04",
+        enrolled: 8,
+        capacity: 20,
+        oldGrade: "D",
+        termOldGrade: "Genap 2024/2025",
+        prereq: "Sistem Basis Data (TIF105)",
+        icon: "database",
+        cpmk: [
+          "Merancang arsitektur database terdistribusi dan replikasi basis data skala besar.",
+          "Optimasi query execution plan dan indexing PostgreSQL / Oracle.",
+          "Implementasi NoSQL database (MongoDB & Redis) untuk analitik real-time."
+        ]
+      },
+      {
+        code: "TIF210",
+        name: "Jaringan Komputer",
+        sks: 3,
+        prodi: "Teknik Informatika",
+        semester: "3-4",
+        status: "terpenuhi",
+        lecturer: "Ahmad Fauzi, M.Kom.",
+        nip: "198006112006041001",
+        classGroup: "A",
+        schedule: "Senin & Kamis, 14.00 - 16.30 WIB",
+        room: "Lab Jaringan 205",
+        enrolled: 15,
+        capacity: 20,
+        oldGrade: "D",
+        termOldGrade: "Ganjil 2024/2025",
+        prereq: "Sistem Operasi (TIF201)",
+        icon: "lan",
+        cpmk: [
+          "Konfigurasi router, switch, VLAN, dan routing protokol OSPF/BGP.",
+          "Menganalisis protokol TCP/IP menggunakan Wireshark packet capture.",
+          "Perancangan firewall dan pengamanan infrastruktur jaringan kampus."
+        ]
+      },
+      {
+        code: "MAT201",
+        name: "Statistika & Probabilitas",
+        sks: 3,
+        prodi: "Matematika",
+        semester: "3-4",
+        status: "hampir",
+        lecturer: "Siti Nurhaliza, M.Si.",
+        nip: "198811052014032002",
+        classGroup: "B",
+        schedule: "Selasa & Jumat, 08.00 - 10.30 WIB",
+        room: "Ruang Kuliah 4.02",
+        enrolled: 6,
+        capacity: 20,
+        oldGrade: "E",
+        termOldGrade: "Ganjil 2023/2024",
+        prereq: "Kalkulus 2 (MAT102)",
+        icon: "query_stats",
+        cpmk: [
+          "Menghitung probabilitas variabel acak diskrit dan kontinu.",
+          "Melakukan pengujian hipotesis ANOVA dan regresi linier berganda.",
+          "Penerapan statistik komputasi menggunakan R / Python."
+        ]
+      }
+    ];
+
+    // ---------------------------------------------------------
+    // PERSISTENT STATE MANAGEMENT
+    // ---------------------------------------------------------
+    const DEFAULT_STATE = {
+      role: 'mahasiswa', // 'mahasiswa', 'dpa', 'prodi'
+      // Lifecycle Stage: 'draft' | 'menunggu_dpa' | 'kuota_prodi' | 'menunggu_bayar' | 'terdaftar'
+      stage: 'menunggu_bayar',
+      selectedCourseCodes: ['TIF204', 'TIF106'],
+      dpaNotes: "“Disetujui. Fokus pada mata kuliah Rekayasa Perangkat Lunak dan Struktur Data untuk perbaikan IPK. Maksimalkan praktikum dan pastikan kehadiran presensi di atas 75%.”",
+      selectedBank: 'bsi',
+      vaNumber: '9881251420128042',
+      isPaid: false,
+      submittedAt: '12 Juli 2026, 10:15 WIB',
+      paidAt: null,
+      dpaApprovedAt: '13 Juli 2026, 14:20 WIB',
+      prodiApprovedAt: '14 Juli 2026, 09:30 WIB'
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem('sia_sa_fst_state');
+        if (saved) return JSON.parse(saved);
+      } catch (e) {
+        console.error(e);
+      }
+      return { ...DEFAULT_STATE };
+    }
+
+    let state = loadState();
+
+    function saveState() {
+      try {
+        localStorage.setItem('sia_sa_fst_state', JSON.stringify(state));
+      } catch (e) {
+        console.error(e);
+      }
+      renderAllViews();
+    }
+
+    function resetDefaultData() {
+      state = { ...DEFAULT_STATE };
+      saveState();
+      showToast('Data Direset', 'Semua status telah dikembalikan ke kondisi default awal demonstrasi.');
+    }
+
+    // ---------------------------------------------------------
+    // TAB ROUTING ENGINE (Hash-based)
+    // ---------------------------------------------------------
+    function getActiveTab() {
+      const hash = window.location.hash.replace('#', '').trim();
+      const validTabs = ['katalog', 'pengajuan', 'tracking', 'tagihan', 'dpa', 'prodi'];
+      return validTabs.includes(hash) ? hash : 'katalog';
+    }
+
+    function navigateToTab(tabName) {
+      window.location.hash = '#' + tabName;
+      updateActiveTabUI(tabName);
+    }
+
+    function updateActiveTabUI(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.remove('active');
+      });
+      const activeEl = document.getElementById('tab-' + tabName);
+      if (activeEl) {
+        activeEl.classList.add('active');
+      }
+
+      // Update Nav Tabs Active classes
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        const target = btn.getAttribute('data-tab');
+        if (target === tabName) {
+          btn.classList.add('bg-primary', 'text-white', 'shadow-xs', 'font-semibold');
+          btn.classList.remove('text-text-secondary', 'hover:bg-surface-subtle');
+        } else {
+          btn.classList.remove('bg-primary', 'text-white', 'shadow-xs', 'font-semibold');
+          btn.classList.add('text-text-secondary', 'hover:bg-surface-subtle');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', () => {
+      updateActiveTabUI(getActiveTab());
+    });
+
+    // ---------------------------------------------------------
+    // TOAST UTILITY
+    // ---------------------------------------------------------
+    let toastTimeout;
+    function showToast(title, desc = '', isError = false) {
+      const toast = document.getElementById('toastNotification');
+      const toastTitle = document.getElementById('toastMessage');
+      const toastDesc = document.getElementById('toastSubMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastTitle.innerText = title;
+      toastDesc.innerText = desc;
+
+      if (isError) {
+        toastIcon.innerText = 'error';
+        toastIcon.className = 'material-symbols-outlined text-rose-400 text-xl';
+      } else {
+        toastIcon.innerText = 'check_circle';
+        toastIcon.className = 'material-symbols-outlined text-accent-teal text-xl';
+      }
+
+      toast.classList.remove('hidden', 'translate-y-4');
+      toast.classList.add('translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden', 'translate-y-4');
+      }, 3500);
+    }
+
+    // ---------------------------------------------------------
+    // COURSE SELECTION & SKS CALCULATIONS
+    // ---------------------------------------------------------
+    function getSelectedCourses() {
+      return state.selectedCourseCodes.map(code => ALL_COURSES.find(c => c.code === code)).filter(Boolean);
+    }
+
+    function getTotalSks() {
+      return getSelectedCourses().reduce((sum, c) => sum + c.sks, 0);
+    }
+
+    function addCourseToDraft(code) {
+      if (state.selectedCourseCodes.includes(code)) {
+        showToast('Sudah Terpilih', 'Mata kuliah ini telah ada di daftar draft pengajuan KRS Anda.', true);
+        return;
+      }
+      const course = ALL_COURSES.find(c => c.code === code);
+      if (!course) return;
+
+      const currentTotal = getTotalSks();
+      if (currentTotal + course.sks > 9) {
+        showToast('Melebihi Batas 9 SKS', `Anda sudah memilih ${currentTotal} SKS. Maksimal beban Semester Antara adalah 9 SKS.`, true);
+        return;
+      }
+
+      state.selectedCourseCodes.push(code);
+      saveState();
+      showToast('Berhasil Ditambahkan', `${course.name} (${course.sks} SKS) masuk ke dalam draft.`);
+    }
+
+    function removeCourseFromDraft(code) {
+      const course = ALL_COURSES.find(c => c.code === code);
+      state.selectedCourseCodes = state.selectedCourseCodes.filter(c => c !== code);
+      saveState();
+      showToast('Mata Kuliah Dihapus', `${course ? course.name : code} dikeluarkan dari draft KRS.`);
+    }
+
+    function addRecommendedCourse(code) {
+      addCourseToDraft(code);
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 1 (KATALOG)
+    // ---------------------------------------------------------
+    function renderKatalog() {
+      const container = document.getElementById('courseCardsContainer');
+      const searchVal = (document.getElementById('courseSearchInput')?.value || '').toLowerCase().trim();
+      const prodiVal = document.getElementById('filterProdi')?.value || 'all';
+      const semesterVal = document.getElementById('filterSemester')?.value || 'all';
+      const activePill = document.querySelector('.filter-pill.active-pill')?.getAttribute('data-filter') || 'all';
+
+      let filtered = ALL_COURSES.filter(c => {
+        const matchSearch = c.code.toLowerCase().includes(searchVal) || c.name.toLowerCase().includes(searchVal) || c.lecturer.toLowerCase().includes(searchVal);
+        const matchProdi = (prodiVal === 'all') || (c.prodi === prodiVal);
+        const matchSemester = (semesterVal === 'all') || (c.semester === semesterVal);
+        let matchStatus = true;
+        if (activePill === 'hampir') matchStatus = (c.status === 'hampir');
+        if (activePill === 'terpenuhi') matchStatus = (c.status === 'terpenuhi');
+        return matchSearch && matchProdi && matchSemester && matchStatus;
+      });
+
+      document.getElementById('resultsCount').innerText = `Menampilkan ${filtered.length} Mata Kuliah Terverifikasi`;
+
+      container.innerHTML = filtered.map(c => {
+        const isSelected = state.selectedCourseCodes.includes(c.code);
+        const pct = Math.round((c.enrolled / c.capacity) * 100);
+        const statusBadge = c.status === 'terpenuhi' 
+          ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-status-terdaftar-resmi border border-emerald-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-status-terdaftar-resmi"></span> Kuota Terpenuhi (min. 10)
+             </span>`
+          : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-status-menunggu-dpa border border-amber-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-status-menunggu-dpa"></span> Butuh ${10 - c.enrolled} Mhs Lagi
+             </span>`;
+
+        return `
+          <div class="course-card bg-surface-card rounded-xl p-5 border ${isSelected ? 'border-emerald-500 ring-1 ring-emerald-500/20' : 'border-border-subtle hover:border-emerald-300'} shadow-xs hover:shadow-md transition-all space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+              <div class="flex items-start gap-3.5">
+                <div class="w-11 h-11 rounded-lg bg-emerald-50 border border-emerald-100 flex flex-col items-center justify-center text-primary shrink-0">
+                  <span class="material-symbols-outlined text-2xl text-primary">${c.icon}</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100/70 text-emerald-900">${c.code}</span>
+                    <span class="text-xs font-medium text-text-muted bg-surface-subtle px-2 py-0.5 rounded">${c.sks} SKS &bull; ${c.prodi}</span>
+                    ${statusBadge}
+                  </div>
+                  <h3 class="font-display font-bold text-base sm:text-lg text-text-primary tracking-tight">${c.name}</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-text-secondary">
+                    <span class="material-symbols-outlined text-base text-text-muted">school</span>
+                    <span>Dosen Pengampu: <strong class="text-text-primary font-medium">${c.lecturer}</strong></span>
+                  </div>
+                </div>
+              </div>
+              <div class="sm:text-right shrink-0 bg-surface-subtle/70 sm:bg-transparent p-2.5 sm:p-0 rounded-lg">
+                <span class="text-[11px] font-semibold text-text-muted uppercase tracking-wider block">Jadwal Kuliah</span>
+                <div class="flex items-center sm:justify-end gap-1.5 text-xs font-semibold text-text-primary mt-0.5">
+                  <span class="material-symbols-outlined text-sm text-primary">calendar_month</span>
+                  ${c.schedule}
+                </div>
+                <span class="text-xs text-text-muted block">${c.room}</span>
+              </div>
+            </div>
+
+            <!-- Prasyarat -->
+            <div class="bg-surface-subtle/80 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-text-muted uppercase tracking-wide text-[11px]">Prasyarat:</span>
+                <span class="bg-white px-2.5 py-1 rounded border border-border-subtle font-medium text-text-primary">
+                  ${c.prereq}
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5 text-text-secondary font-medium">
+                <span class="material-symbols-outlined text-base text-text-muted">tune</span>
+                Format Perkuliahan Tatap Muka &amp; LMS FST
+              </div>
+            </div>
+
+            <!-- Quota Bar -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-text-secondary">Kapasitas Terisi: <strong class="text-text-primary font-semibold">${c.enrolled}</strong> dari ${c.capacity} Kursi</span>
+                <span class="${c.enrolled >= 10 ? 'text-status-terdaftar-resmi' : 'text-amber-600'} font-bold font-mono">${pct}% &bull; ${c.enrolled >= 10 ? 'Kelas Siap Dibuka' : 'Menunggu Kuota'}</span>
+              </div>
+              <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="${c.enrolled >= 10 ? 'bg-status-terdaftar-resmi' : 'bg-amber-500'} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between pt-2 border-t border-border-subtle/50">
+              <button class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary-container transition-colors" onclick="openSyllabusModal('${c.code}')" type="button">
+                <span class="material-symbols-outlined text-base">menu_book</span>
+                Lihat Silabus &amp; Rencana Kuliah
+              </button>
+              ${isSelected ? `
+                <button class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-all active:scale-95" onclick="removeCourseFromDraft('${c.code}')" type="button">
+                  <span class="material-symbols-outlined text-base">remove_circle</span>
+                  Hapus dari Draft
+                </button>
+              ` : `
+                <button class="bg-primary hover:bg-primary-container text-white px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-all active:scale-95" onclick="addCourseToDraft('${c.code}')" type="button">
+                  <span class="material-symbols-outlined text-base">add_circle</span>
+                  + Ajukan ke KRS
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      renderKatalogSidebarDraft();
+    }
+
+    function renderKatalogSidebarDraft() {
+      const selected = getSelectedCourses();
+      const emptyState = document.getElementById('krsDraftEmpty');
+      const listContainer = document.getElementById('krsDraftList');
+      const summaryContainer = document.getElementById('krsDraftSummary');
+      const badge = document.getElementById('draftBadge');
+      const totalSksEl = document.getElementById('draftTotalSks');
+      const totalCostEl = document.getElementById('draftTotalCost');
+
+      badge.innerText = `${selected.length} Matkul`;
+
+      if (selected.length === 0) {
+        emptyState.classList.remove('hidden');
+        listContainer.classList.add('hidden');
+        summaryContainer.classList.add('hidden');
+        listContainer.innerHTML = '';
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      listContainer.classList.remove('hidden');
+      summaryContainer.classList.remove('hidden');
+
+      const totalSks = getTotalSks();
+      listContainer.innerHTML = selected.map(item => `
+        <div class="flex items-center justify-between p-2.5 bg-surface-subtle border border-border-subtle rounded-lg text-xs">
+          <div class="flex flex-col min-w-0 pr-2">
+            <span class="font-semibold text-text-primary truncate">${item.name}</span>
+            <span class="font-mono text-[11px] text-text-muted">${item.code} &bull; ${item.sks} SKS</span>
+          </div>
+          <button type="button" onclick="removeCourseFromDraft('${item.code}')" class="text-text-muted hover:text-rose-600 transition-colors p-1" title="Hapus">
+            <span class="material-symbols-outlined text-base">delete</span>
+          </button>
+        </div>
+      `).join('');
+
+      totalSksEl.innerText = `${totalSks} / 9 SKS`;
+      const totalCost = totalSks * COST_PER_SKS;
+      totalCostEl.innerText = 'Rp ' + totalCost.toLocaleString('id-ID');
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 2 (PENGAJUAN KRS)
+    // ---------------------------------------------------------
+    function renderPengajuan() {
+      const selected = getSelectedCourses();
+      const totalSks = getTotalSks();
+      const remainingSks = Math.max(0, 9 - totalSks);
+
+      // Progress and badges
+      document.getElementById('formSksCountDisplay').innerText = `${totalSks} / 9 SKS`;
+      document.getElementById('formSksProgressBar').style.width = `${(totalSks / 9) * 100}%`;
+      document.getElementById('formVerifiedCountBadge').innerHTML = `
+        <span class="material-symbols-outlined material-symbols-fill text-[16px]">verified</span>
+        ${selected.length} Matkul Terverifikasi Otomatis
+      `;
+      document.getElementById('formAvailableSksBadge').innerText = `Sisa Kuota: ${remainingSks} SKS`;
+
+      // Validation checklist
+      const validationSksText = document.getElementById('validationSksText');
+      const checkSksIcon = document.getElementById('check-sks-icon');
+      const checkSksBox = document.getElementById('check-sks-icon-box');
+      if (totalSks <= 9 && totalSks > 0) {
+        validationSksText.innerText = `Total ${totalSks} SKS ≤ batas maksimum 9 SKS`;
+        checkSksIcon.innerText = 'check_circle';
+        checkSksBox.className = 'w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200';
+      } else {
+        validationSksText.innerText = `Beban SKS belum dipilih atau melebihi batas`;
+      }
+
+      // Render Selected Courses in Form
+      const container = document.getElementById('formSelectedCoursesList');
+      if (selected.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-slate-50 border border-dashed border-slate-200 rounded-xl space-y-2">
+            <span class="material-symbols-outlined text-3xl text-slate-400">post_add</span>
+            <p class="text-xs font-semibold text-slate-700">Belum ada mata kuliah yang dipilih di form ini</p>
+            <p class="text-[11px] text-slate-500">Silakan pilih dari katalog atau klik rekomendasi di bawah.</p>
+            <button onclick="navigateToTab('katalog')" class="mt-2 px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-800 transition-colors">
+              Buka Katalog Penawaran
+            </button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = selected.map(c => `
+          <div class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 hover:border-emerald-300 hover:shadow-xs transition-all relative">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div class="space-y-3 flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200">${c.code}</span>
+                  <h3 class="font-heading font-bold text-slate-900 text-base">${c.name}</h3>
+                  <span class="px-2 py-0.5 rounded bg-[#003820] text-white text-xs font-semibold">${c.sks} SKS</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold">
+                    Nilai Lama: ${c.oldGrade} (${c.termOldGrade})
+                  </span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-slate-600 bg-slate-50/80 p-2.5 rounded-lg border border-slate-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">meeting_room</span>
+                    <span>Kelas: <strong class="text-slate-900 font-semibold">${c.classGroup}</strong></span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">schedule</span>
+                    <span>${c.schedule}</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 truncate">
+                    <span class="material-symbols-outlined text-slate-400 text-[18px]">person</span>
+                    <span class="truncate">${c.lecturer}</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-medium text-emerald-700 pt-0.5">
+                  <span class="material-symbols-outlined material-symbols-fill text-emerald-600 text-[16px]">check_circle</span>
+                  <span>Validasi Sistem: Memenuhi syarat perbaikan (Nilai Min. C/D/E) &amp; Bebas bentrok jadwal</span>
+                </div>
+              </div>
+              <div class="shrink-0 flex items-center md:items-start pt-1 border-t md:border-t-0 border-slate-100 justify-end">
+                <button type="button" onclick="removeCourseFromDraft('${c.code}')" class="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-rose-600 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200 rounded-lg transition-colors" title="Hapus mata kuliah ini">
+                  <span class="material-symbols-outlined text-[18px]">delete</span>
+                  <span>Hapus</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Hide recommended options if already added
+      const optionBdl = document.getElementById('option-bdl');
+      if (optionBdl) {
+        if (state.selectedCourseCodes.includes('TIF208')) {
+          optionBdl.classList.add('hidden');
+        } else {
+          optionBdl.classList.remove('hidden');
+        }
+      }
+      const optionJarkom = document.getElementById('option-jarkom');
+      if (optionJarkom) {
+        if (state.selectedCourseCodes.includes('TIF210')) {
+          optionJarkom.classList.add('hidden');
+        } else {
+          optionJarkom.classList.remove('hidden');
+        }
+      }
+    }
+
+    function confirmSubmitKrs() {
+      const selected = getSelectedCourses();
+      if (selected.length === 0) {
+        showToast('Draft Kosong', 'Silakan pilih minimal 1 mata kuliah perbaikan terlebih dahulu.', true);
+        return;
+      }
+      const agreement = document.getElementById('studentAgreement');
+      if (agreement && !agreement.checked) {
+        showToast('Persetujuan Diperlukan', 'Harap centang persetujuan kepatuhan regulasi akademik.', true);
+        return;
+      }
+
+      state.stage = 'menunggu_dpa';
+      state.submittedAt = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ', ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+      saveState();
+
+      if (window.ApiClient) {
+        window.ApiClient.submitKrs('1251420128', state.selectedCourseCodes, true).catch(() => {});
+      }
+
+      showToast('Pengajuan Berhasil!', 'KRS diteruskan secara resmi ke Dr. Dewi Khairani, M.Sc. untuk proses persetujuan.');
+      navigateToTab('tracking');
+    }
+
+    function saveDraftNotification() {
+      showToast('Draft Tersimpan', 'Daftar pilihan KRS tersimpan sementara di penyimpanan lokal browser Anda.');
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 3 (LIVE STATUS TRACKING)
+    // ---------------------------------------------------------
+    function renderTracking() {
+      const selected = getSelectedCourses();
+      const totalSks = getTotalSks();
+      const stage = state.stage;
+
+      // Status Badge mapping
+      const badgeEl = document.getElementById('trackingStatusBadge');
+      const textEl = document.getElementById('trackingStatusText');
+      const actionBtnContainer = document.getElementById('trackingPrimaryActionBtnContainer');
+      const paymentAlert = document.getElementById('trackingPaymentAlert');
+
+      // Update Stepper Nodes and Horizontal Bar
+      const steps = [
+        { id: '1', title: '1. Draft & Submit', sub: 'Selesai' },
+        { id: '2', title: '2. Verifikasi DPA', sub: 'Disetujui' },
+        { id: '3', title: '3. Kuota Prodi', sub: 'Lolos Kuota' },
+        { id: '4', title: '4. Pembayaran VA', sub: 'Sedang Berjalan' },
+        { id: '5', title: '5. Terdaftar Resmi', sub: 'Tahap Akhir' }
+      ];
+
+      let activeIndex = 1; // 1 to 5
+      if (stage === 'draft') activeIndex = 1;
+      else if (stage === 'menunggu_dpa') activeIndex = 2;
+      else if (stage === 'kuota_prodi') activeIndex = 3;
+      else if (stage === 'menunggu_bayar') activeIndex = 4;
+      else if (stage === 'terdaftar') activeIndex = 5;
+
+      const progressPct = ((activeIndex - 1) / 4) * 100;
+      document.getElementById('stepperProgressBar').style.width = `${progressPct}%`;
+      document.getElementById('stepProgressBadge').innerText = `Tahap ${activeIndex} dari 5 Aktif (${Math.round((activeIndex/5)*100)}% Selesai)`;
+
+      for (let i = 1; i <= 5; i++) {
+        const iconBox = document.getElementById(`step-icon-${i}`);
+        const subText = document.getElementById(`step-sub-${i}`);
+        const node = document.getElementById(`step-node-${i}`);
+
+        if (i < activeIndex) {
+          // Completed
+          iconBox.className = 'w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm ring-4 ring-white';
+          iconBox.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+          subText.className = 'text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-0.5';
+          subText.innerText = 'Selesai';
+          node.classList.remove('opacity-60');
+        } else if (i === activeIndex) {
+          // Current Active
+          iconBox.className = 'w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center shadow-lg ring-4 ring-amber-200 animate-bounce transition-transform';
+          iconBox.innerHTML = i === 5 ? '<span class="material-symbols-outlined text-[20px]">verified</span>' : '<span class="material-symbols-outlined text-[20px]">pending</span>';
+          subText.className = 'text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full mt-0.5 ring-1 ring-amber-300';
+          subText.innerText = 'Sedang Berjalan';
+          node.classList.remove('opacity-60');
+        } else {
+          // Upcoming
+          iconBox.className = 'w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs ring-4 ring-white';
+          iconBox.innerHTML = `${i}`;
+          subText.className = 'text-[11px] text-slate-400 mt-0.5';
+          subText.innerText = 'Tahap Selanjutnya';
+          node.classList.add('opacity-60');
+        }
+      }
+
+      // Configure Stage Card & Primary Action
+      const activeStageContainer = document.getElementById('trackingActiveStageDetails');
+
+      if (stage === 'draft') {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-800 border border-slate-300 font-semibold shadow-xs';
+        textEl.innerText = 'Draft Pengajuan Mandiri';
+        paymentAlert.classList.add('hidden');
+        actionBtnContainer.innerHTML = `
+          <button onclick="navigateToTab('pengajuan')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">send</span>
+            <span>Kirim Pengajuan KRS</span>
+          </button>
+        `;
+        activeStageContainer.innerHTML = `
+          <div class="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 sm:p-6">
+            <h3 class="font-bold text-base text-slate-900">Tahap 1: Pengisian Formulir &amp; Validasi Syarat</h3>
+            <p class="text-xs text-slate-600 mt-1">Berkas masih dalam status draf di komputer Anda. Silakan selesaikan pemilihan mata kuliah dan kirimkan pengajuan ke Dosen Pembimbing Akademik.</p>
+          </div>
+        `;
+      } else if (stage === 'menunggu_dpa') {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300 font-semibold shadow-xs';
+        textEl.innerText = 'Menunggu Persetujuan DPA';
+        paymentAlert.classList.add('hidden');
+        actionBtnContainer.innerHTML = `
+          <button onclick="navigateToTab('dpa')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">verified_user</span>
+            <span>Buka Portal DPA (Simulasi)</span>
+          </button>
+        `;
+        activeStageContainer.innerHTML = `
+          <div class="rounded-2xl bg-white border-2 border-amber-500 shadow-sm p-5 sm:p-6 relative">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-amber-600 text-3xl">hourglass_top</span>
+              <div>
+                <h3 class="font-bold text-base text-slate-900">Tahap 2: Menunggu Persetujuan Dr. Dewi Khairani, M.Sc.</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                  Berkas pengajuan KRS Anda sedang ditinjau oleh Dosen Pembimbing Akademik. Anda dapat beralih ke tab <strong>"Dasbor Review DPA"</strong> untuk menyimulasikan tindakan dosen pembimbing.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (stage === 'kuota_prodi') {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-300 font-semibold shadow-xs';
+        textEl.innerText = 'Verifikasi Kuota Prodi (Min. 10)';
+        paymentAlert.classList.add('hidden');
+        actionBtnContainer.innerHTML = `
+          <button onclick="navigateToTab('prodi')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-semibold text-xs transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">corporate_fare</span>
+            <span>Buka Dasbor Prodi (Simulasi)</span>
+          </button>
+        `;
+        activeStageContainer.innerHTML = `
+          <div class="rounded-2xl bg-white border-2 border-blue-500 shadow-sm p-5 sm:p-6">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-blue-600 text-3xl">groups</span>
+              <div>
+                <h3 class="font-bold text-base text-slate-900">Tahap 3: Verifikasi Ambang Batas Kuota Kelas oleh Prodi TI</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                  DPA telah menyetujui pengajuan Anda. Saat ini Program Studi sedang merekapitulasi apakah kuota minimal 10 mahasiswa per kelas terpenuhi. Buka tab <strong>"Monitoring Kuota Prodi"</strong> untuk melihat rekapitulasi.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (stage === 'menunggu_bayar') {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300 font-semibold shadow-xs';
+        textEl.innerText = 'Menunggu Pembayaran VA';
+        paymentAlert.classList.remove('hidden');
+        actionBtnContainer.innerHTML = `
+          <button onclick="navigateToTab('tagihan')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">payments</span>
+            <span>Bayar VA Sekarang</span>
+          </button>
+        `;
+        activeStageContainer.innerHTML = `
+          <div class="rounded-2xl bg-white border-2 border-emerald-600 shadow-md p-5 sm:p-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-bl-xl tracking-wide flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+              Tahap Berjalan Sekarang
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0 shadow-xs">
+                <span class="material-symbols-outlined text-[28px]">payments</span>
+              </div>
+              <div class="flex-grow space-y-3">
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">
+                    Tahap 4: Penerbitan Tagihan &amp; Pembayaran Virtual Account
+                  </h3>
+                  <p class="text-xs text-slate-500 mt-0.5 font-medium">
+                    Diterbitkan secara otomatis oleh Server Finansial UIN Jakarta pada <span class="text-slate-700">14 Juli 2026, 10:00 WIB</span>
+                  </p>
+                </div>
+                <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div class="space-y-1">
+                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                      Nomor Virtual Account (${state.selectedBank.toUpperCase()})
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="font-mono text-xl sm:text-2xl font-extrabold text-emerald-800 tracking-wider">
+                        ${state.vaNumber}
+                      </span>
+                      <button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:border-emerald-600 text-slate-700 hover:text-emerald-700 text-xs font-bold transition shadow-xs" onclick="copyVaText()" type="button">
+                        <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                        <span>Salin VA</span>
+                      </button>
+                    </div>
+                    <div class="text-xs text-slate-600 pt-0.5">
+                      Total Tagihan: <strong class="text-slate-900 font-bold text-sm">Rp ${(totalSks * COST_PER_SKS + ADMIN_FEE).toLocaleString('id-ID')},-</strong> <span class="text-slate-500 font-normal">(${totalSks} SKS @ Rp 150.000 + Biaya Admin)</span>
+                    </div>
+                  </div>
+                  <button onclick="navigateToTab('tagihan')" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white hover:bg-emerald-900 font-semibold text-xs transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-[18px]">account_balance</span>
+                    <span>Tata Cara Bayar</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (stage === 'terdaftar') {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold shadow-xs';
+        textEl.innerText = 'Terdaftar Resmi & Lunas';
+        paymentAlert.classList.add('hidden');
+        actionBtnContainer.innerHTML = `
+          <button onclick="openPrintKrsModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-all shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">badge</span>
+            <span>Cetak Kartu Studi SA (Resmi)</span>
+          </button>
+        `;
+        activeStageContainer.innerHTML = `
+          <div class="rounded-2xl bg-emerald-50 border-2 border-emerald-500 shadow-sm p-5 sm:p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <span class="material-symbols-outlined text-3xl">verified</span>
+              </div>
+              <div class="space-y-1">
+                <h3 class="text-base font-bold text-emerald-950">
+                  Selamat! Anda Telah Sah Terdaftar pada Semester Antara 2025/2026
+                </h3>
+                <p class="text-xs text-emerald-900/90 leading-relaxed">
+                  Pembayaran Virtual Account Anda telah terverifikasi lunas. Kursi kelas perkuliahan telah diamankan dan data telah disinkronisasikan ke Pangkalan Data Akademik FST UIN Syarif Hidayatullah Jakarta.
+                </p>
+                <div class="pt-2">
+                  <button onclick="openPrintKrsModal()" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-white border border-emerald-300 px-3.5 py-1.5 rounded-lg hover:bg-emerald-50 shadow-2xs">
+                    <span class="material-symbols-outlined text-base">print</span>
+                    Unduh Kartu Rencana Studi (KRS) Resmi
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Quota summary box in tracking
+      const quotaContainer = document.getElementById('trackingQuotaClassSummary');
+      quotaContainer.innerHTML = selected.map(c => `
+        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
+          <div>
+            <div class="font-bold text-slate-800">${c.name} (Kelas ${c.classGroup})</div>
+            <div class="text-[11px] text-slate-500">Kapasitas: ${c.enrolled} / ${c.capacity} Pendaftar</div>
+          </div>
+          <div class="text-right">
+            <span class="inline-flex items-center gap-1 font-bold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded text-[11px]">
+              <span class="material-symbols-outlined text-[14px]">check</span> Siap Dibuka
+            </span>
+          </div>
+        </div>
+      `).join('');
+
+      // Course Table in tracking
+      const tableBody = document.getElementById('trackingCourseTableBody');
+      tableBody.innerHTML = selected.map(c => `
+        <tr class="hover:bg-slate-50/70 transition-colors">
+          <td class="py-3 px-3">
+            <div class="font-bold text-slate-900 text-sm">${c.name}</div>
+            <div class="text-slate-500 font-mono text-[11px]">${c.code} &bull; Kelas ${c.classGroup}</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">${c.room}</div>
+          </td>
+          <td class="py-3 px-2 text-center font-bold text-slate-800 font-mono">
+            ${c.sks}
+          </td>
+          <td class="py-3 px-3">
+            <div class="font-medium text-slate-800">${c.lecturer}</div>
+            <div class="text-slate-400 text-[10px] font-mono">NIP. ${c.nip}</div>
+          </td>
+          <td class="py-3 px-3 text-right font-bold text-slate-900 font-mono">
+            ${(c.sks * COST_PER_SKS).toLocaleString('id-ID')}
+          </td>
+        </tr>
+      `).join('');
+
+      // Audit Log List
+      const auditLog = document.getElementById('trackingAuditLogList');
+      auditLog.innerHTML = `
+        ${stage === 'terdaftar' ? `
+          <div class="relative">
+            <span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white ring-2 ring-emerald-100"></span>
+            <div class="text-xs">
+              <div class="font-bold text-slate-900">Pembayaran Berhasil Diverifikasi Gateway</div>
+              <p class="text-slate-600 mt-0.5">Transaksi mutasi virtual account lunas. Status mahasiswa menjadi Terdaftar Resmi.</p>
+              <div class="text-[11px] text-slate-400 font-mono mt-1">${state.paidAt || '15 Jul 2026 • 11:00:21 WIB'}</div>
+            </div>
+          </div>
+        ` : ''}
+        ${activeIndex >= 4 ? `
+          <div class="relative">
+            <span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white ring-2 ring-emerald-100"></span>
+            <div class="text-xs">
+              <div class="font-bold text-slate-900">Tagihan Virtual Account Terbit</div>
+              <p class="text-slate-600 mt-0.5">Sistem keuangan FST mengunci nominal Rp ${(totalSks * COST_PER_SKS + ADMIN_FEE).toLocaleString('id-ID')} pada VA ${state.vaNumber}.</p>
+              <div class="text-[11px] text-slate-400 font-mono mt-1">14 Jul 2026 • 10:00:10 WIB</div>
+            </div>
+          </div>
+        ` : ''}
+        ${activeIndex >= 3 ? `
+          <div class="relative">
+            <span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white ring-2 ring-emerald-100"></span>
+            <div class="text-xs">
+              <div class="font-bold text-slate-900">Validasi Kuota Prodi Selesai</div>
+              <p class="text-slate-600 mt-0.5">Admin Prodi TI mengunci kelas ${selected.map(c => c.code).join(', ')} ke status Aktif (min. 10 mhs terpenuhi).</p>
+              <div class="text-[11px] text-slate-400 font-mono mt-1">14 Jul 2026 • 09:30:45 WIB</div>
+            </div>
+          </div>
+        ` : ''}
+        ${activeIndex >= 2 ? `
+          <div class="relative">
+            <span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white ring-2 ring-emerald-100"></span>
+            <div class="text-xs">
+              <div class="font-bold text-slate-900">Disetujui Dosen Penasihat Akademik</div>
+              <p class="text-slate-600 mt-0.5">Dr. Dewi Khairani, M.Sc. menyetujui KRS melalui portal e-Advisor FST.</p>
+              <div class="text-[11px] text-slate-400 font-mono mt-1">13 Jul 2026 • 14:20:03 WIB</div>
+            </div>
+          </div>
+        ` : ''}
+        <div class="relative">
+          <span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-emerald-600 border-2 border-white ring-2 ring-emerald-100"></span>
+          <div class="text-xs">
+            <div class="font-bold text-slate-900">KRS Diajukan oleh Mahasiswa</div>
+            <p class="text-slate-600 mt-0.5">Submit mandiri oleh Danuardi Saputro paket ${selected.length} mata kuliah (${totalSks} SKS).</p>
+            <div class="text-[11px] text-slate-400 font-mono mt-1">${state.submittedAt}</div>
+          </div>
+        </div>
+      `;
+
+      // DPA Notes Content
+      document.getElementById('trackingDpaNoteContent').innerHTML = `
+        <span class="material-symbols-outlined text-slate-300 text-2xl absolute right-2 bottom-1 select-none pointer-events-none">format_quote</span>
+        ${state.dpaNotes}
+      `;
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 4 (TAGIHAN & VIRTUAL ACCOUNT)
+    // ---------------------------------------------------------
+    function renderTagihan() {
+      const selected = getSelectedCourses();
+      const totalSks = getTotalSks();
+      const subtotal = totalSks * COST_PER_SKS;
+      const totalObligation = subtotal + ADMIN_FEE;
+
+      const headerBanner = document.getElementById('tagihanHeaderBanner');
+      if (state.stage === 'terdaftar') {
+        headerBanner.className = 'relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-50 via-emerald-100/60 to-emerald-50 border border-emerald-300 shadow-sm p-6 lg:p-7';
+        headerBanner.innerHTML = `
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-13 h-13 p-3.5 rounded-xl bg-white text-emerald-700 shadow-sm border border-emerald-200 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[32px] material-symbols-fill">check_circle</span>
+              </div>
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-200 text-emerald-900 border border-emerald-300">
+                    Status: Lunas &bull; Terverifikasi
+                  </span>
+                </div>
+                <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Kewajiban Pembayaran Telah Diselesaikan</h1>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+                  Terima kasih, tagihan registrasi Semester Antara Anda telah lunas melalui Virtual Account. Anda berhak mengikuti perkuliahan sesuai jadwal.
+                </p>
+              </div>
+            </div>
+            <div class="bg-white/95 border border-emerald-300 rounded-xl px-5 py-4 shadow-sm text-right shrink-0">
+              <span class="text-xs font-semibold text-emerald-800 block">Status Administrasi</span>
+              <span class="text-xl font-extrabold text-emerald-700 font-mono">LUNAS (PAID)</span>
+            </div>
+          </div>
+        `;
+      } else {
+        headerBanner.className = 'relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-50 via-amber-50/70 to-emerald-50 border border-amber-200/80 shadow-sm p-6 lg:p-7';
+        headerBanner.innerHTML = `
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="w-13 h-13 p-3.5 rounded-xl bg-white text-amber-600 shadow-sm border border-amber-200/60 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[30px] material-symbols-fill">hourglass_top</span>
+              </div>
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-amber-100 text-amber-800 border border-amber-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5 animate-ping"></span>
+                    Status: Menunggu Pembayaran
+                  </span>
+                  <span class="text-xs font-semibold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded border border-emerald-200">Invoice Aktif</span>
+                </div>
+                <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Menunggu Pembayaran Perbankan</h1>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+                  Silakan selesaikan pembayaran tagihan registrasi SKS Semester Antara sebelum batas waktu berakhir agar alokasi kuota mata kuliah Anda tidak dibatalkan otomatis oleh sistem.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between bg-white/90 border border-amber-200 rounded-xl px-5 py-4 shadow-sm min-w-[260px]">
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-amber-800 mb-1">
+                <span class="material-symbols-outlined text-[16px] text-amber-600">timer</span>
+                <span>Sisa Waktu Pembayaran</span>
+              </div>
+              <div class="text-2xl font-extrabold text-rose-600 tracking-tight font-mono py-0.5" id="tagihanCountdownDisplay">
+                02 Hari 14 Jam 35 Menit
+              </div>
+              <div class="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
+                <span>Jatuh Tempo: <strong class="text-slate-700">17 Juli 2026, 23:59 WIB</strong></span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Invoice Items Table
+      const itemsBody = document.getElementById('tagihanItemsTableBody');
+      let itemRows = selected.map((c, idx) => `
+        <tr class="hover:bg-slate-50/60 transition-colors">
+          <td class="py-3.5 px-4 text-center text-slate-400 font-semibold">${String(idx + 1).padStart(2, '0')}</td>
+          <td class="py-3.5 px-4">
+            <div class="text-xs font-bold text-slate-900">${c.name}</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">Kode: <span class="font-mono">${c.code}</span> &bull; Kelas ${c.classGroup} (${c.sks} SKS)</div>
+          </td>
+          <td class="py-3.5 px-4 text-center font-medium text-slate-600 whitespace-nowrap">
+            ${c.sks} SKS &times; Rp 150.000
+          </td>
+          <td class="py-3.5 px-4 text-right font-bold text-slate-900 font-mono">
+            Rp ${(c.sks * COST_PER_SKS).toLocaleString('id-ID')}
+          </td>
+        </tr>
+      `).join('');
+
+      itemRows += `
+        <tr class="hover:bg-slate-50/60 transition-colors bg-slate-50/30">
+          <td class="py-3.5 px-4 text-center text-slate-400 font-semibold">${String(selected.length + 1).padStart(2, '0')}</td>
+          <td class="py-3.5 px-4">
+            <div class="text-xs font-bold text-slate-900">Biaya Administrasi &amp; Registrasi Sistem</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">Pemeliharaan Server &amp; Pengelolaan SIA FST</div>
+          </td>
+          <td class="py-3.5 px-4 text-center font-medium text-slate-600 whitespace-nowrap">
+            Biaya Tetap
+          </td>
+          <td class="py-3.5 px-4 text-right font-bold text-slate-900 font-mono">
+            Rp 50.000
+          </td>
+        </tr>
+      `;
+      itemsBody.innerHTML = itemRows;
+
+      // Summary amounts
+      document.getElementById('tagihanSubtotalLabel').innerText = `Subtotal Tagihan Mata Kuliah (${totalSks} SKS)`;
+      document.getElementById('tagihanSubtotalAmount').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+      document.getElementById('tagihanTotalAmount').innerText = 'Rp ' + totalObligation.toLocaleString('id-ID');
+      document.getElementById('vaTotalTransferExact').innerText = 'Rp ' + totalObligation.toLocaleString('id-ID');
+
+      // VA number & bank display
+      document.getElementById('vaNumberDisplay').innerText = state.vaNumber;
+      document.getElementById('guideVa1').innerText = state.vaNumber;
+      if (state.selectedBank === 'bsi') {
+        document.getElementById('vaAccountName').innerText = 'BSI VA - SIA SA DANUARDI S';
+      } else {
+        document.getElementById('vaAccountName').innerText = 'MANDIRI VA - SIA SA DANUARDI S';
+      }
+
+      // Action button text
+      const btnBayar = document.getElementById('btnBayarSekarang');
+      if (btnBayar) {
+        if (state.stage === 'terdaftar') {
+          btnBayar.innerHTML = `<span class="material-symbols-outlined text-[18px]">verified</span> <span>Sudah Lunas Terbayar</span>`;
+          btnBayar.classList.remove('bg-emerald-700', 'hover:bg-emerald-800');
+          btnBayar.classList.add('bg-slate-300', 'text-slate-600', 'cursor-not-allowed');
+          btnBayar.disabled = true;
+        } else {
+          btnBayar.innerHTML = `<span class="material-symbols-outlined text-[18px]">bolt</span> <span>⚡ Simulasi Pembayaran Instan (Lunas)</span>`;
+          btnBayar.classList.remove('bg-slate-300', 'text-slate-600', 'cursor-not-allowed');
+          btnBayar.classList.add('bg-emerald-700', 'hover:bg-emerald-800');
+          btnBayar.disabled = false;
+        }
+      }
+
+      // Legend in mini-chart
+      document.getElementById('tagihanAlokasiSksBadge').innerText = `Total ${totalSks} SKS Terdaftar`;
+      const legend = document.getElementById('tagihanAlokasiLegend');
+      legend.innerHTML = selected.map(c => `
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-bold text-slate-700">${c.code}</span>
+            <span class="text-[11px] font-semibold text-slate-500 font-mono">${Math.round(((c.sks * COST_PER_SKS)/totalObligation)*100)}%</span>
+          </div>
+          <div class="text-xs text-slate-500 truncate">${c.name}</div>
+          <div class="text-sm font-bold text-slate-900 font-mono mt-1">Rp ${(c.sks * COST_PER_SKS).toLocaleString('id-ID')}</div>
+        </div>
+      `).join('') + `
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/60 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-bold text-slate-700">Admin</span>
+            <span class="text-[11px] font-semibold text-slate-500 font-mono">5.2%</span>
+          </div>
+          <div class="text-xs text-slate-500 truncate">Layanan IT FST</div>
+          <div class="text-sm font-bold text-slate-900 font-mono mt-1">Rp 50.000</div>
+        </div>
+      `;
+    }
+
+    function selectBank(bank) {
+      state.selectedBank = bank;
+      if (bank === 'bsi') {
+        state.vaNumber = '9881251420128042';
+      } else {
+        state.vaNumber = '8808125142012801';
+      }
+
+      document.querySelectorAll('.bank-choice').forEach(btn => {
+        if (btn.getAttribute('data-bank') === bank) {
+          btn.className = 'bank-choice border-2 border-emerald-700 bg-emerald-50/50 rounded-xl p-3 flex flex-col items-center text-center transition-all focus:outline-none';
+        } else {
+          btn.className = 'bank-choice border border-slate-200 hover:border-slate-300 bg-white rounded-xl p-3 flex flex-col items-center text-center transition-all focus:outline-none';
+        }
+      });
+
+      saveState();
+      showToast('Bank Mitra Terpilih', `Virtual Account dialihkan ke ${bank.toUpperCase()}`);
+    }
+
+    function copyVaText() {
+      navigator.clipboard.writeText(state.vaNumber).then(() => {
+        const copyLabel = document.getElementById('copyBtnLabel');
+        const copyIcon = document.getElementById('copyBtnIcon');
+        if (copyLabel) copyLabel.innerText = 'Tersalin!';
+        if (copyIcon) copyIcon.innerText = 'check';
+
+        showToast('Nomor VA Disalin', `${state.vaNumber} berhasil disalin ke papan klip.`);
+        setTimeout(() => {
+          if (copyLabel) copyLabel.innerText = 'Salin';
+          if (copyIcon) copyIcon.innerText = 'content_copy';
+        }, 2000);
+      });
+    }
+
+    function simulateImmediatePayment() {
+      state.stage = 'terdaftar';
+      state.isPaid = true;
+      state.paidAt = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+      saveState();
+
+      if (window.ApiClient) {
+        window.ApiClient.simulatePayment('1251420128').catch(() => {});
+      }
+
+      showToast('Pembayaran Berhasil Diverifikasi!', 'Selamat! Status Anda kini "Terdaftar Resmi". Anda dapat mencetak Kartu Studi.');
+      navigateToTab('tracking');
+    }
+
+    function checkStatusRealtimeMock() {
+      const syncBtn = document.getElementById('checkStatusBtn');
+      const icon = document.getElementById('btnIconSync');
+      const text = document.getElementById('btnTextSync');
+
+      icon.classList.add('animate-spin');
+      text.innerText = 'Menghubungkan ke Gateway Perbankan...';
+      syncBtn.disabled = true;
+
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+        syncBtn.disabled = false;
+        text.innerText = 'Cek Status Pembayaran Otomatis';
+
+        if (state.stage === 'terdaftar') {
+          showToast('Status Pembayaran: LUNAS', 'Bank menyatakan dana Virtual Account telah diterima dan terverifikasi.');
+        } else {
+          showToast('Belum Ada Mutasi', 'Server Bank belum menerima pembayaran untuk VA ini. Gunakan tombol "Simulasi Pembayaran Instan" untuk simulasi.', true);
+        }
+      }, 1200);
+    }
+
+    function toggleAccordion(id) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 5 (DASBOR REVIEW DPA)
+    // ---------------------------------------------------------
+    function renderDpa() {
+      const selected = getSelectedCourses();
+      const statusBadge = document.getElementById('dpaSheetStatusBadge');
+      const notesInput = document.getElementById('dpaFeedbackNotes');
+      notesInput.value = state.dpaNotes || '';
+
+      if (state.stage === 'menunggu_dpa') {
+        statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        statusBadge.innerText = 'Menunggu Tindakan DPA';
+      } else if (state.stage === 'draft') {
+        statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-300';
+        statusBadge.innerText = 'Mahasiswa Masih Menyusun Draft';
+      } else {
+        statusBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        statusBadge.innerText = 'Telah Disetujui DPA';
+      }
+
+      const tableBody = document.getElementById('dpaCourseVerifyList');
+      tableBody.innerHTML = selected.map(c => `
+        <tr class="hover:bg-slate-50 transition-colors">
+          <td class="py-3 px-3">
+            <strong class="text-slate-900 block">${c.name}</strong>
+            <span class="text-slate-500 font-mono text-[11px]">${c.code}</span>
+          </td>
+          <td class="py-3 px-2 text-center font-bold font-mono text-slate-800">${c.sks} SKS</td>
+          <td class="py-3 px-3 text-center">
+            <span class="px-2 py-0.5 rounded font-bold font-mono ${c.oldGrade === 'D' || c.oldGrade === 'E' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-800'}">
+              ${c.oldGrade}
+            </span>
+            <span class="text-[10px] text-slate-400 block mt-0.5">${c.termOldGrade}</span>
+          </td>
+          <td class="py-3 px-3 text-center">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              <span class="material-symbols-outlined text-xs">verified</span>
+              Layak Perbaikan
+            </span>
+          </td>
+          <td class="py-3 px-3 text-slate-700">
+            ${c.lecturer}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function dpaApproveAction() {
+      const note = document.getElementById('dpaFeedbackNotes').value.trim();
+      state.dpaNotes = note || '“Disetujui. Silakan lanjutkan ke pemenuhan kuota prodi dan pembayaran administrasi.”';
+      state.stage = 'kuota_prodi';
+      state.dpaApprovedAt = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+      saveState();
+
+      if (window.ApiClient) {
+        window.ApiClient.approveDpa('REQ-SA-2026-0842', state.dpaNotes).catch(() => {});
+      }
+
+      showToast('Persetujuan Berhasil', 'KRS mahasiswa bimbingan telah disetujui. Berkas diteruskan ke Program Studi.');
+      navigateToTab('tracking');
+    }
+
+    function dpaRejectAction() {
+      const note = document.getElementById('dpaFeedbackNotes').value.trim();
+      state.dpaNotes = note || '“Mohon perbaiki pilihan mata kuliah. Sesuaikan dengan rekomendasi perbaikan prioritas.”';
+      state.stage = 'draft';
+      saveState();
+
+      if (window.ApiClient) {
+        window.ApiClient.rejectDpa('REQ-SA-2026-0842', state.dpaNotes).catch(() => {});
+      }
+
+      showToast('Berkas Dikembalikan', 'Catatan revisi telah dikirimkan ke mahasiswa pemohon.', true);
+      navigateToTab('tracking');
+    }
+
+    // ---------------------------------------------------------
+    // RENDERING: TAB 6 (MONITORING KUOTA PRODI)
+    // ---------------------------------------------------------
+    function renderProdi() {
+      const tableBody = document.getElementById('prodiQuotaTableBody');
+      tableBody.innerHTML = ALL_COURSES.map(c => {
+        const isEligible = c.enrolled >= 10;
+        const pct = Math.min(100, Math.round((c.enrolled / c.capacity) * 100));
+
+        return `
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="py-3 px-3">
+              <div class="font-bold text-slate-900">${c.name}</div>
+              <div class="text-[11px] text-slate-500 font-mono">${c.code} &bull; Kelas ${c.classGroup} &bull; Dosen: ${c.lecturer}</div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <span class="font-mono font-bold text-sm text-slate-900">${c.enrolled}</span>
+              <span class="text-slate-400 text-xs">/ ${c.capacity}</span>
+            </td>
+            <td class="py-3 px-3">
+              <div class="w-36 bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="${isEligible ? 'bg-emerald-600' : 'bg-amber-500'} h-full rounded-full" style="width: ${pct}%"></div>
+              </div>
+              <span class="text-[10px] text-slate-500 font-mono mt-0.5 block">${pct}% Kuota</span>
+            </td>
+            <td class="py-3 px-3 text-center">
+              ${isEligible ? `
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  Lolos Kuota (≥ 10)
+                </span>
+              ` : `
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                  Kurang ${10 - c.enrolled} Mahasiswa
+                </span>
+              `}
+            </td>
+            <td class="py-3 px-3 text-right">
+              ${isEligible ? `
+                <button onclick="prodiConfirmSingle('${c.code}')" class="px-3 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs transition-colors">
+                  Buka Kelas
+                </button>
+              ` : `
+                <button onclick="prodiPolicyException('${c.code}')" class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs transition-colors">
+                  Dispensasi Khusus
+                </button>
+              `}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function prodiConfirmSingle(code) {
+      if (state.stage === 'kuota_prodi') {
+        state.stage = 'menunggu_bayar';
+        saveState();
+        showToast('Kelas Ditetapkan', 'Kelas resmi dibuka. Sistem menerbitkan tagihan Virtual Account untuk seluruh pendaftar.');
+        navigateToTab('tracking');
+      } else {
+        showToast('Status Terkunci', 'Kelas ini telah memenuhi syarat dan dijadwalkan di semester antara.');
+      }
+    }
+
+    function prodiPolicyException(code) {
+      showToast('Kebijakan Prodi', 'Dispensasi pembukaan kelas dengan kuota khusus telah dicatat.');
+    }
+
+    function prodiBulkConfirmAll() {
+      state.stage = 'menunggu_bayar';
+      saveState();
+      showToast('Seluruh Kelas Definitif Terkonfirmasi', 'Prodi TI FST mengonfirmasi kelas yang memenuhi kuota. Tagihan VA diterbitkan otomatis.');
+      navigateToTab('tracking');
+    }
+
+    // ---------------------------------------------------------
+    // MASTER VIEW RENDERER
+    // ---------------------------------------------------------
+    function renderAllViews() {
+      renderKatalog();
+      renderPengajuan();
+      renderTracking();
+      renderTagihan();
+      renderDpa();
+      renderProdi();
+
+      // Top nav badges
+      const selected = getSelectedCourses();
+      const cartBadge = document.getElementById('navCartBadge');
+      if (cartBadge) {
+        cartBadge.innerText = selected.length;
+        if (selected.length > 0) cartBadge.classList.remove('hidden');
+        else cartBadge.classList.add('hidden');
+      }
+    }
+
+    // ---------------------------------------------------------
+    // MODAL HANDLERS
+    // ---------------------------------------------------------
+    function openSyllabusModal(code) {
+      const c = ALL_COURSES.find(item => item.code === code);
+      if (!c) return;
+
+      document.getElementById('modalCourseCode').innerText = c.code;
+      document.getElementById('modalCourseName').innerText = c.name;
+      document.getElementById('modalLecturer').innerText = c.lecturer;
+      document.getElementById('modalSks').innerText = `${c.sks} SKS`;
+      document.getElementById('modalQuota').innerText = `${c.enrolled}/${c.capacity} Mahasiswa`;
+
+      const cpmkList = document.getElementById('modalCpmkList');
+      cpmkList.innerHTML = c.cpmk.map(item => `<li>${item}</li>`).join('');
+
+      const addBtn = document.getElementById('modalAddBtn');
+      addBtn.onclick = function() {
+        addCourseToDraft(c.code);
+        closeSyllabusModal();
+      };
+
+      document.getElementById('syllabusModal').classList.remove('hidden');
+    }
+
+    function closeSyllabusModal() {
+      document.getElementById('syllabusModal').classList.add('hidden');
+    }
+
+    function openPrintKrsModal() {
+      const selected = getSelectedCourses();
+      const printTable = document.getElementById('printKrsTableBody');
+      printTable.innerHTML = selected.map((c, idx) => `
+        <tr class="border-b border-slate-200">
+          <td class="p-2 border-r border-slate-300 text-center font-mono">${idx + 1}</td>
+          <td class="p-2 border-r border-slate-300">
+            <strong>${c.name}</strong><br/>
+            <span class="font-mono text-slate-500">${c.code}</span>
+          </td>
+          <td class="p-2 border-r border-slate-300 text-center font-mono font-bold">${c.sks}</td>
+          <td class="p-2 border-r border-slate-300">
+            Kelas ${c.classGroup} &bull; ${c.schedule}<br/>
+            <span class="text-slate-500">${c.room}</span>
+          </td>
+          <td class="p-2">${c.lecturer}</td>
+        </tr>
+      `).join('') + `
+        <tr class="font-bold bg-slate-50">
+          <td colspan="2" class="p-2 border-r border-slate-300 text-right">TOTAL BEBAN SKS:</td>
+          <td class="p-2 border-r border-slate-300 text-center font-mono">${getTotalSks()}</td>
+          <td colspan="2" class="p-2 font-mono">STATUS: ${state.stage === 'terdaftar' ? 'LUNAS & TERDAFTAR RESMI' : 'MENUNGGU FINALISASI'}</td>
+        </tr>
+      `;
+
+      document.getElementById('printKrsModal').classList.remove('hidden');
+    }
+
+    function closePrintKrsModal() {
+      document.getElementById('printKrsModal').classList.add('hidden');
+    }
+
+    function openPrintInvoiceModal() {
+      window.print();
+    }
+
+    function showProfileModal() {
+      showToast('Profil Mahasiswa', 'Danuardi Saputro • NIM 1251420128 • Semester 4 Teknik Informatika FST.');
+    }
+
+    function showHelpModal() {
+      showToast('Pusat Bantuan SIA-SA', 'Alur pengajuan: 1. Katalog > 2. Pengajuan KRS > 3. Approval DPA > 4. Verifikasi Kuota Prodi > 5. Bayar VA.');
+    }
+
+    // ---------------------------------------------------------
+    // ROLE SWITCHER LOGIC (Tugas 2 Stakeholders)
+    // ---------------------------------------------------------
+    function toggleRoleDropdown() {
+      const menu = document.getElementById('roleDropdownMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function setRole(role) {
+      state.role = role;
+      document.getElementById('roleDropdownMenu').classList.add('hidden');
+
+      const icon = document.getElementById('currentRoleIcon');
+      const label = document.getElementById('currentRoleLabel');
+
+      document.getElementById('check-role-mahasiswa').classList.add('hidden');
+      document.getElementById('check-role-dpa').classList.add('hidden');
+      document.getElementById('check-role-prodi').classList.add('hidden');
+
+      if (role === 'mahasiswa') {
+        icon.innerText = 'person';
+        label.innerText = 'Peran: Mahasiswa';
+        document.getElementById('check-role-mahasiswa').classList.remove('hidden');
+        showToast('Peran Mahasiswa Aktif', 'Mode antarmuka Danuardi Saputro (1251420128).');
+        navigateToTab('katalog');
+      } else if (role === 'dpa') {
+        icon.innerText = 'verified_user';
+        label.innerText = 'Peran: DPA (Dosen)';
+        document.getElementById('check-role-dpa').classList.remove('hidden');
+        showToast('Peran Dosen PA Aktif', 'Mode antarmuka Dr. Dewi Khairani, M.Sc.');
+        navigateToTab('dpa');
+      } else if (role === 'prodi') {
+        icon.innerText = 'corporate_fare';
+        label.innerText = 'Peran: Pengelola Prodi';
+        document.getElementById('check-role-prodi').classList.remove('hidden');
+        showToast('Peran Program Studi Aktif', 'Mode antarmuka Administrator Prodi TI FST.');
+        navigateToTab('prodi');
+      }
+    }
+
+    function toggleNotifPopover() {
+      const popover = document.getElementById('notifPopover');
+      popover.classList.toggle('hidden');
+    }
+
+    function toggleDemoMenu() {
+      const menu = document.getElementById('demoMenuPopover');
+      menu.classList.toggle('hidden');
+    }
+
+    function demoSetStage(stageName) {
+      state.stage = stageName;
+      if (stageName === 'terdaftar') state.isPaid = true;
+      else state.isPaid = false;
+
+      saveState();
+      document.getElementById('demoMenuPopover').classList.add('hidden');
+
+      if (stageName === 'draft') navigateToTab('pengajuan');
+      else if (stageName === 'menunggu_dpa') navigateToTab('dpa');
+      else if (stageName === 'kuota_prodi') navigateToTab('prodi');
+      else if (stageName === 'menunggu_bayar') navigateToTab('tagihan');
+      else if (stageName === 'terdaftar') navigateToTab('tracking');
+
+      showToast('Simulasi Tahap Berpindah', `Tahap alur aktif sekarang: ${stageName.toUpperCase()}`);
+    }
+
+    // ---------------------------------------------------------
+    // EVENT LISTENERS & FILTER TRIGGERS
+    // ---------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      // Setup Search & Filter triggers
+      const searchInput = document.getElementById('courseSearchInput');
+      if (searchInput) searchInput.addEventListener('input', renderKatalog);
+      const filterProdi = document.getElementById('filterProdi');
+      if (filterProdi) filterProdi.addEventListener('change', renderKatalog);
+      const filterSemester = document.getElementById('filterSemester');
+      if (filterSemester) filterSemester.addEventListener('change', renderKatalog);
+
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+          document.querySelectorAll('.filter-pill').forEach(p => {
+            p.classList.remove('active-pill', 'bg-primary', 'text-white', 'shadow-xs');
+            p.classList.add('text-text-secondary');
+          });
+          this.classList.add('active-pill', 'bg-primary', 'text-white', 'shadow-xs');
+          this.classList.remove('text-text-secondary');
+          renderKatalog();
+        });
+      });
+
+      // Global click outside popovers
+      document.addEventListener('click', (e) => {
+        const roleBtn = document.getElementById('roleDropdownBtn');
+        const roleMenu = document.getElementById('roleDropdownMenu');
+        if (roleBtn && roleMenu && !roleBtn.contains(e.target) && !roleMenu.contains(e.target)) {
+          roleMenu.classList.add('hidden');
+        }
+
+        const notifBtn = document.getElementById('notifBtn');
+        const notifPopover = document.getElementById('notifPopover');
+        if (notifBtn && notifPopover && !notifBtn.contains(e.target) && !notifPopover.contains(e.target)) {
+          notifPopover.classList.add('hidden');
+        }
+
+        const syllabusModal = document.getElementById('syllabusModal');
+        if (syllabusModal && e.target === syllabusModal) {
+          closeSyllabusModal();
+        }
+
+        const printKrsModal = document.getElementById('printKrsModal');
+        if (printKrsModal && e.target === printKrsModal) {
+          closePrintKrsModal();
+        }
+      });
+
+      // Realtime countdown timer ticker
+      setInterval(() => {
+        const secsEl = document.getElementById('trackingTimerSecs');
+        if (secsEl) {
+          let s = parseInt(secsEl.innerText) || 18;
+          s = s <= 0 ? 59 : s - 1;
+          secsEl.innerText = String(s).padStart(2, '0');
+        }
+      }, 1000);
+
+      // Initialize route & render
+      updateActiveTabUI(getActiveTab());
+      renderAllViews();
+    });
+  </script>
+</body>
+</html>
