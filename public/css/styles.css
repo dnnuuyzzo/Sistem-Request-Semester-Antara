@@ -1,11 +1,20 @@
-/* SIA-SA FST Custom Styles */
+/* SIA-SA FST Clean & Sharp Boxy Theme */
+/* User requirement: Tidak ada sudut membulat (no rounded corners), UI bersih, minim teks berlebih */
+
 @layer base {
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
   }
   h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
+}
+
+/* ENFORCE ZERO ROUNDED CORNERS GLOBALLY */
+*, *::before, *::after {
+  border-radius: 0px !important;
 }
 
 .material-symbols-outlined {
@@ -25,28 +34,34 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Custom Webkit Scrollbars */
+/* Crisp Sharp Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
+  background: #94A3B8;
+  border-radius: 0px !important;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #F1F5F9;
 }
 
-/* Single Page App Tab Transition */
+/* Tab Switching */
 .tab-content {
   display: none;
   opacity: 0;
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
 }
 .tab-content.active {
   display: block;
   opacity: 1;
+}
+
+/* Sharp Focus States */
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: 2px solid #003820 !important;
+  outline-offset: 1px;
 }
 
 /* Print Area Formatting */
@@ -63,7 +78,7 @@
     top: 0;
     width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 24px;
     background: white !important;
   }
   .no-print {
