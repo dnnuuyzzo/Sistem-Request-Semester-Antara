@@ -1,0 +1,25 @@
+{
+  "name": "sistem-request-semester-antara",
+  "version": "1.0.0",
+  "description": "SIA-SA FST - Sistem Request Semester Antara Terpusat pada Sistem Informasi Akademik Fakultas Sains dan Teknologi UIN Syarif Hidayatullah Jakarta",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/api.test.js"
+  },
+  "keywords": [
+    "semester-antara",
+    "sia-sa-fst",
+    "rekayasa-perangkat-lunak",
+    "uin-jakarta",
+    "express",
+    "modular-architecture"
+  ],
+  "author": "Danuardi Saputro (NIM: 1251420128)",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
