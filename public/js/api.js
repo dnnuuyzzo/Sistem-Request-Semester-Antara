@@ -85,7 +85,7 @@ const ApiClient = {
     });
   },
 
-  // Prodi Quota
+  // Prodi Quota & Class Management
   async getQuotaSummary() {
     return this.request('/prodi/quota-summary');
   },
@@ -93,6 +93,26 @@ const ApiClient = {
   async confirmClasses() {
     return this.request('/prodi/confirm-classes', {
       method: 'POST'
+    });
+  },
+
+  async openClass(courseCode) {
+    return this.request(`/prodi/courses/${courseCode}/open`, {
+      method: 'POST'
+    });
+  },
+
+  async closeClass(courseCode, reason = '') {
+    return this.request(`/prodi/courses/${courseCode}/close`, {
+      method: 'POST',
+      body: JSON.stringify({ reason })
+    });
+  },
+
+  async updateCourse(courseCode, updates = {}) {
+    return this.request(`/prodi/courses/${courseCode}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates)
     });
   },
 

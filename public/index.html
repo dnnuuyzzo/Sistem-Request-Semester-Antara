@@ -83,7 +83,7 @@
             </button>
             <div id="roleDropdownMenu" class="hidden absolute right-0 mt-1 w-60 bg-white text-slate-800 border-2 border-slate-900 shadow-lg py-1 z-50 text-xs">
               <div class="px-3 py-1.5 bg-slate-100 border-b border-slate-200 font-bold text-slate-600 text-[11px] uppercase tracking-wider">
-                Ganti Tampilan Peran
+                Ganti Peran Akses
               </div>
               <button onclick="setRole('mahasiswa')" class="w-full text-left px-3 py-2 hover:bg-emerald-50 flex items-center justify-between text-slate-800 border-b border-slate-100">
                 <div>
@@ -110,46 +110,56 @@
           </div>
 
           <!-- User Card Box -->
-          <div class="hidden md:flex items-center gap-2.5 px-3 py-1.5 bg-emerald-950/70 border border-emerald-800 text-xs">
-            <div class="w-7 h-7 bg-white text-primary font-bold flex items-center justify-center font-mono">
+          <div class="hidden md:flex items-center gap-2.5 px-3 py-1.5 bg-emerald-950/70 border border-emerald-800 text-xs" id="userProfileDisplay">
+            <div class="w-7 h-7 bg-white text-primary font-bold flex items-center justify-center font-mono" id="userAvatarText">
               DS
             </div>
             <div>
-              <span class="font-bold block leading-none">Danuardi Saputro</span>
-              <span class="text-[11px] text-emerald-300 font-mono leading-none">NIM 1251420128</span>
+              <span class="font-bold block leading-none" id="userProfileName">Danuardi Saputro</span>
+              <span class="text-[11px] text-emerald-300 font-mono leading-none" id="userProfileSub">NIM 1251420128</span>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- Bottom Nav Tabs Bar (Clean Sharp Rectangle Tabs) -->
+      <!-- Bottom Nav Tabs Bar (Role-filtered) -->
       <nav class="flex items-center space-x-1 py-1 overflow-x-auto text-xs scrollbar-none" id="mainNavBar">
-        <a href="#katalog" data-tab="katalog" class="nav-tab px-3.5 py-2 font-bold whitespace-nowrap bg-white text-primary border border-white flex items-center gap-1.5">
+        
+        <!-- Tab 1: Katalog (Available for all) -->
+        <a href="#katalog" data-tab="katalog" id="tabLinkKatalog" class="nav-tab px-3.5 py-2 font-bold whitespace-nowrap bg-white text-primary border border-white flex items-center gap-1.5">
           <span class="material-symbols-outlined text-base">apps</span>
-          1. Katalog Matkul
+          Katalog Matkul
         </a>
-        <a href="#pengajuan" data-tab="pengajuan" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
+
+        <!-- Student Only Tabs -->
+        <a href="#pengajuan" data-tab="pengajuan" id="tabLinkPengajuan" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
           <span class="material-symbols-outlined text-base">edit_note</span>
-          2. Pengajuan KRS
+          Pengajuan KRS
           <span id="navCartBadge" class="hidden px-1.5 py-0.2 text-[10px] bg-white text-primary font-bold">0</span>
         </a>
-        <a href="#tracking" data-tab="tracking" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
+
+        <a href="#tracking" data-tab="tracking" id="tabLinkTracking" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
           <span class="material-symbols-outlined text-base">track_changes</span>
-          3. Status Tracking
+          Status Tracking
           <span id="navStatusBadge" class="w-2 h-2 bg-amber-400"></span>
         </a>
-        <a href="#tagihan" data-tab="tagihan" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
+
+        <a href="#tagihan" data-tab="tagihan" id="tabLinkTagihan" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-transparent">
           <span class="material-symbols-outlined text-base">receipt_long</span>
-          4. Tagihan &amp; VA
+          Tagihan &amp; VA
         </a>
-        <a href="#dpa" data-tab="dpa" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-emerald-700/60 bg-emerald-900/40">
+
+        <!-- DPA Only Tab (Hidden from Mahasiswa) -->
+        <a href="#dpa" data-tab="dpa" id="tabLinkDpa" class="nav-tab hidden px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-emerald-700/60 bg-emerald-900/40">
           <span class="material-symbols-outlined text-base">verified_user</span>
-          Portal DPA
+          Portal Review DPA
         </a>
-        <a href="#prodi" data-tab="prodi" class="nav-tab px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-emerald-700/60 bg-emerald-900/40">
+
+        <!-- Prodi Only Tab (Hidden from Mahasiswa) -->
+        <a href="#prodi" data-tab="prodi" id="tabLinkProdi" class="nav-tab hidden px-3.5 py-2 font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/80 whitespace-nowrap flex items-center gap-1.5 border border-emerald-700/60 bg-emerald-900/40">
           <span class="material-symbols-outlined text-base">corporate_fare</span>
-          Kuota Prodi
+          Manajemen Kelas &amp; Kuota Prodi
         </a>
       </nav>
 
@@ -609,7 +619,7 @@
       </section>
 
       <!-- ========================================================================= -->
-      <!-- TAB 5: DASBOR DPA -->
+      <!-- TAB 5: DASBOR DPA (Restricted to DPA) -->
       <!-- ========================================================================= -->
       <section id="tab-dpa" class="tab-content space-y-5">
         
@@ -689,20 +699,20 @@
       </section>
 
       <!-- ========================================================================= -->
-      <!-- TAB 6: KUOTA PRODI -->
+      <!-- TAB 6: MANAJEMEN KELAS & KUOTA PRODI (Restricted to Prodi) -->
       <!-- ========================================================================= -->
       <section id="tab-prodi" class="tab-content space-y-5">
         
         <div class="bg-white border-2 border-slate-900 p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <h1 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              Monitoring Kuota Prodi &amp; Pembukaan Kelas
+              Manajemen Kelas &amp; Monitoring Kuota Prodi
             </h1>
             <p class="text-xs text-slate-600 mt-0.5">
-              Ambang batas pembukaan kelas Semester Antara: <strong>minimal 10 mahasiswa/kelas</strong>.
+              Kelola penawaran mata kuliah: Buka kelas, tutup kelas, atau edit dosen, jadwal &amp; kuota kelas.
             </p>
           </div>
-          <div>
+          <div class="flex items-center gap-2">
             <button onclick="prodiBulkConfirmAll()" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white font-bold text-xs border border-primary-dark transition-colors">
               Buka Semua Kelas Memenuhi Kuota
             </button>
@@ -713,11 +723,11 @@
           <table class="w-full text-left text-xs">
             <thead>
               <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold">
-                <th class="py-3 px-3">Mata Kuliah</th>
+                <th class="py-3 px-3">Mata Kuliah &amp; Informasi</th>
                 <th class="py-3 px-3 text-center">Pendaftar / Kuota</th>
                 <th class="py-3 px-3">Progress Kuota</th>
-                <th class="py-3 px-3 text-center">Status</th>
-                <th class="py-3 px-3 text-right">Aksi</th>
+                <th class="py-3 px-3 text-center">Status Operasional</th>
+                <th class="py-3 px-3 text-right">Aksi Kelola Prodi</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100" id="prodiQuotaTableBody">
@@ -730,6 +740,81 @@
 
     </div>
   </main>
+
+  <!-- ================= MODAL EDIT KELAS PRODI ================= -->
+  <div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 p-4 no-print" id="editCourseModal">
+    <div class="bg-white max-w-lg w-full p-5 border-2 border-slate-900 shadow-2xl space-y-3">
+      <div class="flex items-start justify-between border-b border-slate-200 pb-2.5">
+        <div>
+          <span class="font-mono text-xs font-bold text-slate-800 bg-slate-100 px-2 py-0.5" id="editModalCourseCode">TIF204</span>
+          <h3 class="font-heading font-bold text-base text-slate-900 mt-1">Edit Pengaturan Kelas</h3>
+        </div>
+        <button class="text-slate-400 hover:text-slate-800 p-1" onclick="closeEditCourseModal()" type="button">✕</button>
+      </div>
+
+      <form id="editCourseForm" onsubmit="saveCourseEdit(event)" class="space-y-3 text-xs text-slate-800">
+        <div>
+          <label class="block font-bold mb-1">Nama Mata Kuliah</label>
+          <input type="text" id="editCourseName" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white" required />
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold mb-1">Dosen Pengampu</label>
+            <input type="text" id="editCourseLecturer" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white" required />
+          </div>
+          <div>
+            <label class="block font-bold mb-1">NIP Dosen</label>
+            <input type="text" id="editCourseNip" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white font-mono" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold mb-1">Jadwal Perkuliahan</label>
+            <input type="text" id="editCourseSchedule" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white" placeholder="Senin &amp; Rabu, 09.00 - 11.30 WIB" required />
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Ruangan Kuliah / Lab</label>
+            <input type="text" id="editCourseRoom" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white" placeholder="Lab Komputer 3 (FST 402)" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold mb-1">Kapasitas Kursi</label>
+            <input type="number" id="editCourseCapacity" min="10" max="60" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white font-mono" required />
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Kelas Paralel</label>
+            <select id="editCourseClassGroup" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white">
+              <option value="A">Kelas A</option>
+              <option value="B">Kelas B</option>
+              <option value="C">Kelas C</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold mb-1">Status Operasional Kelas</label>
+          <select id="editCourseStatus" class="w-full p-2 border border-slate-300 bg-slate-50 focus:bg-white font-bold">
+            <option value="terpenuhi">Buka (Definitif)</option>
+            <option value="hampir">Menunggu Kuota (&lt; 10 Mhs)</option>
+            <option value="ditutup">Tutup / Nonaktifkan</option>
+          </select>
+        </div>
+
+        <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+          <button type="button" onclick="closeEditCourseModal()" class="px-3 py-1.5 font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-300">
+            Batal
+          </button>
+          <button type="submit" class="px-4 py-1.5 font-bold text-white bg-primary hover:bg-primary-dark">
+            Simpan Perubahan
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- ================= DISCREET SIMULATOR BUTTON ================= -->
   <div class="fixed bottom-4 left-4 z-30 no-print">
@@ -887,7 +972,7 @@
   <footer class="w-full bg-white border-t border-slate-200 mt-auto py-3 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
       <div>
-        &copy; 2026 SIA-SA FST &bull; Teknik Informatika UIN Syarif Hidayatullah Jakarta &bull; Danuardi Saputro (1251420128)
+        &copy; 2026 SIA-SA FST &bull; Fakultas Sains dan Teknologi &bull; UIN Syarif Hidayatullah Jakarta
       </div>
       <div class="flex items-center gap-4">
         <a href="#katalog" class="hover:text-primary">Katalog</a>
@@ -905,7 +990,7 @@
     const COST_PER_SKS = 150000;
     const ADMIN_FEE = 50000;
 
-    const ALL_COURSES = [
+    let ALL_COURSES = [
       {
         code: "TIF204",
         name: "Rekayasa Perangkat Lunak",
@@ -913,6 +998,8 @@
         prodi: "Teknik Informatika",
         semester: "3-4",
         status: "terpenuhi",
+        isOpen: true,
+        isClosed: false,
         lecturer: "Dr. Dewi Khairani, M.Sc.",
         nip: "197804152005012002",
         classGroup: "A",
@@ -936,6 +1023,8 @@
         prodi: "Teknik Informatika",
         semester: "1-2",
         status: "terpenuhi",
+        isOpen: true,
+        isClosed: false,
         lecturer: "Fathur Rahman, M.Kom.",
         nip: "198209142008121003",
         classGroup: "B",
@@ -959,6 +1048,8 @@
         prodi: "Teknik Informatika",
         semester: "3-4",
         status: "hampir",
+        isOpen: false,
+        isClosed: false,
         lecturer: "Yuni Triana, M.T.",
         nip: "198503202010122004",
         classGroup: "A",
@@ -982,6 +1073,8 @@
         prodi: "Teknik Informatika",
         semester: "3-4",
         status: "terpenuhi",
+        isOpen: true,
+        isClosed: false,
         lecturer: "Ahmad Fauzi, M.Kom.",
         nip: "198006112006041001",
         classGroup: "A",
@@ -1005,6 +1098,8 @@
         prodi: "Matematika",
         semester: "3-4",
         status: "hampir",
+        isOpen: false,
+        isClosed: false,
         lecturer: "Siti Nurhaliza, M.Si.",
         nip: "198811052014032002",
         classGroup: "B",
@@ -1024,7 +1119,7 @@
     ];
 
     const DEFAULT_STATE = {
-      role: 'mahasiswa',
+      role: 'mahasiswa', // 'mahasiswa' | 'dpa' | 'prodi'
       stage: 'menunggu_bayar',
       selectedCourseCodes: ['TIF204', 'TIF106'],
       dpaNotes: "“Disetujui. Fokus pada mata kuliah Rekayasa Perangkat Lunak dan Struktur Data untuk perbaikan IPK. Maksimalkan praktikum dan pastikan kehadiran presensi di atas 75%.”",
@@ -1058,10 +1153,50 @@
     function resetDefaultData() {
       state = { ...DEFAULT_STATE };
       saveState();
+      renderNavbarTabs();
       showToast('Data Direset', 'Semua status dikembalikan ke kondisi default.');
     }
 
-    // Hash Navigation
+    // Role-based Nav Tabs Filter
+    function renderNavbarTabs(currentRole = state.role) {
+      const isMhs = currentRole === 'mahasiswa';
+      const isDpa = currentRole === 'dpa';
+      const isProdi = currentRole === 'prodi';
+
+      const elPengajuan = document.getElementById('tabLinkPengajuan');
+      const elTracking = document.getElementById('tabLinkTracking');
+      const elTagihan = document.getElementById('tabLinkTagihan');
+      const elDpa = document.getElementById('tabLinkDpa');
+      const elProdi = document.getElementById('tabLinkProdi');
+
+      // Mahasiswa can NEVER see DPA or Prodi tabs
+      if (elPengajuan) elPengajuan.classList.toggle('hidden', !isMhs);
+      if (elTracking) elTracking.classList.toggle('hidden', !isMhs);
+      if (elTagihan) elTagihan.classList.toggle('hidden', !isMhs);
+      if (elDpa) elDpa.classList.toggle('hidden', !isDpa);
+      if (elProdi) elProdi.classList.toggle('hidden', !isProdi);
+
+      // Update Topbar Profile Label based on role
+      const nameEl = document.getElementById('userProfileName');
+      const subEl = document.getElementById('userProfileSub');
+      const avatarEl = document.getElementById('userAvatarText');
+
+      if (isDpa) {
+        nameEl.innerText = 'Dr. Dewi Khairani, M.Sc.';
+        subEl.innerText = 'Dosen Pembimbing Akademik';
+        avatarEl.innerText = 'DK';
+      } else if (isProdi) {
+        nameEl.innerText = 'Admin Program Studi';
+        subEl.innerText = 'Pengelola Akademik TI FST';
+        avatarEl.innerText = 'TI';
+      } else {
+        nameEl.innerText = 'Danuardi Saputro';
+        subEl.innerText = 'NIM 1251420128 • Mahasiswa';
+        avatarEl.innerText = 'DS';
+      }
+    }
+
+    // Hash Navigation with Strict Route Guard
     function getActiveTab() {
       const hash = window.location.hash.replace('#', '').trim();
       const validTabs = ['katalog', 'pengajuan', 'tracking', 'tagihan', 'dpa', 'prodi'];
@@ -1069,11 +1204,28 @@
     }
 
     function navigateToTab(tabName) {
+      // Access Guard: Mahasiswa cannot access dpa or prodi
+      if (state.role === 'mahasiswa' && (tabName === 'dpa' || tabName === 'prodi')) {
+        showToast('Akses Dibatasi', 'Tab portal DPA dan Prodi tidak dapat diakses oleh mahasiswa.', true);
+        tabName = 'katalog';
+      } else if (state.role === 'dpa' && (tabName === 'pengajuan' || tabName === 'tagihan' || tabName === 'prodi')) {
+        tabName = 'dpa';
+      } else if (state.role === 'prodi' && (tabName === 'pengajuan' || tabName === 'tagihan' || tabName === 'dpa')) {
+        tabName = 'prodi';
+      }
+
       window.location.hash = '#' + tabName;
       updateActiveTabUI(tabName);
     }
 
     function updateActiveTabUI(tabName) {
+      // Route guard enforcement
+      if (state.role === 'mahasiswa' && (tabName === 'dpa' || tabName === 'prodi')) {
+        showToast('Akses Ditolak', 'Halaman ini khusus DPA atau Admin Program Studi.', true);
+        tabName = 'katalog';
+        window.location.hash = '#katalog';
+      }
+
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       const activeEl = document.getElementById('tab-' + tabName);
       if (activeEl) activeEl.classList.add('active');
@@ -1129,6 +1281,11 @@
       const course = ALL_COURSES.find(c => c.code === code);
       if (!course) return;
 
+      if (course.isClosed || course.status === 'ditutup') {
+        showToast('Kelas Ditutup', 'Mata kuliah ini sedang dinonaktifkan/ditutup oleh Prodi.', true);
+        return;
+      }
+
       const currentTotal = getTotalSks();
       if (currentTotal + course.sks > 9) {
         showToast('Melebihi 9 SKS', `Beban saat ini ${currentTotal} SKS. Batas maksimal adalah 9 SKS.`, true);
@@ -1157,8 +1314,8 @@
         const matchSearch = c.code.toLowerCase().includes(searchVal) || c.name.toLowerCase().includes(searchVal) || c.lecturer.toLowerCase().includes(searchVal);
         const matchProdi = (prodiVal === 'all') || (c.prodi === prodiVal);
         let matchStatus = true;
-        if (activePill === 'terpenuhi') matchStatus = (c.enrolled >= 10);
-        if (activePill === 'hampir') matchStatus = (c.enrolled < 10);
+        if (activePill === 'terpenuhi') matchStatus = (!c.isClosed && (c.enrolled >= 10 || c.isOpen));
+        if (activePill === 'hampir') matchStatus = (!c.isClosed && c.enrolled < 10 && !c.isOpen);
         return matchSearch && matchProdi && matchStatus;
       });
 
@@ -1177,22 +1334,30 @@
 
       container.innerHTML = filtered.map(c => {
         const isSelected = state.selectedCourseCodes.includes(c.code);
-        const isQuotaMet = c.enrolled >= 10;
+        const isClosed = c.isClosed || c.status === 'ditutup';
+        const isQuotaMet = !isClosed && (c.enrolled >= 10 || c.isOpen);
         const pct = Math.min(100, Math.round((c.enrolled / c.capacity) * 100));
 
+        let statusBadgeHtml = '';
+        if (isClosed) {
+          statusBadgeHtml = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-rose-100 text-rose-900 border border-rose-300">✕ KELAS DITUTUP PRODI</span>`;
+        } else if (isQuotaMet) {
+          statusBadgeHtml = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-emerald-100 text-emerald-900">✓ Kuota Terpenuhi (Dibuka)</span>`;
+        } else {
+          statusBadgeHtml = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-amber-100 text-amber-900">Kurang ${10 - c.enrolled} Mhs</span>`;
+        }
+
         return `
-          <div class="bg-white border ${isSelected ? 'border-2 border-primary' : 'border-border-ui hover:border-slate-400'} p-4 space-y-3">
+          <div class="bg-white border ${isSelected ? 'border-2 border-primary' : isClosed ? 'border-border-ui opacity-75 bg-slate-50' : 'border-border-ui hover:border-slate-400'} p-4 space-y-3">
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
               <div>
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 font-mono font-bold text-xs bg-slate-100 text-slate-800 border border-slate-300">${c.code}</span>
                   <span class="text-xs font-bold font-mono text-primary">${c.sks} SKS</span>
-                  <span class="text-xs text-slate-500">&bull; ${c.prodi}</span>
-                  <span class="px-2 py-0.5 text-[11px] font-mono font-bold ${isQuotaMet ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
-                    ${isQuotaMet ? '✓ Kuota Terpenuhi' : `Kurang ${10 - c.enrolled} Mhs`}
-                  </span>
+                  <span class="text-xs text-slate-500">&bull; ${c.prodi} (Kelas ${c.classGroup || 'A'})</span>
+                  ${statusBadgeHtml}
                 </div>
-                <h3 class="font-heading font-bold text-base text-slate-900 mt-1">${c.name}</h3>
+                <h3 class="font-heading font-bold text-base text-slate-900 mt-1 ${isClosed ? 'line-through text-slate-500' : ''}">${c.name}</h3>
                 <div class="text-xs text-slate-600 mt-0.5">
                   Dosen: <strong class="text-slate-800">${c.lecturer}</strong> &bull; Jadwal: ${c.schedule} &bull; ${c.room}
                 </div>
@@ -1210,7 +1375,7 @@
                 <span>${pct}% Kuota</span>
               </div>
               <div class="w-full bg-slate-200 h-1.5 overflow-hidden">
-                <div class="${isQuotaMet ? 'bg-emerald-700' : 'bg-amber-600'} h-full" style="width: ${pct}%"></div>
+                <div class="${isClosed ? 'bg-slate-400' : isQuotaMet ? 'bg-emerald-700' : 'bg-amber-600'} h-full" style="width: ${pct}%"></div>
               </div>
             </div>
 
@@ -1219,7 +1384,11 @@
                 <span class="material-symbols-outlined text-sm">info</span>
                 Lihat Silabus
               </button>
-              ${isSelected ? `
+              ${isClosed ? `
+                <span class="px-3 py-1.5 bg-slate-200 text-slate-500 font-bold border border-slate-300 cursor-not-allowed">
+                  Kelas Tidak Ditawarkan
+                </span>
+              ` : isSelected ? `
                 <button onclick="removeCourseFromDraft('${c.code}')" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 font-bold flex items-center gap-1" type="button">
                   <span class="material-symbols-outlined text-sm">close</span>
                   Batal Ambil
@@ -1349,7 +1518,6 @@
       const detailsContainer = document.getElementById('trackingActiveStageDetails');
       const payBtn = document.getElementById('trackingPayBtn');
 
-      // Update stepper highlight
       for (let i = 1; i <= 5; i++) {
         const node = document.getElementById(`step-node-${i}`);
         if (!node) continue;
@@ -1526,57 +1694,177 @@
       navigateToTab('tracking');
     }
 
-    // Render Tab 6: Prodi
+    // Render Tab 6: Prodi (Management of Courses & Quotas)
     function renderProdi() {
       const tbody = document.getElementById('prodiQuotaTableBody');
       tbody.innerHTML = ALL_COURSES.map(c => {
-        const isEligible = c.enrolled >= 10;
+        const isClosed = c.isClosed || c.status === 'ditutup';
+        const isEligible = !isClosed && (c.enrolled >= 10 || c.isOpen);
         const pct = Math.min(100, Math.round((c.enrolled / c.capacity) * 100));
+
+        let statusText = '';
+        if (isClosed) {
+          statusText = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-rose-100 text-rose-900 border border-rose-300">Ditutup / Nonaktif</span>`;
+        } else if (isEligible) {
+          statusText = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">Buka (Definitif)</span>`;
+        } else {
+          statusText = `<span class="px-2 py-0.5 text-[11px] font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300">Menunggu Kuota</span>`;
+        }
 
         return `
           <tr class="hover:bg-slate-50">
             <td class="py-2.5 px-3">
               <div class="font-bold text-slate-900">${c.name}</div>
-              <div class="text-[11px] text-slate-500 font-mono">${c.code} &bull; ${c.lecturer}</div>
+              <div class="text-[11px] text-slate-500 font-mono">
+                ${c.code} &bull; Kelas ${c.classGroup || 'A'} &bull; Dosen: ${c.lecturer} &bull; ${c.schedule} &bull; ${c.room}
+              </div>
             </td>
             <td class="py-2.5 px-3 text-center font-mono">
               <strong>${c.enrolled}</strong> / ${c.capacity}
             </td>
             <td class="py-2.5 px-3">
-              <div class="w-32 bg-slate-200 h-2">
-                <div class="${isEligible ? 'bg-emerald-700' : 'bg-amber-600'} h-full" style="width: ${pct}%"></div>
+              <div class="w-28 bg-slate-200 h-2">
+                <div class="${isClosed ? 'bg-slate-400' : isEligible ? 'bg-emerald-700' : 'bg-amber-600'} h-full" style="width: ${pct}%"></div>
               </div>
-              <span class="text-[10px] text-slate-500 font-mono mt-0.5 block">${pct}%</span>
+              <span class="text-[10px] text-slate-500 font-mono mt-0.5 block">${pct}% Kuota</span>
             </td>
             <td class="py-2.5 px-3 text-center">
-              <span class="px-2 py-0.5 text-[11px] font-mono font-bold ${isEligible ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
-                ${isEligible ? 'Memenuhi Syarat' : 'Belum Memenuhi'}
-              </span>
+              ${statusText}
             </td>
             <td class="py-2.5 px-3 text-right">
-              ${isEligible ? `
-                <button onclick="prodiOpenClass('${c.code}')" class="px-2.5 py-1 bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-800">
-                  Buka Kelas
+              <div class="flex items-center justify-end gap-1.5">
+                <button onclick="openEditCourseModal('${c.code}')" class="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs border border-slate-300 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs">edit</span>
+                  Edit
                 </button>
-              ` : `
-                <span class="text-slate-400 text-xs italic">Menunggu Min. 10 Mhs</span>
-              `}
+                ${isClosed ? `
+                  <button onclick="prodiOpenClass('${c.code}')" class="px-2.5 py-1 bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-800">
+                    Buka Kelas
+                  </button>
+                ` : `
+                  <button onclick="prodiCloseClass('${c.code}')" class="px-2.5 py-1 bg-rose-50 text-rose-700 font-bold text-xs border border-rose-300 hover:bg-rose-100">
+                    Tutup Kelas
+                  </button>
+                `}
+              </div>
             </td>
           </tr>
         `;
       }).join('');
     }
 
-    function prodiOpenClass(code) {
-      if (window.ApiClient) {
-        window.ApiClient.openClass(code).catch(() => {});
+    // Modal Edit Course Logic
+    let currentEditingCode = null;
+
+    function openEditCourseModal(code) {
+      const c = ALL_COURSES.find(item => item.code === code);
+      if (!c) return;
+      currentEditingCode = code;
+      document.getElementById('editModalCourseCode').innerText = c.code;
+      document.getElementById('editCourseName').value = c.name;
+      document.getElementById('editCourseLecturer').value = c.lecturer;
+      document.getElementById('editCourseNip').value = c.nip || '';
+      document.getElementById('editCourseSchedule').value = c.schedule;
+      document.getElementById('editCourseRoom').value = c.room;
+      document.getElementById('editCourseCapacity').value = c.capacity;
+      document.getElementById('editCourseClassGroup').value = c.classGroup || 'A';
+      document.getElementById('editCourseStatus').value = c.isClosed ? 'ditutup' : (c.isOpen || c.enrolled >= 10 ? 'terpenuhi' : 'hampir');
+      
+      document.getElementById('editCourseModal').classList.remove('hidden');
+    }
+
+    function closeEditCourseModal() {
+      document.getElementById('editCourseModal').classList.add('hidden');
+      currentEditingCode = null;
+    }
+
+    async function saveCourseEdit(e) {
+      e.preventDefault();
+      if (!currentEditingCode) return;
+      const c = ALL_COURSES.find(item => item.code === currentEditingCode);
+      if (!c) return;
+
+      const updates = {
+        name: document.getElementById('editCourseName').value.trim(),
+        lecturer: document.getElementById('editCourseLecturer').value.trim(),
+        nip: document.getElementById('editCourseNip').value.trim(),
+        schedule: document.getElementById('editCourseSchedule').value.trim(),
+        room: document.getElementById('editCourseRoom').value.trim(),
+        capacity: parseInt(document.getElementById('editCourseCapacity').value, 10) || c.capacity,
+        classGroup: document.getElementById('editCourseClassGroup').value,
+        status: document.getElementById('editCourseStatus').value
+      };
+
+      if (updates.status === 'ditutup') {
+        updates.isClosed = true;
+        updates.isOpen = false;
+      } else if (updates.status === 'terpenuhi') {
+        updates.isOpen = true;
+        updates.isClosed = false;
+      } else {
+        updates.isOpen = false;
+        updates.isClosed = false;
       }
-      showToast('Kelas Dibuka', `Kelas ${code} ditetapkan definitif oleh Prodi.`);
+
+      Object.assign(c, updates);
+
+      if (window.ApiClient) {
+        try {
+          await window.ApiClient.updateCourse(currentEditingCode, updates);
+        } catch (err) {
+          console.warn('API sync warning:', err);
+        }
+      }
+
+      closeEditCourseModal();
+      renderAllViews();
+      showToast('Kelas Diperbarui', `Informasi kelas ${currentEditingCode} berhasil disimpan.`);
+    }
+
+    async function prodiOpenClass(code) {
+      const c = ALL_COURSES.find(item => item.code === code);
+      if (c) {
+        c.status = 'terpenuhi';
+        c.isOpen = true;
+        c.isClosed = false;
+      }
+
+      if (window.ApiClient) {
+        try {
+          await window.ApiClient.openClass(code);
+        } catch (err) {}
+      }
+
+      renderAllViews();
+      showToast('Kelas Dibuka', `Kelas ${code} ditetapkan dibuka oleh Prodi.`);
+    }
+
+    async function prodiCloseClass(code) {
+      const c = ALL_COURSES.find(item => item.code === code);
+      if (c) {
+        c.status = 'ditutup';
+        c.isOpen = false;
+        c.isClosed = true;
+      }
+
+      if (window.ApiClient) {
+        try {
+          await window.ApiClient.closeClass(code, 'Ditutup oleh kebijakan Prodi');
+        } catch (err) {}
+      }
+
+      renderAllViews();
+      showToast('Kelas Ditutup', `Kelas ${code} telah ditutup/dinonaktifkan.`, true);
     }
 
     function prodiBulkConfirmAll() {
       state.stage = 'menunggu_bayar';
       saveState();
+
+      if (window.ApiClient) {
+        window.ApiClient.confirmClasses().catch(() => {});
+      }
+
       showToast('Penetapan Selesai', 'Semua kelas yang memenuhi kuota telah dibuka.');
       navigateToTab('tracking');
     }
@@ -1595,6 +1883,8 @@
       document.getElementById('check-role-prodi').classList.toggle('hidden', role !== 'prodi');
       document.getElementById('roleDropdownMenu').classList.add('hidden');
 
+      renderNavbarTabs(role);
+
       if (role === 'dpa') navigateToTab('dpa');
       else if (role === 'prodi') navigateToTab('prodi');
       else navigateToTab('katalog');
@@ -1611,10 +1901,17 @@
       document.getElementById('demoMenuPopover').classList.add('hidden');
       showToast('Tahap Disimulasikan', `Alur beralih ke: ${st}`);
       if (st === 'draft') navigateToTab('pengajuan');
-      else if (st === 'menunggu_dpa') navigateToTab('dpa');
-      else if (st === 'kuota_prodi') navigateToTab('prodi');
-      else if (st === 'menunggu_bayar') navigateToTab('tagihan');
-      else navigateToTab('tracking');
+      else if (st === 'menunggu_dpa') {
+        setRole('dpa');
+      } else if (st === 'kuota_prodi') {
+        setRole('prodi');
+      } else if (st === 'menunggu_bayar') {
+        setRole('mahasiswa');
+        navigateToTab('tagihan');
+      } else {
+        setRole('mahasiswa');
+        navigateToTab('tracking');
+      }
     }
 
     // Modals
@@ -1629,10 +1926,20 @@
       document.getElementById('modalCpmkList').innerHTML = c.cpmk.map(pt => `<li>${pt}</li>`).join('');
 
       const addBtn = document.getElementById('modalAddBtn');
-      addBtn.onclick = () => {
-        addCourseToDraft(c.code);
-        closeSyllabusModal();
-      };
+      if (c.isClosed) {
+        addBtn.disabled = true;
+        addBtn.className = "px-4 py-1.5 text-xs font-bold text-slate-400 bg-slate-200 cursor-not-allowed";
+        addBtn.innerText = "Kelas Ditutup";
+      } else {
+        addBtn.disabled = false;
+        addBtn.className = "px-4 py-1.5 text-xs font-bold text-white bg-primary hover:bg-primary-dark";
+        addBtn.innerText = "+ Ambil Matkul";
+        addBtn.onclick = () => {
+          addCourseToDraft(c.code);
+          closeSyllabusModal();
+        };
+      }
+
       document.getElementById('syllabusModal').classList.remove('hidden');
     }
 
@@ -1699,6 +2006,7 @@
         }
       });
 
+      renderNavbarTabs();
       updateActiveTabUI(getActiveTab());
       renderAllViews();
     });
