@@ -21,3 +21,9 @@ node_modules/
 # Local Environment
 .env
 .env.local
+
+# Archive files
+*.zip
+
+# Runtime temporary database
+src/database/runtimeData.json
