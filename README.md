@@ -4,7 +4,7 @@
 
 [![Platform](https://img.shields.io/badge/Platform-SIA--SA%20FST-003820?style=for-the-badge)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
 [![Node.js Engine](https://img.shields.io/badge/Node.js-v18%2B%20Express%20REST%20API-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
-[![Automated Tests](https://img.shields.io/badge/Automated%20Tests-10%2F10%20PASSED-success?style=for-the-badge&logo=checkmarx)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
+[![Automated Tests](https://img.shields.io/badge/Automated%20Tests-12%2F12%20PASSED-success?style=for-the-badge&logo=checkmarx)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
 [![UI Stack](https://img.shields.io/badge/UI%20Stack-TailwindCSS%20%2B%20Modular%20JS-38BDF8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
 ---
@@ -107,6 +107,9 @@ Sistem-Request-Semester-Antara/
 | `POST` | `/api/dpa/reject` | Pengembalian berkas pengajuan oleh DPA dengan catatan |
 | `GET` | `/api/prodi/quota-summary` | Monitoring kuota seluruh kelas penawaran prodi |
 | `POST` | `/api/prodi/confirm-classes` | Penetapan pembukaan kelas definitif oleh prodi |
+| `POST` | `/api/prodi/courses/:code/open` | Pembukaan definitif kelas matkul oleh prodi |
+| `POST` | `/api/prodi/courses/:code/close` | Penutupan / pembatalan penawaran kelas oleh prodi |
+| `PUT` | `/api/prodi/courses/:code` | Edit data kelas (jadwal, ruangan, dosen, kuota) oleh prodi |
 | `GET` | `/api/payments/bill/:nim` | Rincian tagihan faktur dan status Virtual Account |
 | `POST` | `/api/payments/simulate-pay` | Simulasi penyelesaian pelunasan VA instan |
 
@@ -120,7 +123,7 @@ Sistem dilengkapi dengan rangkaian pengujian integrasi otomatis tanpa dependensi
 npm test
 ```
 
-### Hasil Uji Integrasi (10/10 PASS):
+### Hasil Uji Integrasi (12/12 PASS):
 1. `GET /api/health` ➔ Memastikan backend server aktif dan merespon `online`.
 2. `GET /api/courses` ➔ Memastikan katalog mengembalikan seluruh daftar mata kuliah penawaran.
 3. `GET /api/courses?prodi=Teknik Informatika` ➔ Memastikan filter prodi berfungsi tepat.
@@ -131,6 +134,8 @@ npm test
 8. `POST /api/dpa/approve` ➔ Persetujuan DPA tercatat dan status melangkah ke `VERIFIKASI_KUOTA`.
 9. `POST /api/prodi/confirm-classes` ➔ Prodi menetapkan kelas definitif dan menerbitkan invoice Virtual Account.
 10. `POST /api/payments/simulate-pay` ➔ Simulasi bayar VA sukses, tagihan lunas, dan status akhir menjadi `TERDAFTAR_RESMI`.
+11. `PUT /api/prodi/courses/:code` ➔ Pengelola prodi berhasil mengedit informasi jadwal, dosen, ruangan, dan kuota kelas.
+12. `POST /api/prodi/courses/:code/close` & `/open` ➔ Pengelola prodi berhasil menutup dan membuka kelas penawaran secara dinamis.
 
 ---
 
