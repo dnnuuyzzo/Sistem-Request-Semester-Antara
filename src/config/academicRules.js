@@ -1,0 +1,28 @@
+/**
+ * Academic Rules & Regulations for Semester Antara
+ * Based on Laporan Tugas Mandiri RPL (FST UIN Syarif Hidayatullah Jakarta 2026)
+ */
+module.exports = {
+  MAX_SKS: 9,
+  COST_PER_SKS: 150000,
+  ADMIN_FEE: 50000,
+  MIN_QUOTA_PER_CLASS: 10,
+  ALLOWED_RETAKE_GRADES: ['C', 'D', 'E'],
+  DISALLOWED_RETAKE_GRADES: ['A', 'B'],
+  CURRENT_ACADEMIC_YEAR: '2025/2026',
+  REGISTRATION_PERIOD: {
+    start: '2026-07-10T00:00:00+07:00',
+    end: '2026-07-20T23:59:59+07:00',
+    dpaDeadline: '2026-07-22T23:59:59+07:00',
+    paymentDeadline: '2026-07-25T23:59:59+07:00'
+  },
+  STATUS_LIFECYCLE: {
+    DRAFT: 'DRAFT',
+    MENUNGGU_DPA: 'MENUNGGU_DPA',
+    VERIFIKASI_KUOTA: 'VERIFIKASI_KUOTA',
+    MENUNGGU_PEMBAYARAN: 'MENUNGGU_PEMBAYARAN',
+    TERDAFTAR_RESMI: 'TERDAFTAR_RESMI',
+    DITOLAK_DPA: 'DITOLAK_DPA',
+    DIBATALKAN_KUOTA: 'DIBATALKAN_KUOTA'
+  }
+};

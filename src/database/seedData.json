@@ -1,0 +1,238 @@
+{
+  "students": [
+    {
+      "nim": "1251420128",
+      "name": "Danuardi Saputro",
+      "prodi": "Teknik Informatika",
+      "jenjang": "S1",
+      "faculty": "Fakultas Sains dan Teknologi",
+      "semester": 4,
+      "academicStatus": "AKTIF",
+      "ipk": 3.12,
+      "dpa": {
+        "name": "Dr. Dewi Khairani, M.Sc.",
+        "nip": "197804152005012002",
+        "email": "dewi.khairani@uinjkt.ac.id"
+      },
+      "transcriptHistory": [
+        { "courseCode": "TIF204", "courseName": "Rekayasa Perangkat Lunak", "sks": 3, "grade": "D", "term": "Ganjil 2024/2025", "eligibleForRetake": true },
+        { "courseCode": "TIF106", "courseName": "Struktur Data & Algoritma", "sks": 3, "grade": "C", "term": "Genap 2023/2024", "eligibleForRetake": true },
+        { "courseCode": "TIF208", "courseName": "Basis Data Lanjut", "sks": 3, "grade": "D", "term": "Genap 2024/2025", "eligibleForRetake": true },
+        { "courseCode": "TIF210", "courseName": "Jaringan Komputer", "sks": 3, "grade": "D", "term": "Ganjil 2024/2025", "eligibleForRetake": true },
+        { "courseCode": "MAT201", "courseName": "Statistika & Probabilitas", "sks": 3, "grade": "E", "term": "Ganjil 2023/2024", "eligibleForRetake": true },
+        { "courseCode": "TIF209", "courseName": "Pemrograman Web", "sks": 3, "grade": "B", "term": "Ganjil 2024/2025", "eligibleForRetake": false },
+        { "courseCode": "TIF101", "courseName": "Dasar Pemrograman", "sks": 3, "grade": "A", "term": "Ganjil 2023/2024", "eligibleForRetake": false }
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "code": "TIF204",
+      "name": "Rekayasa Perangkat Lunak",
+      "sks": 3,
+      "prodi": "Teknik Informatika",
+      "semester": "3-4",
+      "classGroup": "A",
+      "lecturer": "Dr. Dewi Khairani, M.Sc.",
+      "nip": "197804152005012002",
+      "schedule": "Senin & Rabu, 09.00 - 11.30 WIB",
+      "room": "Lab Komputer 3 (FST 402)",
+      "enrolled": 14,
+      "capacity": 20,
+      "prereq": "Algoritma & Pemrograman (Min. Nilai D)",
+      "status": "terpenuhi",
+      "icon": "code_blocks",
+      "cpmk": [
+        "Menerapkan metodologi Agile, Scrum, dan Waterfall dalam perancangan aplikasi berskala enterprise.",
+        "Menguasai pemodelan UML formal dan diagram arsitektur sesuai standard IEEE.",
+        "Melakukan pengujian unit testing dan integrasi continuous deployment (CI/CD)."
+      ]
+    },
+    {
+      "code": "TIF106",
+      "name": "Struktur Data & Algoritma",
+      "sks": 3,
+      "prodi": "Teknik Informatika",
+      "semester": "1-2",
+      "classGroup": "B",
+      "lecturer": "Fathur Rahman, M.Kom.",
+      "nip": "198209142008121003",
+      "schedule": "Selasa & Kamis, 13.00 - 15.30 WIB",
+      "room": "Lab Rekayasa Web (FST 305)",
+      "enrolled": 12,
+      "capacity": 25,
+      "prereq": "Dasar Pemrograman (TIF101)",
+      "status": "terpenuhi",
+      "icon": "account_tree",
+      "cpmk": [
+        "Memahami struktur pohon (tree), graf (graph), hashing, dan dynamic programming.",
+        "Mengimplementasikan algoritma traversal dan pencarian kompleks dalam bahasa C++/Java.",
+        "Menganalisis kompleksitas waktu Big-O dalam pemecahan masalah komputasi."
+      ]
+    },
+    {
+      "code": "TIF208",
+      "name": "Basis Data Lanjut",
+      "sks": 3,
+      "prodi": "Teknik Informatika",
+      "semester": "3-4",
+      "classGroup": "A",
+      "lecturer": "Yuni Triana, M.T.",
+      "nip": "198503202010122004",
+      "schedule": "Rabu & Jumat, 10.00 - 12.30 WIB",
+      "room": "Ruang Teori 3.04",
+      "enrolled": 8,
+      "capacity": 20,
+      "prereq": "Sistem Basis Data (TIF105)",
+      "status": "hampir",
+      "icon": "database",
+      "cpmk": [
+        "Merancang arsitektur database terdistribusi dan replikasi basis data skala besar.",
+        "Optimasi query execution plan dan indexing PostgreSQL / Oracle.",
+        "Implementasi NoSQL database (MongoDB & Redis) untuk analitik real-time."
+      ]
+    },
+    {
+      "code": "TIF210",
+      "name": "Jaringan Komputer",
+      "sks": 3,
+      "prodi": "Teknik Informatika",
+      "semester": "3-4",
+      "classGroup": "A",
+      "lecturer": "Ahmad Fauzi, M.Kom.",
+      "nip": "198006112006041001",
+      "schedule": "Senin & Kamis, 14.00 - 16.30 WIB",
+      "room": "Lab Jaringan 205",
+      "enrolled": 15,
+      "capacity": 20,
+      "prereq": "Sistem Operasi (TIF201)",
+      "status": "terpenuhi",
+      "icon": "lan",
+      "cpmk": [
+        "Konfigurasi router, switch, VLAN, dan routing protokol OSPF/BGP.",
+        "Menganalisis protokol TCP/IP menggunakan Wireshark packet capture.",
+        "Perancangan firewall dan pengamanan infrastruktur jaringan kampus."
+      ]
+    },
+    {
+      "code": "MAT201",
+      "name": "Statistika & Probabilitas",
+      "sks": 3,
+      "prodi": "Matematika",
+      "semester": "3-4",
+      "classGroup": "B",
+      "lecturer": "Siti Nurhaliza, M.Si.",
+      "nip": "198811052014032002",
+      "schedule": "Selasa & Jumat, 08.00 - 10.30 WIB",
+      "room": "Ruang Kuliah 4.02",
+      "enrolled": 6,
+      "capacity": 20,
+      "prereq": "Kalkulus 2 (MAT102)",
+      "status": "hampir",
+      "icon": "query_stats",
+      "cpmk": [
+        "Menghitung probabilitas variabel acak diskrit dan kontinu.",
+        "Melakukan pengujian hipotesis ANOVA dan regresi linier berganda.",
+        "Penerapan statistik komputasi menggunakan R / Python."
+      ]
+    },
+    {
+      "code": "TIF209",
+      "name": "Pemrograman Web",
+      "sks": 3,
+      "prodi": "Teknik Informatika",
+      "semester": "3-4",
+      "classGroup": "A",
+      "lecturer": "Nur Aeni, M.Kom.",
+      "nip": "198305142010122001",
+      "schedule": "Senin & Rabu, 13.00 - 15.30 WIB",
+      "room": "Lab Komputer 2 (FST 401)",
+      "enrolled": 16,
+      "capacity": 20,
+      "prereq": "Dasar Pemrograman (TIF101)",
+      "status": "terpenuhi",
+      "icon": "web",
+      "cpmk": [
+        "Membangun arsitektur REST API dengan Express dan Node.js.",
+        "Mengembangkan responsive client interface dengan HTML5, CSS3, dan modern JavaScript.",
+        "Menerapkan konsep otentikasi JWT dan deployment web modern."
+      ]
+    }
+  ],
+  "krs_requests": [
+    {
+      "requestId": "REQ-SA-2026-0842",
+      "nim": "1251420128",
+      "studentName": "Danuardi Saputro",
+      "academicYear": "2025/2026",
+      "courseCodes": ["TIF204", "TIF106"],
+      "totalSks": 6,
+      "stage": "MENUNGGU_PEMBAYARAN",
+      "submittedAt": "2026-07-12T10:15:22+07:00",
+      "dpaApprovedAt": "2026-07-13T14:20:03+07:00",
+      "dpaNotes": "Disetujui. Fokus pada mata kuliah Rekayasa Perangkat Lunak dan Struktur Data untuk perbaikan IPK. Maksimalkan praktikum dan pastikan kehadiran presensi di atas 75%.",
+      "prodiApprovedAt": "2026-07-14T09:30:45+07:00",
+      "isPaid": false,
+      "paidAt": null
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceNumber": "INV-SA-2026-0842",
+      "requestId": "REQ-SA-2026-0842",
+      "nim": "1251420128",
+      "studentName": "Danuardi Saputro",
+      "prodi": "Teknik Informatika",
+      "items": [
+        { "name": "Rekayasa Perangkat Lunak", "code": "TIF204", "sks": 3, "rate": 150000, "subtotal": 450000 },
+        { "name": "Struktur Data & Algoritma", "code": "TIF106", "sks": 3, "rate": 150000, "subtotal": 450000 },
+        { "name": "Biaya Administrasi & Registrasi Sistem", "code": "ADM-01", "sks": 0, "rate": 50000, "subtotal": 50000 }
+      ],
+      "subtotalCourses": 900000,
+      "adminFee": 50000,
+      "totalAmount": 950000,
+      "virtualAccounts": {
+        "bsi": { "bankName": "Bank Syariah Indonesia", "bankCode": "451", "vaNumber": "9881251420128042", "accountName": "BSI VA - SIA SA DANUARDI S" },
+        "mandiri": { "bankName": "Bank Mandiri", "bankCode": "008", "vaNumber": "8808125142012801", "accountName": "MANDIRI VA - SIA SA DANUARDI S" }
+      },
+      "selectedBank": "bsi",
+      "dueDate": "2026-07-17T23:59:59+07:00",
+      "status": "MENUNGGU_PEMBAYARAN",
+      "paidAt": null
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "LOG-001",
+      "requestId": "REQ-SA-2026-0842",
+      "event": "KRS Diajukan oleh Mahasiswa",
+      "description": "Submit mandiri paket 2 mata kuliah (6 SKS) oleh Danuardi Saputro.",
+      "timestamp": "2026-07-12T10:15:22+07:00",
+      "actor": "Danuardi Saputro (1251420128)"
+    },
+    {
+      "id": "LOG-002",
+      "requestId": "REQ-SA-2026-0842",
+      "event": "Disetujui Dosen Penasihat Akademik",
+      "description": "Dr. Dewi Khairani, M.Sc. menyetujui KRS melalui portal e-Advisor FST.",
+      "timestamp": "2026-07-13T14:20:03+07:00",
+      "actor": "Dr. Dewi Khairani, M.Sc. (DPA)"
+    },
+    {
+      "id": "LOG-003",
+      "requestId": "REQ-SA-2026-0842",
+      "event": "Validasi Kuota Prodi Selesai",
+      "description": "Admin Prodi TI mengunci kelas TIF-204 (14 mhs) dan TIF-106 (12 mhs) ke status Aktif.",
+      "timestamp": "2026-07-14T09:30:45+07:00",
+      "actor": "Admin Program Studi TI"
+    },
+    {
+      "id": "LOG-004",
+      "requestId": "REQ-SA-2026-0842",
+      "event": "Tagihan Virtual Account Terbit",
+      "description": "Invoice INV-SA-2026-0842 senilai Rp 950.000 diterbitkan otomatis oleh sistem.",
+      "timestamp": "2026-07-14T10:00:10+07:00",
+      "actor": "Sistem Finansial SIA-SA"
+    }
+  ]
+}
