@@ -2,38 +2,24 @@
 ### Modul Pengajuan Semester Antara pada Sistem Informasi Akademik
 **Fakultas Sains dan Teknologi • UIN Syarif Hidayatullah Jakarta**
 
-[![Tugas Rekayasa Perangkat Lunak](https://img.shields.io/badge/Tugas%203-Rekayasa%20Perangkat%20Lunak-0f5132?style=for-the-badge&logo=googlescholar)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
+[![Platform](https://img.shields.io/badge/Platform-SIA--SA%20FST-003820?style=for-the-badge)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
 [![Node.js Engine](https://img.shields.io/badge/Node.js-v18%2B%20Express%20REST%20API-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
 [![Automated Tests](https://img.shields.io/badge/Automated%20Tests-10%2F10%20PASSED-success?style=for-the-badge&logo=checkmarx)](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
 [![UI Stack](https://img.shields.io/badge/UI%20Stack-TailwindCSS%20%2B%20Modular%20JS-38BDF8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
 ---
 
-## 📌 Identitas Akademik & Pengembang
+## 📖 Ringkasan Sistem & Latar Belakang
 
-* **Nama Mahasiswa:** Danuardi Saputro
-* **NIM:** 1251420128
-* **Program Studi:** Teknik Informatika (S1)
-* **Fakultas:** Fakultas Sains dan Teknologi (FST)
-* **Universitas:** UIN Syarif Hidayatullah Jakarta
-* **Mata Kuliah:** Rekayasa Perangkat Lunak (RPL)
-* **Dosen Pengampu:** Dr. Dewi Khairani, M.Sc.
-* **Tahun Akademik:** 2025/2026
-* **Repositori GitHub:** [dnnuuyzzo/Sistem-Request-Semester-Antara](https://github.com/dnnuuyzzo/Sistem-Request-Semester-Antara)
-
----
-
-## 📖 Ringkasan Proyek & Latar Belakang (Berdasarkan Tugas 2)
-
-Proyek ini merupakan implementasi perangkat lunak berbasis web terpadu yang berangkat dari **Dokumen Analisis Kebutuhan dan Usulan Solusi Perangkat Lunak (Laporan Tugas Mandiri RPL)**.
+SIA-SA FST adalah sistem perangkat lunak berbasis web terpadu untuk digitalisasi, otomatisasi, dan validasi siklus pengajuan Semester Antara di lingkungan Fakultas Sains dan Teknologi (FST) UIN Syarif Hidayatullah Jakarta.
 
 ### Permasalahan yang Dihadapi (Problem Statement):
-Sebelum adanya sistem terpusat, pengajuan Semester Antara di lingkungan TI FST dikelola secara parsial menggunakan **Google Form terpisah dan koordinasi pesan WhatsApp pribadi**. Hal tersebut menimbulkan kendala kritis:
-1. Informasi kuota dan mata kuliah penawaran tidak transparan dan tidak sinkron.
+Sebelum adanya sistem terpusat, pengajuan Semester Antara dikelola secara parsial menggunakan Google Form terpisah dan koordinasi pesan singkat. Hal tersebut menimbulkan kendala:
+1. Informasi kuota dan mata kuliah penawaran tidak transparan dan tidak tersinkronisasi.
 2. Risiko ketidakabsahan akademik (mahasiswa melanggar batas maksimal 9 SKS atau mengajukan mata kuliah bernilai riwayat A/B yang tidak berhak diulang).
-3. Beban administratif DPA dalam memverifikasi kelayakan riwayat transkrip secara manual.
+3. Beban administratif Dosen Pembimbing Akademik (DPA) dalam memverifikasi kelayakan riwayat transkrip secara manual.
 4. Keterlambatan Program Studi dalam memantau ambang batas minimum pendaftar (**minimal 10 mahasiswa/kelas**) untuk pembukaan kelas dan penugasan dosen pengampu.
-5. Keterlambatan penerbitan tagihan Virtual Account (VA) perbankan dan kepastian status pendaftaran.
+5. Keterlambatan penerbitan tagihan Virtual Account (VA) perbankan dan kepastian status pendaftaran mahasiswa.
 
 ### Solusi Terpadu: SIA-SA FST
 Sistem terintegrasi yang mendigitalkan seluruh siklus 5 tahap Semester Antara:
@@ -128,7 +114,7 @@ Sistem-Request-Semester-Antara/
 
 ## 🧪 Pengujian Otomatis (Automated Tests)
 
-Sistem dilengkapi dengan rangkaian pengujian integrasi otomatis tanpa dependensi pihak ketiga. Seluruh aturan akademik dari **Tugas 2** diuji secara ketat:
+Sistem dilengkapi dengan rangkaian pengujian integrasi otomatis tanpa dependensi pihak ketiga. Seluruh aturan akademik diuji secara ketat:
 
 ```bash
 npm test
@@ -185,9 +171,8 @@ npm test
 
 ---
 
-## ⚖️ Lisensi & Hak Cipta
+## ⚖️ Lisensi
 
-Dokumen dan kode sumber ini disusun guna memenuhi tugas akademik mata kuliah **Rekayasa Perangkat Lunak** pada **Program Studi Teknik Informatika, Fakultas Sains dan Teknologi, UIN Syarif Hidayatullah Jakarta**.
-
-Hak Cipta © 2026 **Danuardi Saputro (1251420128)**.
-Semua hak dilindungi undang-undang.
+Sistem Informasi Akademik Semester Antara (SIA-SA FST)  
+Fakultas Sains dan Teknologi • UIN Syarif Hidayatullah Jakarta.  
+Hak Cipta © 2026. Lisensi MIT.
