@@ -149,6 +149,38 @@ function runTest() {
         assert.strictEqual(res.data.krs.stage, 'TERDAFTAR_RESMI');
       });
 
+      // Test 11: Prodi edits course offering
+      await it('PUT /api/prodi/courses/:code edits course details', async () => {
+        const res = await fetchApi('/api/prodi/courses/TIF204', {
+          method: 'PUT',
+          body: JSON.stringify({
+            lecturer: 'Dr. Dewi Khairani, M.Sc. & Tim',
+            room: 'Lab RPL Terpadu (FST 401)',
+            capacity: 25
+          })
+        });
+        assert.strictEqual(res.status, 200);
+        assert.strictEqual(res.data.success, true);
+        assert.strictEqual(res.data.course.room, 'Lab RPL Terpadu (FST 401)');
+        assert.strictEqual(res.data.course.capacity, 25);
+      });
+
+      // Test 12: Prodi opens and closes course
+      await it('POST /api/prodi/courses/:code/close and /open manages class state', async () => {
+        const closeRes = await fetchApi('/api/prodi/courses/TIF208/close', {
+          method: 'POST',
+          body: JSON.stringify({ reason: 'Dosen berhalangan' })
+        });
+        assert.strictEqual(closeRes.status, 200);
+        assert.strictEqual(closeRes.data.course.isClosed, true);
+
+        const openRes = await fetchApi('/api/prodi/courses/TIF208/open', {
+          method: 'POST'
+        });
+        assert.strictEqual(openRes.status, 200);
+        assert.strictEqual(openRes.data.course.isOpen, true);
+      });
+
       console.log(`\n------------------------------------------------------`);
       console.log(`TEST RESULTS: ${passed} PASSED, ${failed} FAILED`);
       console.log(`------------------------------------------------------\n`);

@@ -88,6 +88,80 @@ class ProdiService {
       updatedRequestsCount: requests.length
     };
   }
+
+  openCourse(code) {
+    const course = db.findOne('courses', c => c.code === code);
+    if (!course) {
+      const err = new Error(`Mata kuliah dengan kode ${code} tidak ditemukan.`);
+      err.statusCode = 404;
+      throw err;
+    }
+
+    db.update('courses', c => c.code === code, c => ({
+      ...c,
+      status: 'terpenuhi',
+      isOpen: true,
+      isClosed: false,
+      closeReason: null
+    }));
+
+    return {
+      success: true,
+      message: `Kelas ${course.name} (${code}) berhasil dibuka definitif oleh Program Studi.`,
+      course: db.findOne('courses', c => c.code === code)
+    };
+  }
+
+  closeCourse(code, reason = 'Ditutup oleh kebijakan Program Studi') {
+    const course = db.findOne('courses', c => c.code === code);
+    if (!course) {
+      const err = new Error(`Mata kuliah dengan kode ${code} tidak ditemukan.`);
+      err.statusCode = 404;
+      throw err;
+    }
+
+    db.update('courses', c => c.code === code, c => ({
+      ...c,
+      status: 'ditutup',
+      isOpen: false,
+      isClosed: true,
+      closeReason: reason
+    }));
+
+    return {
+      success: true,
+      message: `Kelas ${course.name} (${code}) berhasil ditutup oleh Program Studi.`,
+      course: db.findOne('courses', c => c.code === code)
+    };
+  }
+
+  updateCourse(code, updates = {}) {
+    const course = db.findOne('courses', c => c.code === code);
+    if (!course) {
+      const err = new Error(`Mata kuliah dengan kode ${code} tidak ditemukan.`);
+      err.statusCode = 404;
+      throw err;
+    }
+
+    const allowedFields = ['name', 'lecturer', 'nip', 'schedule', 'room', 'capacity', 'classGroup', 'status', 'isOpen', 'isClosed'];
+    const sanitizedUpdates = {};
+    for (const key of allowedFields) {
+      if (updates[key] !== undefined) {
+        sanitizedUpdates[key] = key === 'capacity' ? parseInt(updates[key], 10) || course.capacity : updates[key];
+      }
+    }
+
+    db.update('courses', c => c.code === code, c => ({
+      ...c,
+      ...sanitizedUpdates
+    }));
+
+    return {
+      success: true,
+      message: `Informasi kelas ${code} berhasil diperbarui.`,
+      course: db.findOne('courses', c => c.code === code)
+    };
+  }
 }
 
 module.exports = new ProdiService();

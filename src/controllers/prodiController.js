@@ -21,3 +21,31 @@ exports.confirmClasses = (req, res, next) => {
     next(err);
   }
 };
+
+exports.openCourse = (req, res, next) => {
+  try {
+    const result = prodiService.openCourse(req.params.code);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.closeCourse = (req, res, next) => {
+  try {
+    const { reason } = req.body || {};
+    const result = prodiService.closeCourse(req.params.code, reason);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.updateCourse = (req, res, next) => {
+  try {
+    const result = prodiService.updateCourse(req.params.code, req.body);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
